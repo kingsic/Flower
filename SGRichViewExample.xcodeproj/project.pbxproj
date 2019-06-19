@@ -15,9 +15,7 @@
 		8D0BDF4B21E98AF300799F97 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0BDF4A21E98AF300799F97 /* main.m */; };
 		8D0BDF5521E98AF300799F97 /* SGRichViewExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0BDF5421E98AF300799F97 /* SGRichViewExampleTests.m */; };
 		8D0BDF6021E98AF300799F97 /* SGRichViewExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0BDF5F21E98AF300799F97 /* SGRichViewExampleUITests.m */; };
-		8D0BDF7421E98B3600799F97 /* SGRichView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0BDF6F21E98B3600799F97 /* SGRichView.m */; };
-		8D0BDF7521E98B3600799F97 /* SGRichViewConfigure.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0BDF7121E98B3600799F97 /* SGRichViewConfigure.m */; };
-		8D0BDF7621E98B3600799F97 /* UIButton+SGRichView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0BDF7321E98B3600799F97 /* UIButton+SGRichView.m */; };
+		8D23878822B91F100074B299 /* SGTagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D23878722B91F100074B299 /* SGTagsView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,12 +52,9 @@
 		8D0BDF5B21E98AF300799F97 /* SGRichViewExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SGRichViewExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0BDF5F21E98AF300799F97 /* SGRichViewExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGRichViewExampleUITests.m; sourceTree = "<group>"; };
 		8D0BDF6121E98AF300799F97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8D0BDF6E21E98B3600799F97 /* SGRichViewConfigure.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGRichViewConfigure.h; sourceTree = "<group>"; };
-		8D0BDF6F21E98B3600799F97 /* SGRichView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGRichView.m; sourceTree = "<group>"; };
-		8D0BDF7021E98B3600799F97 /* UIButton+SGRichView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIButton+SGRichView.h"; sourceTree = "<group>"; };
-		8D0BDF7121E98B3600799F97 /* SGRichViewConfigure.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGRichViewConfigure.m; sourceTree = "<group>"; };
-		8D0BDF7221E98B3600799F97 /* SGRichView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGRichView.h; sourceTree = "<group>"; };
-		8D0BDF7321E98B3600799F97 /* UIButton+SGRichView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIButton+SGRichView.m"; sourceTree = "<group>"; };
+		8D23878622B91F100074B299 /* SGTagsView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGTagsView.h; sourceTree = "<group>"; };
+		8D23878722B91F100074B299 /* SGTagsView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGTagsView.m; sourceTree = "<group>"; };
+		8D23878922BA07F70074B299 /* SGRichView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGRichView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +85,7 @@
 		8D0BDF2F21E98AF100799F97 = {
 			isa = PBXGroup;
 			children = (
+				8D0BDF6D21E98B3600799F97 /* SGRichView */,
 				8D0BDF3A21E98AF100799F97 /* SGRichViewExample */,
 				8D0BDF5321E98AF300799F97 /* SGRichViewExampleTests */,
 				8D0BDF5E21E98AF300799F97 /* SGRichViewExampleUITests */,
@@ -110,7 +106,6 @@
 		8D0BDF3A21E98AF100799F97 /* SGRichViewExample */ = {
 			isa = PBXGroup;
 			children = (
-				8D0BDF6D21E98B3600799F97 /* SGRichView */,
 				8D0BDF3B21E98AF100799F97 /* AppDelegate.h */,
 				8D0BDF3C21E98AF100799F97 /* AppDelegate.m */,
 				8D0BDF3E21E98AF100799F97 /* ViewController.h */,
@@ -145,12 +140,9 @@
 		8D0BDF6D21E98B3600799F97 /* SGRichView */ = {
 			isa = PBXGroup;
 			children = (
-				8D0BDF6E21E98B3600799F97 /* SGRichViewConfigure.h */,
-				8D0BDF7121E98B3600799F97 /* SGRichViewConfigure.m */,
-				8D0BDF7221E98B3600799F97 /* SGRichView.h */,
-				8D0BDF6F21E98B3600799F97 /* SGRichView.m */,
-				8D0BDF7021E98B3600799F97 /* UIButton+SGRichView.h */,
-				8D0BDF7321E98B3600799F97 /* UIButton+SGRichView.m */,
+				8D23878922BA07F70074B299 /* SGRichView.h */,
+				8D23878622B91F100074B299 /* SGTagsView.h */,
+				8D23878722B91F100074B299 /* SGTagsView.m */,
 			);
 			path = SGRichView;
 			sourceTree = SOURCE_ROOT;
@@ -287,9 +279,7 @@
 			files = (
 				8D0BDF4021E98AF100799F97 /* ViewController.m in Sources */,
 				8D0BDF4B21E98AF300799F97 /* main.m in Sources */,
-				8D0BDF7621E98B3600799F97 /* UIButton+SGRichView.m in Sources */,
-				8D0BDF7421E98B3600799F97 /* SGRichView.m in Sources */,
-				8D0BDF7521E98B3600799F97 /* SGRichViewConfigure.m in Sources */,
+				8D23878822B91F100074B299 /* SGTagsView.m in Sources */,
 				8D0BDF3D21E98AF100799F97 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

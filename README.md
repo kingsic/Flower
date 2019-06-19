@@ -1,7 +1,7 @@
 # SGRichView
 
 
-* SGRichView 来源于对 [SGPagingView](https://github.com/kingsic/SGPagingView) 框架中的 SGPageTitleView 的衍生
+* 本项目中的 SGTagsView 来源于对 [SGPagingView](https://github.com/kingsic/SGPagingView) 框架中的 SGPageTitleView 的衍生
 
 
 ### SGRichView 实现的界面效果图<br>
