@@ -9,7 +9,7 @@
 * 2、下载、拖拽 “SGRichView” 文件夹到工程中
 
 ## 代码介绍
-#### SGPagingView 的使用（详细使用, 请参考 Demo）
+#### SGTagsView 的使用（详细使用, 请参考 Demo）
 ``` 
     SGTagsViewConfigure *configure = [SGTagsViewConfigure tagsViewConfigure];
 

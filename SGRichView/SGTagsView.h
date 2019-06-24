@@ -10,13 +10,21 @@
 @class SGTagsView;
 
 typedef enum : NSUInteger {
-    /** 水平样式，默认 */
-    SGTagsViewStyleHorizontal,
+    /** 均分样式，默认 */
+    SGTagsViewStyleEquable,
     /** 垂直样式 */
     SGTagsViewStyleVertical,
-    /** 均分样式 */
-    SGTagsViewStyleEquable,
+    /** 水平样式*/
+    SGTagsViewStyleHorizontal,
 } SGTagsViewStyle;
+typedef enum : NSUInteger {
+    /** 内容居中样式，默认 */
+    SGControlContentHorizontalAlignmentCenter,
+    /** 内容居左样式 */
+    SGControlContentHorizontalAlignmentLeft,
+    /** 内容居右样式*/
+    SGControlContentHorizontalAlignmentRight,
+} SGControlContentHorizontalAlignment;
 @interface SGTagsViewConfigure : NSObject
 /** 类方法 */
 + (instancetype)tagsViewConfigure;
@@ -28,6 +36,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) BOOL bounces;
 /** SGTagsView 是否支持多选，默认为 NO */
 @property (nonatomic, assign) BOOL multipleSelected;
+/** 标签内容水平对齐样式 */
+@property (nonatomic, assign) SGControlContentHorizontalAlignment contentHorizontalAlignment;
 /** 标签文字字号大小，默认 15 号字体 */
 @property (nonatomic, strong) UIFont *font;
 /** 普通状态下标签文字颜色，默认为黑色 */
@@ -60,6 +70,8 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) CGFloat contentSpacingLR;
 /** 内容视图距离父视图上下边的间距，默认为 10.0f */
 @property (nonatomic, assign) CGFloat contentSpacingTB;
+/** SGControlContentHorizontalAlignmentLeft、SGControlContentHorizontalAlignmentRight样式下，距离标签内边距，默认为 5.0f */
+@property (nonatomic, assign) CGFloat contentHorizontalAlignmentSpacing;
 @end
 
 

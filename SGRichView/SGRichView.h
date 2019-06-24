@@ -1,5 +1,6 @@
 //
 //  SGRichView.h
+//  Version 0.0.2
 //  GitHub：https://github.com/kingsic/SGRichView
 //
 //  Created by kingsic on 2019/1/10.

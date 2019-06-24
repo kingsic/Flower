@@ -23,13 +23,6 @@
     _selected = YES;
 }
 
-- (SGTagsViewStyle)tagsViewStyle {
-    if (!_tagsViewStyle) {
-        _tagsViewStyle = SGTagsViewStyleHorizontal;
-    }
-    return _tagsViewStyle;
-}
-
 - (UIFont *)font {
     if (!_font) {
         _font = [UIFont systemFontOfSize:15];
@@ -111,7 +104,7 @@
 }
 - (NSInteger)column {
     if (_column <= 0) {
-        _column = 3;
+        _column = 2;
     }
     return _column;
 }
@@ -127,6 +120,12 @@
         _contentSpacingTB = 10.0f;
     }
     return _contentSpacingTB;
+}
+- (CGFloat)contentHorizontalAlignmentSpacing {
+    if (_contentHorizontalAlignmentSpacing <= 0) {
+        _contentHorizontalAlignmentSpacing = 5.0f;
+    }
+    return _contentHorizontalAlignmentSpacing;
 }
 @end
 
@@ -144,9 +143,7 @@
 @property (nonatomic, strong) NSArray *btn_array;
 /// 临时可变数组用于处理 SGTagsViewStyleVertical 样式下标签的 frame
 @property (nonatomic, strong) NSMutableArray *tempMArr;
-/// tempBtn
 @property (nonatomic, strong) UIButton *tempBtn;
-/// 记录上一个按钮
 @property (nonatomic, strong) UIButton *previousBtn;
 /// 记录多选标签选择文字数组
 @property (nonatomic, strong) NSMutableArray *mArrayTag;
@@ -214,41 +211,36 @@
     CGFloat contentScrollViewXH = self.frame.size.height - 2 * contentScrollViewXY;
     self.contentScrollView.frame = CGRectMake(contentScrollViewXX, contentScrollViewXY, contentScrollViewXW, contentScrollViewXH);
     
-    if (self.configure.tagsViewStyle == SGTagsViewStyleHorizontal) {
-        [self P_layoutTagsViewStyleHorizontal];
-    } else if (self.configure.tagsViewStyle == SGTagsViewStyleVertical) {
+//    if (self.configure.tagsViewStyle == SGTagsViewStyleEquable) {
+    if (self.configure.tagsViewStyle == SGTagsViewStyleVertical) {
         self.tempMArr = [NSMutableArray arrayWithArray:self.btn_array];
         [self P_layoutTagsViewTypeVertical];
-    } else if (self.configure.tagsViewStyle == SGTagsViewStyleEquable) {
+    } else if (self.configure.tagsViewStyle == SGTagsViewStyleHorizontal) {
+        [self P_layoutTagsViewStyleHorizontal];
+    } else {
         [self P_layoutTagsViewTypeEquable];
     }
 }
-#pragma mark - - SGTagsViewStyleHorizontal 样式下 frame 计算
-- (void)P_layoutTagsViewStyleHorizontal {
+#pragma mark - - SGTagsViewStyleEquable 样式下 frame 计算
+- (void)P_layoutTagsViewTypeEquable {
     __block CGFloat btnX = 0;
-    CGFloat btnY = 0;
-    CGFloat btnH = self.contentScrollView.frame.size.height;
+    __block CGFloat btnY = 0;
+    CGFloat btnW = (CGRectGetWidth(self.contentScrollView.frame) - (self.configure.column - 1) * self.configure.horizontalSpacing) / self.configure.column;
+    CGFloat btnH = self.configure.height;
     [self.btn_array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UIButton *btn = obj;
-        CGSize tempSize = [self P_sizeWithString:btn.currentTitle font:self.configure.font];
-        CGFloat btnW = tempSize.width + self.configure.additionalWidth;
+        btnX = (idx % self.configure.column) * (btnW + self.configure.horizontalSpacing);
+        btnY = (idx / self.configure.column) * (btnH + self.configure.verticalSpacing);
         btn.frame = CGRectMake(btnX, btnY, btnW, btnH);
-        btnX = CGRectGetMaxX(btn.frame) + self.configure.horizontalSpacing;
-        // 设置按钮圆角
-        if (self.configure.cornerRadius > 0.5 * btnH) {
-            btn.layer.cornerRadius = 0.5 * btnH;
-        } else {
-            btn.layer.cornerRadius = self.configure.cornerRadius;
-        }
     }];
     UIButton *lastBtn = self.btn_array.lastObject;
-    CGFloat lastBtnMaxX = CGRectGetMaxX(lastBtn.frame);
-    CGFloat allWidth = lastBtnMaxX;
-    if (allWidth < _contentScrollView.frame.size.width) {
-        _contentScrollView.contentSize = CGSizeMake(_contentScrollView.frame.size.width, btnH);
-    } else {
-        _contentScrollView.contentSize = CGSizeMake(allWidth, btnH);
-    }
+    CGFloat contentScrollViewH = CGRectGetMaxY(lastBtn.frame);
+    CGRect contentScrollViewFrame = self.contentScrollView.frame;
+    contentScrollViewFrame.size.height = contentScrollViewH;
+    self.contentScrollView.frame = contentScrollViewFrame;
+    CGRect selfFrame = self.frame;
+    selfFrame.size.height = contentScrollViewH + 2 * self.configure.contentSpacingTB;
+    self.frame = selfFrame;
 }
 #pragma mark - - SGTagsViewStyleVertical 样式下 frame 计算
 - (void)P_layoutTagsViewTypeVertical {
@@ -283,28 +275,35 @@
         }
     }];
 }
-#pragma mark - - SGTagsViewStyleEquable 样式下 frame 计算
-- (void)P_layoutTagsViewTypeEquable {
+#pragma mark - - SGTagsViewStyleHorizontal 样式下 frame 计算
+- (void)P_layoutTagsViewStyleHorizontal {
     __block CGFloat btnX = 0;
-    __block CGFloat btnY = 0;
-    CGFloat btnW = (CGRectGetWidth(self.contentScrollView.frame) - (self.configure.column - 1) * self.configure.horizontalSpacing) / self.configure.column;
-    CGFloat btnH = self.configure.height;
+    CGFloat btnY = 0;
+    CGFloat btnH = self.contentScrollView.frame.size.height;
     [self.btn_array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UIButton *btn = obj;
-        btnX = (idx % self.configure.column) * (btnW + self.configure.horizontalSpacing);
-        btnY = (idx / self.configure.column) * (btnH + self.configure.verticalSpacing);
+        CGSize tempSize = [self P_sizeWithString:btn.currentTitle font:self.configure.font];
+        CGFloat btnW = tempSize.width + self.configure.additionalWidth;
         btn.frame = CGRectMake(btnX, btnY, btnW, btnH);
+        btnX = CGRectGetMaxX(btn.frame) + self.configure.horizontalSpacing;
+        // 设置按钮圆角
+        if (self.configure.cornerRadius > 0.5 * btnH) {
+            btn.layer.cornerRadius = 0.5 * btnH;
+        } else {
+            btn.layer.cornerRadius = self.configure.cornerRadius;
+        }
     }];
     UIButton *lastBtn = self.btn_array.lastObject;
-    CGFloat contentScrollViewH = CGRectGetMaxY(lastBtn.frame);
-    CGRect contentScrollViewFrame = self.contentScrollView.frame;
-    contentScrollViewFrame.size.height = contentScrollViewH;
-    self.contentScrollView.frame = contentScrollViewFrame;
-    CGRect selfFrame = self.frame;
-    selfFrame.size.height = contentScrollViewH + 2 * self.configure.contentSpacingTB;
-    self.frame = selfFrame;
+    CGFloat lastBtnMaxX = CGRectGetMaxX(lastBtn.frame);
+    CGFloat allWidth = lastBtnMaxX;
+    if (allWidth < _contentScrollView.frame.size.width) {
+        _contentScrollView.contentSize = CGSizeMake(_contentScrollView.frame.size.width, btnH);
+    } else {
+        _contentScrollView.contentSize = CGSizeMake(allWidth, btnH);
+    }
 }
 
+#pragma mark - - 标签数据源
 - (void)setTags:(NSArray *)tags {
     _tags = tags;
     
@@ -332,13 +331,19 @@
                 btn.layer.cornerRadius = self.configure.cornerRadius;
             }
         }
+        if (self.configure.contentHorizontalAlignment == SGControlContentHorizontalAlignmentLeft) {
+            btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+            btn.contentEdgeInsets = UIEdgeInsetsMake(0, self.configure.contentHorizontalAlignmentSpacing, 0, 0);
+        } else if (self.configure.contentHorizontalAlignment == SGControlContentHorizontalAlignmentRight) {
+            btn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentRight;
+            btn.contentEdgeInsets = UIEdgeInsetsMake(0, 0, 0, self.configure.contentHorizontalAlignmentSpacing);
+        }
         btn.layer.borderColor = self.configure.borderColor.CGColor;
         [tempBtnMArr addObject:btn];
         [self.contentScrollView addSubview:btn];
     }
     self.btn_array = [NSArray arrayWithArray:tempBtnMArr];
 }
-
 #pragma mark - - - 标题按钮的点击事件
 - (void)P_btn_action:(UIButton *)button {
     if (self.configure.multipleSelected) {
@@ -372,7 +377,6 @@
         }
     }
 }
-
 - (void)changeSelectedButton:(UIButton *)button {
     if (self.tempBtn == nil) {
         button.selected = YES;
