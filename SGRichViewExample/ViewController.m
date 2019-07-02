@@ -7,9 +7,12 @@
 //
 
 #import "ViewController.h"
-#import "SGRichView.h"
+#import "TagsVC.h"
+#import "ActionSheetVC.h"
 
 @interface ViewController ()
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (nonatomic, strong) NSArray *titleDataList;
 
 @end
 
@@ -19,26 +22,36 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
     
-    SGTagsViewConfigure *configure = [SGTagsViewConfigure tagsViewConfigure];
-    configure.tagsViewStyle = SGTagsViewStyleVertical;
-    configure.cornerRadius = 15;
-    configure.borderWidth = 2;
-    configure.selectedColor = [UIColor whiteColor];
-    configure.borderColor = [UIColor redColor];
-    configure.selectedBorderColor = [UIColor greenColor];
-    configure.selectedBackgroundColor = [UIColor redColor];
-//    configure.multipleSelected = YES;
-    
-    NSArray *tags = @[@"iPhone XS", @"iPhone XS Max", @"iPhone X", @"iPhone XR", @"iPhone 8", @"iPhone 8P"];
-    SGTagsView *tagsView = [SGTagsView tagsViewWithFrame:CGRectMake(0, 200, self.view.frame.size.width, 50) configure:configure];
-    tagsView.tags = tags;
-    [self.view addSubview:tagsView];
-    tagsView.selectedBlock = ^(SGTagsView * _Nonnull tagsView, NSString *tag, NSInteger index) {
-        NSLog(@"%@ - - %ld", tag, index);
-    };
-//    tagsView.multipleSelectedBlock = ^(SGTagsView * _Nonnull tagsView, NSArray * _Nonnull tags, NSArray * _Nonnull indexs) {
-//        NSLog(@"%@ - - %@", tags, indexs);
-//    };
+    self.titleDataList = @[@"SGTagsView", @"SGActionSheet"];
+    [self foundTableView];
+}
+
+- (void)foundTableView {
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cell"];
+    self.tableView.tableFooterView = [[UIView alloc] initWithFrame:CGRectZero];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.titleDataList.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell" forIndexPath:indexPath];
+    cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    cell.backgroundColor = [UIColor clearColor];
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
+    cell.textLabel.text = self.titleDataList[indexPath.row];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row == 0) {
+        TagsVC *tvc = [[TagsVC alloc] init];
+        [self.navigationController pushViewController:tvc animated:YES];
+    } else {
+        ActionSheetVC *asvc = [[ActionSheetVC alloc] init];
+        [self.navigationController pushViewController:asvc animated:YES];
+    }
 }
 
 

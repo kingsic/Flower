@@ -1,6 +1,6 @@
 //
 //  SGRichView.h
-//  Version 0.0.2
+//  Version 0.0.3
 //  GitHub：https://github.com/kingsic/SGRichView
 //
 //  Created by kingsic on 2019/1/10.
@@ -8,3 +8,4 @@
 //
 
 #import "SGTagsView.h"
+#import "SGActionSheet.h"

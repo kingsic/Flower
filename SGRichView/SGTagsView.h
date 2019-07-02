@@ -25,9 +25,10 @@ typedef enum : NSUInteger {
     /** 内容居右样式*/
     SGControlContentHorizontalAlignmentRight,
 } SGControlContentHorizontalAlignment;
+
 @interface SGTagsViewConfigure : NSObject
 /** 类方法 */
-+ (instancetype)tagsViewConfigure;
++ (instancetype)configure;
 /** SGTagsView 样式 */
 @property (nonatomic, assign) SGTagsViewStyle tagsViewStyle;
 /** 标签是否能够选择，默认为 YES */
@@ -36,8 +37,6 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) BOOL bounces;
 /** SGTagsView 是否支持多选，默认为 NO */
 @property (nonatomic, assign) BOOL multipleSelected;
-/** 标签内容水平对齐样式 */
-@property (nonatomic, assign) SGControlContentHorizontalAlignment contentHorizontalAlignment;
 /** 标签文字字号大小，默认 15 号字体 */
 @property (nonatomic, strong) UIFont *font;
 /** 普通状态下标签文字颜色，默认为黑色 */
@@ -70,11 +69,14 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) CGFloat contentSpacingLR;
 /** 内容视图距离父视图上下边的间距，默认为 10.0f */
 @property (nonatomic, assign) CGFloat contentSpacingTB;
+/** 标签内容水平对齐样式 */
+@property (nonatomic, assign) SGControlContentHorizontalAlignment contentHorizontalAlignment;
 /** SGControlContentHorizontalAlignmentLeft、SGControlContentHorizontalAlignmentRight样式下，距离标签内边距，默认为 5.0f */
 @property (nonatomic, assign) CGFloat contentHorizontalAlignmentSpacing;
 @end
 
 
+typedef void(^SGTagsViewHeightBlock)(SGTagsView *tagsView, CGFloat height);
 typedef void(^SGTagsViewSelectedBlock)(SGTagsView *tagsView, NSString *tag, NSInteger index);
 typedef void(^SGTagsViewMultipleSelectedBlock)(SGTagsView *tagsView, NSArray *tags, NSArray *indexs);
 
@@ -89,5 +91,7 @@ typedef void(^SGTagsViewMultipleSelectedBlock)(SGTagsView *tagsView, NSArray *ta
 @property (nonatomic, copy) SGTagsViewSelectedBlock selectedBlock;
 /** 多选标签选中回调函数 */
 @property (nonatomic, copy) SGTagsViewMultipleSelectedBlock multipleSelectedBlock;
+/** 均分、垂直样式下标签内部布局完成之后返回高度的回调函数 */
+@property (nonatomic, copy) SGTagsViewHeightBlock heightBlock;
 
 @end

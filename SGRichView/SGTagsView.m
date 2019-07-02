@@ -10,7 +10,7 @@
 
 @implementation SGTagsViewConfigure
 /** 类方法 */
-+ (instancetype)tagsViewConfigure {
++ (instancetype)configure {
     return [[self alloc] init];
 }
 - (instancetype)init {
@@ -211,7 +211,6 @@
     CGFloat contentScrollViewXH = self.frame.size.height - 2 * contentScrollViewXY;
     self.contentScrollView.frame = CGRectMake(contentScrollViewXX, contentScrollViewXY, contentScrollViewXW, contentScrollViewXH);
     
-//    if (self.configure.tagsViewStyle == SGTagsViewStyleEquable) {
     if (self.configure.tagsViewStyle == SGTagsViewStyleVertical) {
         self.tempMArr = [NSMutableArray arrayWithArray:self.btn_array];
         [self P_layoutTagsViewTypeVertical];
@@ -241,6 +240,9 @@
     CGRect selfFrame = self.frame;
     selfFrame.size.height = contentScrollViewH + 2 * self.configure.contentSpacingTB;
     self.frame = selfFrame;
+    if (self.heightBlock) {
+        self.heightBlock(self, CGRectGetHeight(self.frame));
+    }
 }
 #pragma mark - - SGTagsViewStyleVertical 样式下 frame 计算
 - (void)P_layoutTagsViewTypeVertical {
@@ -253,6 +255,9 @@
     CGRect selfFrame = self.frame;
     selfFrame.size.height = contentScrollViewH + 2 * self.configure.contentSpacingTB;
     self.frame = selfFrame;
+    if (self.heightBlock) {
+        self.heightBlock(self, CGRectGetHeight(self.frame));
+    }
 }
 - (void)P_layoutVerticalStyle {
     __block CGFloat btnX = 0;
