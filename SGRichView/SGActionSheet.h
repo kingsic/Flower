@@ -25,6 +25,8 @@
 @property (nonatomic, strong) UIColor *cancelColor;
 /** cell height, default 44.0f */
 @property (nonatomic, assign) CGFloat cellHeight;
+/** 是否需要遮盖背景色，默认为 YES */
+@property (nonatomic, assign) BOOL cover;
 @end
 
 

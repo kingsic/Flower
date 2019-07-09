@@ -13,6 +13,12 @@
 + (instancetype)configure {
     return [[self alloc] init];
 }
+- (instancetype)init {
+    if (self = [super init]) {
+        self.cover = YES;
+    }
+    return self;
+}
 
 - (UIFont *)titleFont {
     if (!_titleFont) {
@@ -114,8 +120,11 @@ static CGFloat const topBottomMargin = 7;
     if (!_coverBtn) {
         _coverBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         _coverBtn.frame = self.frame;
-        _coverBtn.backgroundColor = [UIColor blackColor];
-        _coverBtn.alpha = 0.0;
+        if (self.configure.cover == YES) {
+            _coverBtn.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.0];
+        } else {
+            _coverBtn.backgroundColor = [UIColor clearColor];
+        }
         [_coverBtn addTarget:self action:@selector(dismiss) forControlEvents:(UIControlEventTouchUpInside)];
     }
     return _coverBtn;
@@ -272,13 +281,17 @@ static CGFloat const topBottomMargin = 7;
 
 - (void)show {
     [UIView animateWithDuration:animationDuration animations:^{
-        self.coverBtn.alpha = 0.3;
+        if (self.configure.cover) {
+            self.coverBtn.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
+        }
         self.contentView.transform = CGAffineTransformMakeTranslation(0, - CGRectGetHeight(self.contentView.frame));
     }];
 }
 - (void)dismiss {
     [UIView animateWithDuration:animationDuration animations:^{
-        self.coverBtn.alpha = 0.0;
+        if (self.configure.cover) {
+            self.coverBtn.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.0];
+        }
         self.contentView.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
         [self.coverBtn removeFromSuperview];

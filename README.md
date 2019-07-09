@@ -7,10 +7,11 @@
 ## 内容介绍
 * SGTagsView（标签）
 * SGActionSheet（微信、微博样式）
+* SGGuidePageView（引导页)
 
 
 ## Installation
-* 1、CocoaPods 导入 pod 'SGRichView', '~> 0.0.3'
+* 1、CocoaPods 导入 pod 'SGRichView', '~> 0.0.5'
 * 2、下载、拖拽 “SGRichView” 文件夹到工程中
 
 ## 代码介绍

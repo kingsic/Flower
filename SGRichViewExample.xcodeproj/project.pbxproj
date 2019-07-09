@@ -15,6 +15,7 @@
 		8D0BDF4B21E98AF300799F97 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0BDF4A21E98AF300799F97 /* main.m */; };
 		8D0BDF5521E98AF300799F97 /* SGRichViewExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0BDF5421E98AF300799F97 /* SGRichViewExampleTests.m */; };
 		8D0BDF6021E98AF300799F97 /* SGRichViewExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D0BDF5F21E98AF300799F97 /* SGRichViewExampleUITests.m */; };
+		8D1D329E22D4A7E8004BB29A /* SGGuidePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1D329C22D4A7E8004BB29A /* SGGuidePageView.m */; };
 		8D1F4ED022CB61430009B5C9 /* TagsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1F4ECF22CB61430009B5C9 /* TagsVC.m */; };
 		8D1F4ED322CB615D0009B5C9 /* ActionSheetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1F4ED222CB615D0009B5C9 /* ActionSheetVC.m */; };
 		8D23878822B91F100074B299 /* SGTagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D23878722B91F100074B299 /* SGTagsView.m */; };
@@ -55,6 +56,8 @@
 		8D0BDF5B21E98AF300799F97 /* SGRichViewExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SGRichViewExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D0BDF5F21E98AF300799F97 /* SGRichViewExampleUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGRichViewExampleUITests.m; sourceTree = "<group>"; };
 		8D0BDF6121E98AF300799F97 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8D1D329C22D4A7E8004BB29A /* SGGuidePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGGuidePageView.m; sourceTree = "<group>"; };
+		8D1D329D22D4A7E8004BB29A /* SGGuidePageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGGuidePageView.h; sourceTree = "<group>"; };
 		8D1F4ECE22CB61430009B5C9 /* TagsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagsVC.h; sourceTree = "<group>"; };
 		8D1F4ECF22CB61430009B5C9 /* TagsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagsVC.m; sourceTree = "<group>"; };
 		8D1F4ED122CB615D0009B5C9 /* ActionSheetVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionSheetVC.h; sourceTree = "<group>"; };
@@ -151,10 +154,12 @@
 			isa = PBXGroup;
 			children = (
 				8D23878922BA07F70074B299 /* SGRichView.h */,
-				8D23878622B91F100074B299 /* SGTagsView.h */,
-				8D23878722B91F100074B299 /* SGTagsView.m */,
 				8DFC830122C4D1D50031CE8A /* SGActionSheet.h */,
 				8DFC830222C4D1D50031CE8A /* SGActionSheet.m */,
+				8D1D329D22D4A7E8004BB29A /* SGGuidePageView.h */,
+				8D1D329C22D4A7E8004BB29A /* SGGuidePageView.m */,
+				8D23878622B91F100074B299 /* SGTagsView.h */,
+				8D23878722B91F100074B299 /* SGTagsView.m */,
 			);
 			path = SGRichView;
 			sourceTree = SOURCE_ROOT;
@@ -304,6 +309,7 @@
 				8DFC830322C4D1D50031CE8A /* SGActionSheet.m in Sources */,
 				8D0BDF4021E98AF100799F97 /* ViewController.m in Sources */,
 				8D0BDF4B21E98AF300799F97 /* main.m in Sources */,
+				8D1D329E22D4A7E8004BB29A /* SGGuidePageView.m in Sources */,
 				8D1F4ED022CB61430009B5C9 /* TagsVC.m in Sources */,
 				8D23878822B91F100074B299 /* SGTagsView.m in Sources */,
 				8D0BDF3D21E98AF100799F97 /* AppDelegate.m in Sources */,

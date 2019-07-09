@@ -205,11 +205,11 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    CGFloat contentScrollViewXX = self.configure.contentSpacingLR;
-    CGFloat contentScrollViewXY = self.configure.contentSpacingTB;
-    CGFloat contentScrollViewXW = self.frame.size.width - 2 * contentScrollViewXX;
-    CGFloat contentScrollViewXH = self.frame.size.height - 2 * contentScrollViewXY;
-    self.contentScrollView.frame = CGRectMake(contentScrollViewXX, contentScrollViewXY, contentScrollViewXW, contentScrollViewXH);
+    CGFloat contentScrollViewX = self.configure.contentSpacingLR;
+    CGFloat contentScrollViewY = self.configure.contentSpacingTB;
+    CGFloat contentScrollViewW = self.frame.size.width - 2 * contentScrollViewX;
+    CGFloat contentScrollViewH = self.frame.size.height - 2 * contentScrollViewY;
+    self.contentScrollView.frame = CGRectMake(contentScrollViewX, contentScrollViewY, contentScrollViewW, contentScrollViewH);
     
     if (self.configure.tagsViewStyle == SGTagsViewStyleVertical) {
         self.tempMArr = [NSMutableArray arrayWithArray:self.btn_array];

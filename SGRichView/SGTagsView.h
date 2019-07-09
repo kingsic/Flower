@@ -87,11 +87,11 @@ typedef void(^SGTagsViewMultipleSelectedBlock)(SGTagsView *tagsView, NSArray *ta
 + (instancetype)tagsViewWithFrame:(CGRect)frame configure:(SGTagsViewConfigure *)configure;
 /** 标签数组 */
 @property (nonatomic, strong) NSArray *tags;
+/** 均分、垂直样式下标签内部布局完成之后返回高度的回调函数 */
+@property (nonatomic, copy) SGTagsViewHeightBlock heightBlock;
 /** 标签选中回调函数 */
 @property (nonatomic, copy) SGTagsViewSelectedBlock selectedBlock;
 /** 多选标签选中回调函数 */
 @property (nonatomic, copy) SGTagsViewMultipleSelectedBlock multipleSelectedBlock;
-/** 均分、垂直样式下标签内部布局完成之后返回高度的回调函数 */
-@property (nonatomic, copy) SGTagsViewHeightBlock heightBlock;
 
 @end

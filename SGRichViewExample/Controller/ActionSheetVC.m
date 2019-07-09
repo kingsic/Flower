@@ -32,8 +32,7 @@
         if (index == 0) {
             SGActionSheetConfigure *asc = [SGActionSheetConfigure configure];
             asc.cellHeight = 50;
-            NSArray *arr = @[@"退出登录"];
-            SGActionSheet *as = [[SGActionSheet alloc] initWithTitle:@"您确定要退出登录么？" cancelTitle:@"取消" otherTitles:arr configure:asc];
+            SGActionSheet *as = [[SGActionSheet alloc] initWithTitle:@"您确定要退出登录么？" cancelTitle:@"取消" otherTitles:@[@"退出登录"] configure:asc];
             as.otherTitleClickBlock = ^(NSInteger index) {
                 NSLog(@"index  - - %ld", index);
             };
@@ -41,8 +40,7 @@
             [as show];
         } else {
             SGActionSheetConfigure *asc = [SGActionSheetConfigure configure];
-            NSArray *arr = @[@"确定"];
-            SGActionSheet *as = [[SGActionSheet alloc] initWithTitle:@"" cancelTitle:@"取消" otherTitles:arr configure:asc];
+            SGActionSheet *as = [[SGActionSheet alloc] initWithTitle:@"" cancelTitle:@"取消" otherTitles:@[@"确定"] configure:asc];
             as.otherTitleClickBlock = ^(NSInteger index) {
                 NSLog(@"index  - - %ld", index);
             };
