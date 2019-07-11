@@ -33,6 +33,14 @@
 typedef void(^SGActionSheetOhterTitleClickBlock)(NSInteger index);
 
 @interface SGActionSheet : UIView
+/** 不带标题、内有取消按钮的对象创建方法 */
+- (instancetype)initWithOtherTitles:(NSArray *)otherTitles configure:(SGActionSheetConfigure *)configure;
+/** 不带标题、内有取消按钮的类方法 */
++ (instancetype)actionSheetWithOtherTitles:(NSArray *)otherTitles configure:(SGActionSheetConfigure *)configure;
+/** 带标题、内有取消按钮的对象方法 */
+- (instancetype)initWithTitle:(NSString *)title otherTitles:(NSArray *)otherTitles configure:(SGActionSheetConfigure *)configure;
+/** 带标题、内有取消按钮的类方法 */
++ (instancetype)actionSheetWithTitle:(NSString *)title otherTitles:(NSArray *)otherTitles configure:(SGActionSheetConfigure *)configure;
 /** 对象方法 */
 - (instancetype)initWithTitle:(NSString *)title cancelTitle:(NSString *)cancelTitle otherTitles:(NSArray *)otherTitles configure:(SGActionSheetConfigure *)configure;
 /** 类方法 */
@@ -46,6 +54,6 @@ typedef void(^SGActionSheetOhterTitleClickBlock)(NSInteger index);
 /** 根据下标重置其他标题颜色 */
 - (void)resetOtherTitleColor:(UIColor *)color forIndex:(NSInteger)index;
 /** 根据下标为其他标题添加图片 */
-- (void)addOtherTitleWithImage:(NSString *)imageName spacing:(CGFloat)spacing forIndex:(NSInteger)index;
+- (void)addOtherTitleWithImageName:(NSString *)imageName spacing:(CGFloat)spacing forIndex:(NSInteger)index;
 
 @end

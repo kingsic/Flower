@@ -29,11 +29,11 @@
     configure.selectedBorderColor = [UIColor greenColor];
     configure.selectedBackgroundColor = [UIColor redColor];
     
-    NSArray *tags = @[@"这是单选标签", @"iPhone XS", @"iPhone XS Max", @"iPhone X", @"iPhone XR", @"iPhone 8", @"iPhone 8P"];
-    SGTagsView *tagsView = [SGTagsView tagsViewWithFrame:CGRectMake(0, 200, self.view.frame.size.width, 50) configure:configure];
+    NSArray *tags = @[@"这是单选标签", @"iPhone 8", @"iPhone 8P", @"iPhone X", @"iPhone XR", @"iPhone XS", @"iPhone XS Max"];
+    SGTagsView *tagsView = [SGTagsView tagsViewWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 50) configure:configure];
     tagsView.tags = tags;
     [self.view addSubview:tagsView];
-    tagsView.selectedBlock = ^(SGTagsView * _Nonnull tagsView, NSString *tag, NSInteger index) {
+    tagsView.singleSelectedBlock = ^(SGTagsView * _Nonnull tagsView, NSString *tag, NSInteger index) {
         NSLog(@"%@ - - %ld", tag, index);
     };
     tagsView.heightBlock = ^(SGTagsView *tagsView, CGFloat height) {
@@ -43,13 +43,14 @@
         mconfigure.tagsViewStyle = SGTagsViewStyleEquable;
         mconfigure.multipleSelected = YES;
         mconfigure.borderWidth = 1.0;
-        NSArray *mtags = @[@"这是多选标签", @"iPhone XS", @"iPhone XS Max", @"iPhone X", @"iPhone XR", @"iPhone 8", @"iPhone 8P"];
+        NSArray *mtags = @[@"这是多选标签", @"iPhone 8", @"iPhone 8P", @"iPhone X", @"iPhone XR", @"iPhone XS", @"iPhone XS Max"];
         SGTagsView *mtagsView = [SGTagsView tagsViewWithFrame:CGRectMake(0, CGRectGetMaxY(tagsView.frame) + 50, self.view.frame.size.width, 50) configure:mconfigure];
         mtagsView.tags = mtags;
         [self.view addSubview:mtagsView];
         mtagsView.multipleSelectedBlock = ^(SGTagsView * _Nonnull tagsView, NSArray * _Nonnull tags, NSArray * _Nonnull indexs) {
             NSLog(@"%@ - - %@", tags, indexs);
         };
+        [mtagsView setImageNames:@[@"luckdraw_icon", @"luckdraw_icon"] imagePositionStyle:SGImagePositionStyleDefault spacing:5 ];
     };
 }
 

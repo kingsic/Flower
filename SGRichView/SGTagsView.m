@@ -374,8 +374,8 @@
         }
     } else {
         [self changeSelectedButton:button];
-        if (self.selectedBlock) {
-            self.selectedBlock(self, button.titleLabel.text, button.tag);
+        if (self.singleSelectedBlock) {
+            self.singleSelectedBlock(self, button.titleLabel.text, button.tag);
         }
         if (self.contentScrollView.contentSize.width > self.contentScrollView.frame.size.width) {
             [self P_selectedBtnCenter:button];
@@ -414,10 +414,88 @@
     [self.contentScrollView setContentOffset:CGPointMake(offsetX, 0) animated:YES];
 }
 
+- (void)setImageNames:(NSArray *)imageNames imagePositionStyle:(SGImagePositionStyle)imagePositionStyle spacing:(CGFloat)spacing {
+    NSInteger imageNamesCount = imageNames.count;
+    NSInteger tagsCount = _tags.count;
+    if (imageNamesCount < tagsCount) {
+        [self.btn_array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            UIButton *btn = obj;
+            if (idx >= imageNamesCount - 1) {
+                *stop = YES;
+            }
+            [self P_setButton:btn imageName:imageNames[idx] imagePositionStyle:imagePositionStyle spacing:spacing];
+        }];
+    } else {
+        [self.btn_array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+            UIButton *btn = obj;
+            [self P_setButton:btn imageName:imageNames[idx] imagePositionStyle:imagePositionStyle spacing:spacing];
+        }];
+    }
+}
+- (void)setImageName:(NSString *)imageName imagePositionStyle:(SGImagePositionStyle)imagePositionStyle spacing:(CGFloat)spacing forIndex:(NSInteger)index {
+    UIButton *btn = self.btn_array[index];
+    [self P_setButton:btn imageName:imageName imagePositionStyle:imagePositionStyle spacing:spacing];
+}
+- (void)P_setButton:(UIButton *)button imageName:(NSString *)imageName imagePositionStyle:(SGImagePositionStyle)imagePositionStyle spacing:(CGFloat)spacing {
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.02 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+        [button setImage:[UIImage imageNamed:imageName] forState:(UIControlStateNormal)];
+        [self P_button:button imagePositionStyle:imagePositionStyle spacing:spacing];
+    });
+}
+
 #pragma mark - - - 计算字符串尺寸
 - (CGSize)P_sizeWithString:(NSString *)string font:(UIFont *)font {
     NSDictionary *attrs = @{NSFontAttributeName : font};
     return [string boundingRectWithSize:CGSizeMake(0, 0) options:NSStringDrawingUsesLineFragmentOrigin attributes:attrs context:nil].size;
+}
+
+/**
+ *  设置图片与文字样式
+ *
+ *  @param button                   button
+ *  @param imagePositionStyle       图片的文字
+ *  @param spacing                  图片与文字之间的间距
+ */
+- (void)P_button:(UIButton *)button imagePositionStyle:(SGImagePositionStyle)imagePositionStyle spacing:(CGFloat)spacing {
+    if (imagePositionStyle == SGImagePositionStyleDefault) {
+        if (button.contentHorizontalAlignment == UIControlContentHorizontalAlignmentLeft) {
+            button.titleEdgeInsets = UIEdgeInsetsMake(0, spacing, 0, 0);
+        } else if (button.contentHorizontalAlignment == UIControlContentHorizontalAlignmentRight) {
+            button.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, spacing);
+        } else {
+            button.imageEdgeInsets = UIEdgeInsetsMake(0, - 0.5 * spacing, 0, 0.5 * spacing);
+            button.titleEdgeInsets = UIEdgeInsetsMake(0, 0.5 * spacing, 0, - 0.5 * spacing);
+        }
+    } else if (imagePositionStyle == SGImagePositionStyleRight) {
+        CGFloat imageW = button.imageView.image.size.width;
+        CGFloat titleW = button.titleLabel.frame.size.width;
+        if (button.contentHorizontalAlignment == UIControlContentHorizontalAlignmentLeft) {
+            button.imageEdgeInsets = UIEdgeInsetsMake(0, titleW + spacing, 0, 0);
+            button.titleEdgeInsets = UIEdgeInsetsMake(0, - imageW, 0, 0);
+        } else if (button.contentHorizontalAlignment == UIControlContentHorizontalAlignmentRight) {
+            button.imageEdgeInsets = UIEdgeInsetsMake(0, 0, 0, - titleW);
+            button.titleEdgeInsets = UIEdgeInsetsMake(0, 0, 0, imageW + spacing);
+        } else {
+            CGFloat imageOffset = titleW + 0.5 * spacing;
+            CGFloat titleOffset = imageW + 0.5 * spacing;
+            button.imageEdgeInsets = UIEdgeInsetsMake(0, imageOffset, 0, - imageOffset);
+            button.titleEdgeInsets = UIEdgeInsetsMake(0, - titleOffset, 0, titleOffset);
+        }
+    } else if (imagePositionStyle == SGImagePositionStyleTop) {
+        CGFloat imageW = button.imageView.frame.size.width;
+        CGFloat imageH = button.imageView.frame.size.height;
+        CGFloat titleIntrinsicContentSizeW = button.titleLabel.intrinsicContentSize.width;
+        CGFloat titleIntrinsicContentSizeH = button.titleLabel.intrinsicContentSize.height;
+        button.imageEdgeInsets = UIEdgeInsetsMake(- titleIntrinsicContentSizeH - spacing, 0, 0, - titleIntrinsicContentSizeW);
+        button.titleEdgeInsets = UIEdgeInsetsMake(0, - imageW, - imageH - spacing, 0);
+    } else if (imagePositionStyle == SGImagePositionStyleBottom) {
+        CGFloat imageW = button.imageView.frame.size.width;
+        CGFloat imageH = button.imageView.frame.size.height;
+        CGFloat titleIntrinsicContentSizeW = button.titleLabel.intrinsicContentSize.width;
+        CGFloat titleIntrinsicContentSizeH = button.titleLabel.intrinsicContentSize.height;
+        button.imageEdgeInsets = UIEdgeInsetsMake(titleIntrinsicContentSizeH + spacing, 0, 0, - titleIntrinsicContentSizeW);
+        button.titleEdgeInsets = UIEdgeInsetsMake(0, - imageW, imageH + spacing, 0);
+    }
 }
 
 @end

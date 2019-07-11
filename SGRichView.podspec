@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name         = 'SGRichView'
-    s.version      = '0.0.5'
+    s.version      = '0.0.6'
     s.summary      = 'Custom View'
     s.homepage     = 'https://github.com/kingsic/SGRichView'
     s.license      = 'MIT'

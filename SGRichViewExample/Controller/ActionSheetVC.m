@@ -28,7 +28,7 @@
     SGTagsView *tagsView = [SGTagsView tagsViewWithFrame:CGRectMake(0, 200, self.view.frame.size.width, 50) configure:configure];
     tagsView.tags = tags;
     [self.view addSubview:tagsView];
-    tagsView.selectedBlock = ^(SGTagsView * _Nonnull tagsView, NSString *tag, NSInteger index) {
+    tagsView.singleSelectedBlock = ^(SGTagsView * _Nonnull tagsView, NSString *tag, NSInteger index) {
         if (index == 0) {
             SGActionSheetConfigure *asc = [SGActionSheetConfigure configure];
             asc.cellHeight = 50;
@@ -40,7 +40,7 @@
             [as show];
         } else {
             SGActionSheetConfigure *asc = [SGActionSheetConfigure configure];
-            SGActionSheet *as = [[SGActionSheet alloc] initWithTitle:@"" cancelTitle:@"取消" otherTitles:@[@"确定"] configure:asc];
+            SGActionSheet *as = [[SGActionSheet alloc] initWithOtherTitles:@[@"确定"] configure:asc];
             as.otherTitleClickBlock = ^(NSInteger index) {
                 NSLog(@"index  - - %ld", index);
             };

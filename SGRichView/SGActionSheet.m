@@ -104,6 +104,37 @@ static CGFloat const topBottomMargin = 7;
     return [[self alloc] initWithTitle:title cancelTitle:cancelTitle otherTitles:otherTitles configure:configure];
 }
 
+- (instancetype)initWithOtherTitles:(NSArray *)otherTitles configure:(SGActionSheetConfigure *)configure {
+    if (self = [super init]) {
+        self.frame = [UIScreen mainScreen].bounds;
+        [[[UIApplication sharedApplication] keyWindow] addSubview:self];
+        self.cancelStr = @"取消";
+        self.title_array = otherTitles;
+        self.configure = configure;
+        [self addSubviews];
+    }
+    return self;
+}
++ (instancetype)actionSheetWithOtherTitles:(NSArray *)otherTitles configure:(SGActionSheetConfigure *)configure {
+    return [[self alloc] initWithOtherTitles:otherTitles configure:configure];
+}
+
+- (instancetype)initWithTitle:(NSString *)title otherTitles:(NSArray *)otherTitles configure:(SGActionSheetConfigure *)configure {
+    if (self = [super init]) {
+        self.frame = [UIScreen mainScreen].bounds;
+        [[[UIApplication sharedApplication] keyWindow] addSubview:self];
+        self.titleStr = title;
+        self.cancelStr = @"取消";
+        self.title_array = otherTitles;
+        self.configure = configure;
+        [self addSubviews];
+    }
+    return self;
+}
++ (instancetype)actionSheetWithTitle:(NSString *)title otherTitles:(NSArray *)otherTitles configure:(SGActionSheetConfigure *)configure {
+    return [[self alloc] initWithTitle:title otherTitles:otherTitles configure:configure];
+}
+
 - (void)addSubviews {
     [self addSubview:self.coverBtn];
     [self addSubview:self.contentView];
@@ -113,7 +144,6 @@ static CGFloat const topBottomMargin = 7;
         [self.topContentView addSubview:self.titleLabel];
     }
     [self addOtherTitle];
-    
 }
 
 - (UIButton *)coverBtn {
@@ -244,7 +274,7 @@ static CGFloat const topBottomMargin = 7;
     UIButton *btn = self.btn_mArray[index];
     [btn setTitleColor:color forState:(UIControlStateNormal)];
 }
-- (void)addOtherTitleWithImage:(NSString *)imageName spacing:(CGFloat)spacing forIndex:(NSInteger)index {
+- (void)addOtherTitleWithImageName:(NSString *)imageName spacing:(CGFloat)spacing forIndex:(NSInteger)index {
     UIButton *btn = self.btn_mArray[index];
     [btn setImage:[UIImage imageNamed:imageName] forState:(UIControlStateNormal)];
     if (spacing < 0) {

@@ -75,9 +75,19 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) CGFloat contentHorizontalAlignmentSpacing;
 @end
 
+typedef enum : NSUInteger {
+    /// 图片在左，文字在右
+    SGImagePositionStyleDefault,
+    /// 图片在右，文字在左
+    SGImagePositionStyleRight,
+    /// 图片在上，文字在下
+    SGImagePositionStyleTop,
+    /// 图片在下，文字在上
+    SGImagePositionStyleBottom,
+} SGImagePositionStyle;
 
 typedef void(^SGTagsViewHeightBlock)(SGTagsView *tagsView, CGFloat height);
-typedef void(^SGTagsViewSelectedBlock)(SGTagsView *tagsView, NSString *tag, NSInteger index);
+typedef void(^SGTagsViewSingleSelectedBlock)(SGTagsView *tagsView, NSString *tag, NSInteger index);
 typedef void(^SGTagsViewMultipleSelectedBlock)(SGTagsView *tagsView, NSArray *tags, NSArray *indexs);
 
 @interface SGTagsView : UIView
@@ -89,9 +99,14 @@ typedef void(^SGTagsViewMultipleSelectedBlock)(SGTagsView *tagsView, NSArray *ta
 @property (nonatomic, strong) NSArray *tags;
 /** 均分、垂直样式下标签内部布局完成之后返回高度的回调函数 */
 @property (nonatomic, copy) SGTagsViewHeightBlock heightBlock;
-/** 标签选中回调函数 */
-@property (nonatomic, copy) SGTagsViewSelectedBlock selectedBlock;
+/** 单选标签选中回调函数 */
+@property (nonatomic, copy) SGTagsViewSingleSelectedBlock singleSelectedBlock;
 /** 多选标签选中回调函数 */
 @property (nonatomic, copy) SGTagsViewMultipleSelectedBlock multipleSelectedBlock;
+
+/** 设置标签内部的小图标 */
+- (void)setImageNames:(NSArray *)imageNames imagePositionStyle:(SGImagePositionStyle)imagePositionStyle spacing:(CGFloat)spacing;
+/** 根据标签下表设置标签内部的小图标 */
+- (void)setImageName:(NSString *)imageName imagePositionStyle:(SGImagePositionStyle)imagePositionStyle spacing:(CGFloat)spacing forIndex:(NSInteger)index;
 
 @end
