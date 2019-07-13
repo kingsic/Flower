@@ -1,4 +1,4 @@
-# SGRichView
+# SGCrayfish
 
 
 * 本项目中的 SGTagsView 来源于对 [SGPagingView](https://github.com/kingsic/SGPagingView) 框架中的 SGPageTitleView 的衍生
@@ -11,8 +11,8 @@
 
 
 ## Installation
-* 1、CocoaPods 导入 pod 'SGRichView', '~> 0.0.6'
-* 2、下载、拖拽 “SGRichView” 文件夹到工程中
+* 1、CocoaPods 导入 pod 'SGCrayfish', '~> 0.1.0'
+* 2、下载、拖拽 “SGCrayfish” 文件夹到工程中
 
 ## 代码介绍
 #### SGTagsView 的使用（详细使用, 请参考 Demo）
@@ -39,7 +39,7 @@
 ```
 
 
-### QQ音乐、美团、天猫部分标签效果图展示<br>
+### QQ音乐、美团、天猫以及SGTagsView标签效果图展示<br>
 ![](https://github.com/kingsic/Useless/blob/master/SGRichView/SGTagsView_QQ.png)      ![](https://github.com/kingsic/Useless/blob/master/SGRichView/SGTagsView_MT.png)
 
 ![](https://github.com/kingsic/Useless/blob/master/SGRichView/SGTagsView_Tmall.png)      ![](https://github.com/kingsic/Useless/blob/master/SGRichView/SGTagsView_mine.png)
