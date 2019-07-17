@@ -16,6 +16,8 @@
 - (instancetype)init {
     if (self = [super init]) {
         self.cover = YES;
+        self.corner = YES;
+        self.penetrationEffect = YES;
     }
     return self;
 }
@@ -87,6 +89,9 @@ static CGFloat const animationDuration = 0.25;
 static CGFloat const titleMargin_X = 20;
 static CGFloat const titleMargin_Y = 20;
 static CGFloat const topBottomMargin = 7;
+static CGFloat const highlightedbgValue = 0.92;
+static CGFloat const contentViewCornerValue = 10;
+static CGFloat const penetrationEffectValue = 0.82;
 
 - (instancetype)initWithTitle:(NSString *)title cancelTitle:(NSString *)cancelTitle otherTitles:(NSArray *)otherTitles configure:(nonnull SGActionSheetConfigure *)configure {
     if (self = [super init]) {
@@ -159,6 +164,7 @@ static CGFloat const topBottomMargin = 7;
     }
     return _coverBtn;
 }
+
 - (UIView *)contentView {
     if (!_contentView) {
         _contentView = [[UIView alloc] init];
@@ -169,7 +175,11 @@ static CGFloat const topBottomMargin = 7;
 - (UIView *)topContentView {
     if (!_topContentView) {
         _topContentView = [[UIView alloc] init];
-        _topContentView.backgroundColor = [UIColor whiteColor];
+        if (self.configure.penetrationEffect) {
+            _topContentView.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:penetrationEffectValue];
+        } else {
+            _topContentView.backgroundColor = [UIColor whiteColor];
+        }
     }
     return _topContentView;
 }
@@ -214,7 +224,7 @@ static CGFloat const topBottomMargin = 7;
         [btn setTitleColor:self.configure.otherColor forState:(UIControlStateNormal)];
         [btn addTarget:self action:@selector(btn_action:) forControlEvents:(UIControlEventTouchUpInside)];
         btn.tag = i;
-        [btn setBackgroundImage:[self imageWithColor:[UIColor colorWithWhite:0.9 alpha:1.0]] forState:(UIControlStateHighlighted)];
+        [btn setBackgroundImage:[self imageWithColor:[UIColor colorWithWhite:highlightedbgValue alpha:0.7]] forState:(UIControlStateHighlighted)];
         [_topContentView addSubview:btn];
         [self.btn_mArray addObject:btn];
         
@@ -261,6 +271,14 @@ static CGFloat const topBottomMargin = 7;
     // contentView
     CGFloat contentViewHeight = topContentViewHeight + bottomContentButtonHeight + topBottomMargin;
     _contentView.frame = CGRectMake(0, contentViewY, width, contentViewHeight);
+    
+    if (self.configure.corner) {
+        UIBezierPath *bPath = [UIBezierPath bezierPathWithRoundedRect:_contentView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(contentViewCornerValue, contentViewCornerValue)];
+        CAShapeLayer *sLayer = [[CAShapeLayer alloc] init];
+        sLayer.frame = _contentView.bounds;
+        sLayer.path = bPath.CGPath;
+        _contentView.layer.mask = sLayer;
+    }
 }
 
 - (void)btn_action:(UIButton *)button {
@@ -287,8 +305,12 @@ static CGFloat const topBottomMargin = 7;
 - (UIButton *)bottomContentButton {
     if (!_bottomContentButton) {
         _bottomContentButton = [UIButton buttonWithType:(UIButtonTypeCustom)];
-        _bottomContentButton.backgroundColor = [UIColor whiteColor];
-        [_bottomContentButton setBackgroundImage:[self imageWithColor:[UIColor colorWithWhite:0.9 alpha:1.0]] forState:(UIControlStateHighlighted)];
+        if (self.configure.penetrationEffect) {
+            _bottomContentButton.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:penetrationEffectValue];
+        } else {
+            _bottomContentButton.backgroundColor = [UIColor whiteColor];
+        }
+        [_bottomContentButton setBackgroundImage:[self imageWithColor:[UIColor colorWithWhite:highlightedbgValue alpha:0.7]] forState:(UIControlStateHighlighted)];
         [_bottomContentButton addTarget:self action:@selector(bottomContentButton_action) forControlEvents:(UIControlEventTouchUpInside)];
     }
     return _bottomContentButton;

@@ -27,6 +27,10 @@
 @property (nonatomic, assign) CGFloat cellHeight;
 /** 是否需要遮盖背景色，默认为 YES */
 @property (nonatomic, assign) BOOL cover;
+/** 内容视图是否需要穿透效果，默认为 YES */
+@property (nonatomic, assign) BOOL penetrationEffect;
+/** 内容视图顶部是否需要圆角，默认为 YES */
+@property (nonatomic, assign) BOOL corner;
 @end
 
 

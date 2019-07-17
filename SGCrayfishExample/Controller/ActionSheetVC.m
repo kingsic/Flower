@@ -38,6 +38,8 @@
             [as show];
         } else {
             SGActionSheetConfigure *asc = [SGActionSheetConfigure configure];
+            asc.corner = NO;
+            asc.penetrationEffect = NO;
             SGActionSheet *as = [[SGActionSheet alloc] initWithOtherTitles:@[@"确定"] configure:asc];
             as.otherTitleClickBlock = ^(NSInteger index) {
                 NSLog(@"index  - - %ld", index);
