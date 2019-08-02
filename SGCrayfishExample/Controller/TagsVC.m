@@ -28,7 +28,7 @@
     configure.borderColor = [UIColor redColor];
     configure.selectedBorderColor = [UIColor greenColor];
     configure.selectedBackgroundColor = [UIColor redColor];
-    
+
     NSArray *tags = @[@"这是单选标签", @"iPhone 8", @"iPhone 8P", @"iPhone X", @"iPhone XR", @"iPhone XS", @"iPhone XS Max"];
     SGTagsView *tagsView = [SGTagsView tagsViewWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 50) configure:configure];
     tagsView.tags = tags;
@@ -40,9 +40,9 @@
         NSLog(@"%.2f", height);
         
         SGTagsViewConfigure *mconfigure = [SGTagsViewConfigure configure];
-        mconfigure.tagsViewStyle = SGTagsViewStyleEquable;
         mconfigure.multipleSelected = YES;
         mconfigure.borderWidth = 1.0;
+        mconfigure.column = 2;
         NSArray *mtags = @[@"这是多选标签", @"iPhone 8", @"iPhone 8P", @"iPhone X", @"iPhone XR", @"iPhone XS", @"iPhone XS Max"];
         SGTagsView *mtagsView = [SGTagsView tagsViewWithFrame:CGRectMake(0, CGRectGetMaxY(tagsView.frame) + 50, self.view.frame.size.width, 50) configure:mconfigure];
         mtagsView.tags = mtags;
@@ -51,6 +51,21 @@
             NSLog(@"%@ - - %@", tags, indexs);
         };
         [mtagsView setImageName:@"luckdraw_icon" imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 forIndex:0];
+        mtagsView.heightBlock = ^(SGTagsView *tagsView, CGFloat height) {
+            SGTagsViewConfigure *c = [SGTagsViewConfigure configure];
+            c.contentSpacingLR = 0.01;
+            c.contentSpacingTB = 0.01;
+            c.horizontalSpacing = 0.01;
+            c.verticalSpacing = 0.01;
+            c.height = 80;
+            c.column = 5;
+            NSArray *ta = @[@"美食", @"卖场便利", @"水果", @"跑腿代购", @"甜品饮品", @"星选好店", @"送药上门", @"大牌会吃", @"取送件", @"签到领红包"];
+            SGTagsView *t = [SGTagsView tagsViewWithFrame:CGRectMake(0, CGRectGetMaxY(mtagsView.frame) + 50, self.view.frame.size.width, 50) configure:c];
+            t.tags = ta;
+            NSArray *tia = @[@"luckdraw_icon", @"luckdraw_icon", @"luckdraw_icon", @"luckdraw_icon", @"luckdraw_icon", @"luckdraw_icon", @"luckdraw_icon", @"luckdraw_icon", @"luckdraw_icon", @"luckdraw_icon"];
+            [t setImageNames:tia imagePositionStyle:(SGImagePositionStyleTop) spacing:5];
+            [self.view addSubview:t];
+        };
     };
 }
 

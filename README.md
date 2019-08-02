@@ -1,7 +1,7 @@
 # SGCrayfish
 
 
-* 本项目中的 SGTagsView 来源于对 [SGPagingView](https://github.com/kingsic/SGPagingView) 框架中的 SGPageTitleView 的衍生
+* 本框架中的 SGTagsView 设计来源于 [SGPagingView](https://github.com/kingsic/SGPagingView) 框架中的 SGPageTitleView
 
 
 ## 内容介绍
@@ -11,7 +11,7 @@
 
 
 ## Installation
-* 1、CocoaPods 导入 pod 'SGCrayfish', '~> 0.1.0'
+* 1、CocoaPods 导入 pod 'SGCrayfish', '~> 0.1.2'
 * 2、下载、拖拽 “SGCrayfish” 文件夹到工程中
 
 ## 代码介绍

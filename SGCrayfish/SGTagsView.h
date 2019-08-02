@@ -10,9 +10,9 @@
 @class SGTagsView;
 
 typedef enum : NSUInteger {
-    /** 均分样式，默认 */
+    /** 均分垂直样式，默认 */
     SGTagsViewStyleEquable,
-    /** 垂直样式 */
+    /** 自适应垂直样式 */
     SGTagsViewStyleVertical,
     /** 水平样式*/
     SGTagsViewStyleHorizontal,

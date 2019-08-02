@@ -168,7 +168,7 @@ static CGFloat const penetrationEffectValue = 0.82;
 - (UIView *)contentView {
     if (!_contentView) {
         _contentView = [[UIView alloc] init];
-        _contentView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.5];
+        _contentView.backgroundColor = [UIColor colorWithWhite:1.0 alpha:0.77];
     }
     return _contentView;
 }
@@ -224,7 +224,7 @@ static CGFloat const penetrationEffectValue = 0.82;
         [btn setTitleColor:self.configure.otherColor forState:(UIControlStateNormal)];
         [btn addTarget:self action:@selector(btn_action:) forControlEvents:(UIControlEventTouchUpInside)];
         btn.tag = i;
-        [btn setBackgroundImage:[self imageWithColor:[UIColor colorWithWhite:highlightedbgValue alpha:0.7]] forState:(UIControlStateHighlighted)];
+        [btn setBackgroundImage:[self P_imageWithColor:[UIColor colorWithWhite:highlightedbgValue alpha:0.7]] forState:(UIControlStateHighlighted)];
         [_topContentView addSubview:btn];
         [self.btn_mArray addObject:btn];
         
@@ -310,7 +310,7 @@ static CGFloat const penetrationEffectValue = 0.82;
         } else {
             _bottomContentButton.backgroundColor = [UIColor whiteColor];
         }
-        [_bottomContentButton setBackgroundImage:[self imageWithColor:[UIColor colorWithWhite:highlightedbgValue alpha:0.7]] forState:(UIControlStateHighlighted)];
+        [_bottomContentButton setBackgroundImage:[self P_imageWithColor:[UIColor colorWithWhite:highlightedbgValue alpha:0.7]] forState:(UIControlStateHighlighted)];
         [_bottomContentButton addTarget:self action:@selector(bottomContentButton_action) forControlEvents:(UIControlEventTouchUpInside)];
     }
     return _bottomContentButton;
@@ -353,7 +353,7 @@ static CGFloat const penetrationEffectValue = 0.82;
 }
 
 #pragma mark - - 颜色转换为背景图片
-- (UIImage *)imageWithColor:(UIColor *)color {
+- (UIImage *)P_imageWithColor:(UIColor *)color {
     CGRect rect = CGRectMake(0.0, 0.0, 1.0, 1.0);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();

@@ -104,7 +104,7 @@
 }
 - (NSInteger)column {
     if (_column <= 0) {
-        _column = 2;
+        _column = 3;
     }
     return _column;
 }
@@ -317,6 +317,7 @@
     for (NSInteger index = 0; index < tagsCount; index++) {
         SGTagsButton *btn = [[SGTagsButton alloc] init];
         btn.tag = index;
+        btn.titleLabel.font = self.configure.font;
         [btn setTitle:tags[index] forState:(UIControlStateNormal)];
         [btn setTitleColor:self.configure.color forState:UIControlStateNormal];
         [btn setTitleColor:self.configure.selectedColor forState:(UIControlStateSelected)];
