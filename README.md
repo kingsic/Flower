@@ -11,7 +11,7 @@
 
 
 ## Installation
-* 1、CocoaPods 导入 pod 'SGCrayfish', '~> 0.1.2'
+* 1、CocoaPods 导入 pod 'SGCrayfish', '~> 0.1.3'
 * 2、下载、拖拽 “SGCrayfish” 文件夹到工程中
 
 ## 代码介绍

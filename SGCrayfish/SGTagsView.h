@@ -86,7 +86,7 @@ typedef enum : NSUInteger {
     SGImagePositionStyleBottom,
 } SGImagePositionStyle;
 
-typedef void(^SGTagsViewHeightBlock)(SGTagsView *tagsView, CGFloat height);
+typedef void(^SGTagsViewContentHeightBlock)(SGTagsView *tagsView, CGFloat height);
 typedef void(^SGTagsViewSingleSelectedBlock)(SGTagsView *tagsView, NSString *tag, NSInteger index);
 typedef void(^SGTagsViewMultipleSelectedBlock)(SGTagsView *tagsView, NSArray *tags, NSArray *indexs);
 
@@ -97,8 +97,12 @@ typedef void(^SGTagsViewMultipleSelectedBlock)(SGTagsView *tagsView, NSArray *ta
 + (instancetype)tagsViewWithFrame:(CGRect)frame configure:(SGTagsViewConfigure *)configure;
 /** 标签数组 */
 @property (nonatomic, strong) NSArray *tags;
+/** 根据下标数组值选取对应的标签（主要用于初始化默认选中的标签，multipleSelected = NO 时，仅支持最后一个值所对应的标签） */
+@property (nonatomic, strong) NSArray *tagIndexs;
+/** 是否固定 SGTagsView 初始 frame 的高度，默认为 NO（不固定）；设为 YES 时，内容超出初始设定的 frame 的高度时，将会滚动 */
+@property (nonatomic, assign) BOOL isFixedHeight;
 /** 均分、垂直样式下标签内部布局完成之后返回高度的回调函数 */
-@property (nonatomic, copy) SGTagsViewHeightBlock heightBlock;
+@property (nonatomic, copy) SGTagsViewContentHeightBlock contentHeightBlock;
 /** 单选标签选中回调函数 */
 @property (nonatomic, copy) SGTagsViewSingleSelectedBlock singleSelectedBlock;
 /** 多选标签选中回调函数 */

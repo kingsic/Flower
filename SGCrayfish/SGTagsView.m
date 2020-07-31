@@ -233,30 +233,50 @@
         btn.frame = CGRectMake(btnX, btnY, btnW, btnH);
     }];
     UIButton *lastBtn = self.btn_array.lastObject;
-    CGFloat contentScrollViewH = CGRectGetMaxY(lastBtn.frame);
-    CGRect contentScrollViewFrame = self.contentScrollView.frame;
-    contentScrollViewFrame.size.height = contentScrollViewH;
-    self.contentScrollView.frame = contentScrollViewFrame;
-    CGRect selfFrame = self.frame;
-    selfFrame.size.height = contentScrollViewH + 2 * self.configure.contentSpacingTB;
-    self.frame = selfFrame;
-    if (self.heightBlock) {
-        self.heightBlock(self, CGRectGetHeight(self.frame));
+    if (self.isFixedHeight == YES) {
+        CGFloat lastBtnMaxY = CGRectGetMaxY(lastBtn.frame);
+        CGFloat allHeight = lastBtnMaxY;
+        if (allHeight < _contentScrollView.frame.size.height) {
+            _contentScrollView.contentSize = CGSizeMake(_contentScrollView.frame.size.width, _contentScrollView.frame.size.height);
+        } else {
+            _contentScrollView.contentSize = CGSizeMake(_contentScrollView.frame.size.width, allHeight);
+        }
+    } else {
+        CGFloat contentScrollViewH = CGRectGetMaxY(lastBtn.frame);
+        CGRect contentScrollViewFrame = self.contentScrollView.frame;
+        contentScrollViewFrame.size.height = contentScrollViewH;
+        self.contentScrollView.frame = contentScrollViewFrame;
+        CGRect selfFrame = self.frame;
+        selfFrame.size.height = contentScrollViewH + 2 * self.configure.contentSpacingTB;
+        self.frame = selfFrame;
+    }
+    if (self.contentHeightBlock) {
+        self.contentHeightBlock(self, CGRectGetHeight(self.frame));
     }
 }
 #pragma mark - - SGTagsViewStyleVertical 样式下 frame 计算
 - (void)P_layoutTagsViewTypeVertical {
     [self P_layoutVerticalStyle];
     UIButton *lastBtn = self.btn_array.lastObject;
-    CGFloat contentScrollViewH = CGRectGetMaxY(lastBtn.frame);
-    CGRect contentScrollViewFrame = self.contentScrollView.frame;
-    contentScrollViewFrame.size.height = contentScrollViewH;
-    self.contentScrollView.frame = contentScrollViewFrame;
-    CGRect selfFrame = self.frame;
-    selfFrame.size.height = contentScrollViewH + 2 * self.configure.contentSpacingTB;
-    self.frame = selfFrame;
-    if (self.heightBlock) {
-        self.heightBlock(self, CGRectGetHeight(self.frame));
+    if (self.isFixedHeight) {
+        CGFloat lastBtnMaxY = CGRectGetMaxY(lastBtn.frame);
+        CGFloat allHeight = lastBtnMaxY;
+        if (allHeight < _contentScrollView.frame.size.height) {
+            _contentScrollView.contentSize = CGSizeMake(_contentScrollView.frame.size.width, _contentScrollView.frame.size.height);
+        } else {
+            _contentScrollView.contentSize = CGSizeMake(_contentScrollView.frame.size.width, allHeight);
+        }
+    } else {
+        CGFloat contentScrollViewH = CGRectGetMaxY(lastBtn.frame);
+        CGRect contentScrollViewFrame = self.contentScrollView.frame;
+        contentScrollViewFrame.size.height = contentScrollViewH;
+        self.contentScrollView.frame = contentScrollViewFrame;
+        CGRect selfFrame = self.frame;
+        selfFrame.size.height = contentScrollViewH + 2 * self.configure.contentSpacingTB;
+        self.frame = selfFrame;
+    }
+    if (self.contentHeightBlock) {
+        self.contentHeightBlock(self, CGRectGetHeight(self.frame));
     }
 }
 - (void)P_layoutVerticalStyle {
@@ -307,7 +327,9 @@
         _contentScrollView.contentSize = CGSizeMake(allWidth, btnH);
     }
 }
-
+- (void)setIsFixedHeight:(BOOL)isFixedHeight {
+    _isFixedHeight = isFixedHeight;
+}
 #pragma mark - - 标签数据源
 - (void)setTags:(NSArray *)tags {
     _tags = tags;
@@ -349,6 +371,13 @@
         [self.contentScrollView addSubview:btn];
     }
     self.btn_array = [NSArray arrayWithArray:tempBtnMArr];
+}
+#pragma mark - - - 根据下标数组选择对应标签
+- (void)setTagIndexs:(NSArray *)tagIndexs {
+    _tagIndexs = tagIndexs;
+    [tagIndexs enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self P_btn_action:self.btn_array[[obj integerValue]]];
+    }];
 }
 #pragma mark - - - 标题按钮的点击事件
 - (void)P_btn_action:(UIButton *)button {

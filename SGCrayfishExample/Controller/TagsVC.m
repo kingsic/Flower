@@ -36,22 +36,24 @@
     tagsView.singleSelectedBlock = ^(SGTagsView * _Nonnull tagsView, NSString *tag, NSInteger index) {
         NSLog(@"%@ - - %ld", tag, index);
     };
-    tagsView.heightBlock = ^(SGTagsView *tagsView, CGFloat height) {
+    tagsView.contentHeightBlock = ^(SGTagsView *tagsView, CGFloat height) {
         NSLog(@"%.2f", height);
         
         SGTagsViewConfigure *mconfigure = [SGTagsViewConfigure configure];
         mconfigure.multipleSelected = YES;
         mconfigure.borderWidth = 1.0;
         mconfigure.column = 2;
-        NSArray *mtags = @[@"这是多选标签", @"iPhone 8", @"iPhone 8P", @"iPhone X", @"iPhone XR", @"iPhone XS", @"iPhone XS Max"];
-        SGTagsView *mtagsView = [SGTagsView tagsViewWithFrame:CGRectMake(0, CGRectGetMaxY(tagsView.frame) + 50, self.view.frame.size.width, 50) configure:mconfigure];
+        NSArray *mtags = @[@"多选且可以滚动", @"iPhone 8", @"iPhone 8P", @"iPhone X", @"iPhone XR", @"iPhone XS", @"iPhone XS Max", @"iPhone 8", @"iPhone 8P", @"iPhone X", @"iPhone XR", @"iPhone XS", @"iPhone XS Max"];
+        SGTagsView *mtagsView = [SGTagsView tagsViewWithFrame:CGRectMake(0, CGRectGetMaxY(tagsView.frame) + 50, self.view.frame.size.width, 200) configure:mconfigure];
         mtagsView.tags = mtags;
+        mtagsView.tagIndexs = @[@"1", @"2", @"3"];
+        mtagsView.isFixedHeight = YES;
         [self.view addSubview:mtagsView];
         mtagsView.multipleSelectedBlock = ^(SGTagsView * _Nonnull tagsView, NSArray * _Nonnull tags, NSArray * _Nonnull indexs) {
             NSLog(@"%@ - - %@", tags, indexs);
         };
         [mtagsView setImageName:@"luckdraw_icon" imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 forIndex:0];
-        mtagsView.heightBlock = ^(SGTagsView *tagsView, CGFloat height) {
+        mtagsView.contentHeightBlock = ^(SGTagsView *tagsView, CGFloat height) {
             SGTagsViewConfigure *c = [SGTagsViewConfigure configure];
             c.contentSpacingLR = 0.01;
             c.contentSpacingTB = 0.01;

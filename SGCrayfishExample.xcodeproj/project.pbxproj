@@ -17,9 +17,9 @@
 		8D1D337F22D9FE0D004BB29A /* SGCrayfishExampleUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1D337E22D9FE0D004BB29A /* SGCrayfishExampleUITests.m */; };
 		8D1D339422D9FF8D004BB29A /* SGGuidePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1D338E22D9FF8D004BB29A /* SGGuidePageView.m */; };
 		8D1D339522D9FF8D004BB29A /* SGActionSheet.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1D339122D9FF8D004BB29A /* SGActionSheet.m */; };
-		8D1D339622D9FF8D004BB29A /* SGTagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1D339322D9FF8D004BB29A /* SGTagsView.m */; };
 		8D1D339B22DA01AF004BB29A /* TagsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1D339A22DA01AF004BB29A /* TagsVC.m */; };
 		8D1D339E22DA01C3004BB29A /* ActionSheetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D1D339D22DA01C3004BB29A /* ActionSheetVC.m */; };
+		8D69819B24D4675B00D9447C /* SGTagsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8D69819A24D4675B00D9447C /* SGTagsView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,13 +60,13 @@
 		8D1D338E22D9FF8D004BB29A /* SGGuidePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGGuidePageView.m; sourceTree = "<group>"; };
 		8D1D339022D9FF8D004BB29A /* SGActionSheet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGActionSheet.h; sourceTree = "<group>"; };
 		8D1D339122D9FF8D004BB29A /* SGActionSheet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGActionSheet.m; sourceTree = "<group>"; };
-		8D1D339222D9FF8D004BB29A /* SGTagsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGTagsView.h; sourceTree = "<group>"; };
-		8D1D339322D9FF8D004BB29A /* SGTagsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGTagsView.m; sourceTree = "<group>"; };
 		8D1D339722D9FFA2004BB29A /* SGCrayfish.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGCrayfish.h; sourceTree = "<group>"; };
 		8D1D339922DA01AF004BB29A /* TagsVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TagsVC.h; sourceTree = "<group>"; };
 		8D1D339A22DA01AF004BB29A /* TagsVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TagsVC.m; sourceTree = "<group>"; };
 		8D1D339C22DA01C3004BB29A /* ActionSheetVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ActionSheetVC.h; sourceTree = "<group>"; };
 		8D1D339D22DA01C3004BB29A /* ActionSheetVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ActionSheetVC.m; sourceTree = "<group>"; };
+		8D69819924D4675B00D9447C /* SGTagsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGTagsView.h; sourceTree = "<group>"; };
+		8D69819A24D4675B00D9447C /* SGTagsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGTagsView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,12 +154,12 @@
 			isa = PBXGroup;
 			children = (
 				8D1D339722D9FFA2004BB29A /* SGCrayfish.h */,
+				8D69819924D4675B00D9447C /* SGTagsView.h */,
+				8D69819A24D4675B00D9447C /* SGTagsView.m */,
 				8D1D339022D9FF8D004BB29A /* SGActionSheet.h */,
 				8D1D339122D9FF8D004BB29A /* SGActionSheet.m */,
 				8D1D338D22D9FF8D004BB29A /* SGGuidePageView.h */,
 				8D1D338E22D9FF8D004BB29A /* SGGuidePageView.m */,
-				8D1D339222D9FF8D004BB29A /* SGTagsView.h */,
-				8D1D339322D9FF8D004BB29A /* SGTagsView.m */,
 			);
 			path = SGCrayfish;
 			sourceTree = "<group>";
@@ -308,11 +308,11 @@
 				8D1D339522D9FF8D004BB29A /* SGActionSheet.m in Sources */,
 				8D1D339422D9FF8D004BB29A /* SGGuidePageView.m in Sources */,
 				8D1D339E22DA01C3004BB29A /* ActionSheetVC.m in Sources */,
+				8D69819B24D4675B00D9447C /* SGTagsView.m in Sources */,
 				8D1D335F22D9FE0B004BB29A /* ViewController.m in Sources */,
 				8D1D339B22DA01AF004BB29A /* TagsVC.m in Sources */,
 				8D1D336A22D9FE0D004BB29A /* main.m in Sources */,
 				8D1D335C22D9FE0B004BB29A /* AppDelegate.m in Sources */,
-				8D1D339622D9FF8D004BB29A /* SGTagsView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -492,7 +492,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SGCrayfishExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -509,7 +509,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.SGCrayfishExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
