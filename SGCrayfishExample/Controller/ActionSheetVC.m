@@ -21,30 +21,29 @@
     self.view.backgroundColor = [UIColor greenColor];
     
     SGTagsViewConfigure *configure = [SGTagsViewConfigure configure];
-    configure.tagsViewStyle = SGTagsViewStyleVertical;
+    configure.tagsStyle = SGTagsStyleVertical;
     NSArray *tags = @[@"标题样式", @"不带标题样式"];
     SGTagsView *tagsView = [SGTagsView tagsViewWithFrame:CGRectMake(0, 200, self.view.frame.size.width, 50) configure:configure];
     tagsView.tags = tags;
     [self.view addSubview:tagsView];
-    tagsView.singleSelectedBlock = ^(SGTagsView * _Nonnull tagsView, NSString *tag, NSInteger index) {
+    tagsView.singleSelectBlock = ^(SGTagsView * _Nonnull tagsView, NSString *tag, NSInteger index) {
         if (index == 0) {
             SGActionSheetConfigure *asc = [SGActionSheetConfigure configure];
             asc.cellHeight = 50;
-            SGActionSheet *as = [[SGActionSheet alloc] initWithTitle:@"您确定要退出登录么？" cancelTitle:@"取消" otherTitles:@[@"退出登录"] configure:asc];
+            SGActionSheet *as = [[SGActionSheet alloc] initWithTitle:@"退出后不会删除任何历史数据，下次登录依然可以使用本账号" cancelTitle:@"取消" otherTitles:@[@"退出登录"] configure:asc];
             as.otherTitleClickBlock = ^(NSInteger index) {
                 NSLog(@"index  - - %ld", index);
             };
             [as resetOtherTitleColor:[UIColor redColor] forIndex:0];
-            [as show];
+            [as popupActionSheet];
         } else {
             SGActionSheetConfigure *asc = [SGActionSheetConfigure configure];
-            asc.corner = NO;
             asc.penetrationEffect = NO;
-            SGActionSheet *as = [[SGActionSheet alloc] initWithOtherTitles:@[@"确定"] configure:asc];
+            SGActionSheet *as = [[SGActionSheet alloc] initWithOtherTitles:@[@"微信", @"支付宝"] configure:asc];
             as.otherTitleClickBlock = ^(NSInteger index) {
                 NSLog(@"index  - - %ld", index);
             };
-            [as show];
+            [as popupActionSheet];
         }
     };
 }

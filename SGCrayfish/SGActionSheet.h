@@ -27,14 +27,17 @@
 @property (nonatomic, assign) CGFloat cellHeight;
 /** 是否需要遮盖背景色，默认为 YES */
 @property (nonatomic, assign) BOOL cover;
-/** 内容视图是否需要穿透效果，默认为 YES */
+/** 遮盖背景颜色，默认为黑色alpha = 0.3（cover = NO 时不起作用）*/
+@property (nonatomic, strong) UIColor *coverColor;
+/** SGActionSheet 是否需要穿透效果，默认为 YES */
 @property (nonatomic, assign) BOOL penetrationEffect;
-/** 内容视图顶部是否需要圆角，默认为 YES */
-@property (nonatomic, assign) BOOL corner;
+/** SGActionSheet 顶部圆角大小，默认为 10.0f（取值范围为：0~30.0f）*/
+@property (nonatomic, assign) CGFloat cornerRadius;
+
 @end
 
 
-typedef void(^SGActionSheetOhterTitleClickBlock)(NSInteger index);
+typedef void(^SGActionSheetOtherTitleClickBlock)(NSInteger index);
 
 @interface SGActionSheet : UIView
 /** 不带标题、内有取消按钮的对象创建方法 */
@@ -49,11 +52,11 @@ typedef void(^SGActionSheetOhterTitleClickBlock)(NSInteger index);
 - (instancetype)initWithTitle:(NSString *)title cancelTitle:(NSString *)cancelTitle otherTitles:(NSArray *)otherTitles configure:(SGActionSheetConfigure *)configure;
 /** 类方法 */
 + (instancetype)actionSheetWithTitle:(NSString *)title cancelTitle:(NSString *)cancelTitle otherTitles:(NSArray *)otherTitles configure:(SGActionSheetConfigure *)configure;
-/** 调出 SGActionSheet */
-- (void)show;
+/** 弹出 SGActionSheet */
+- (void)popupActionSheet;
 
 /** 其他按钮点击回调函数 */
-@property (nonatomic, copy) SGActionSheetOhterTitleClickBlock otherTitleClickBlock;
+@property (nonatomic, copy) SGActionSheetOtherTitleClickBlock otherTitleClickBlock;
 
 /** 根据下标重置其他标题颜色 */
 - (void)resetOtherTitleColor:(UIColor *)color forIndex:(NSInteger)index;

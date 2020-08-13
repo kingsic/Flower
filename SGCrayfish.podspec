@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
     s.name         = 'SGCrayfish'
-    s.version      = '0.1.3'
+    s.version      = '0.1.5'
     s.summary      = 'Custom View'
     s.homepage     = 'https://github.com/kingsic/SGCrayfish'
     s.license      = 'MIT'

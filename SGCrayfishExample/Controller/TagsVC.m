@@ -21,7 +21,7 @@
     self.view.backgroundColor = [UIColor greenColor];
     
     SGTagsViewConfigure *configure = [SGTagsViewConfigure configure];
-    configure.tagsViewStyle = SGTagsViewStyleVertical;
+    configure.tagsStyle = SGTagsStyleVertical;
     configure.cornerRadius = 15;
     configure.borderWidth = 2;
     configure.selectedColor = [UIColor whiteColor];
@@ -33,40 +33,41 @@
     SGTagsView *tagsView = [SGTagsView tagsViewWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 50) configure:configure];
     tagsView.tags = tags;
     [self.view addSubview:tagsView];
-    tagsView.singleSelectedBlock = ^(SGTagsView * _Nonnull tagsView, NSString *tag, NSInteger index) {
+    tagsView.singleSelectBlock = ^(SGTagsView * _Nonnull tagsView, NSString *tag, NSInteger index) {
         NSLog(@"%@ - - %ld", tag, index);
     };
-    tagsView.contentHeightBlock = ^(SGTagsView *tagsView, CGFloat height) {
+    tagsView.heightBlock = ^(SGTagsView *tagsView, CGFloat height) {
         NSLog(@"%.2f", height);
         
         SGTagsViewConfigure *mconfigure = [SGTagsViewConfigure configure];
-        mconfigure.multipleSelected = YES;
+        mconfigure.multipleSelect = YES;
         mconfigure.borderWidth = 1.0;
         mconfigure.column = 2;
-        NSArray *mtags = @[@"多选且可以滚动", @"iPhone 8", @"iPhone 8P", @"iPhone X", @"iPhone XR", @"iPhone XS", @"iPhone XS Max", @"iPhone 8", @"iPhone 8P", @"iPhone X", @"iPhone XR", @"iPhone XS", @"iPhone XS Max"];
+        mconfigure.bounces = YES;
+        NSArray *mtags = @[@"多选且可滚动", @"iPhone 8", @"iPhone 8P", @"iPhone X", @"iPhone XR", @"iPhone XS", @"iPhone XS Max", @"iPhone 8", @"iPhone 8P", @"iPhone X", @"iPhone XR", @"iPhone XS", @"iPhone XS Max"];
         SGTagsView *mtagsView = [SGTagsView tagsViewWithFrame:CGRectMake(0, CGRectGetMaxY(tagsView.frame) + 50, self.view.frame.size.width, 200) configure:mconfigure];
         mtagsView.tags = mtags;
-        mtagsView.tagIndexs = @[@"1", @"2", @"3"];
+        mtagsView.tagIndexs = @[@"0", @"1"];
         mtagsView.isFixedHeight = YES;
         [self.view addSubview:mtagsView];
-        mtagsView.multipleSelectedBlock = ^(SGTagsView * _Nonnull tagsView, NSArray * _Nonnull tags, NSArray * _Nonnull indexs) {
+        mtagsView.multipleSelectBlock = ^(SGTagsView * _Nonnull tagsView, NSArray * _Nonnull tags, NSArray * _Nonnull indexs) {
             NSLog(@"%@ - - %@", tags, indexs);
         };
         [mtagsView setImageName:@"luckdraw_icon" imagePositionStyle:(SGImagePositionStyleDefault) spacing:5 forIndex:0];
-        mtagsView.contentHeightBlock = ^(SGTagsView *tagsView, CGFloat height) {
-            SGTagsViewConfigure *c = [SGTagsViewConfigure configure];
-            c.contentSpacingLR = 0.01;
-            c.contentSpacingTB = 0.01;
-            c.horizontalSpacing = 0.01;
-            c.verticalSpacing = 0.01;
-            c.height = 80;
-            c.column = 5;
-            NSArray *ta = @[@"美食", @"卖场便利", @"水果", @"跑腿代购", @"甜品饮品", @"星选好店", @"送药上门", @"大牌会吃", @"取送件", @"签到领红包"];
-            SGTagsView *t = [SGTagsView tagsViewWithFrame:CGRectMake(0, CGRectGetMaxY(mtagsView.frame) + 50, self.view.frame.size.width, 50) configure:c];
-            t.tags = ta;
+        mtagsView.heightBlock = ^(SGTagsView *tagsView, CGFloat height) {
+            SGTagsViewConfigure *otherConfigure = [SGTagsViewConfigure configure];
+            otherConfigure.contentInsetOfSpacingLR = 0.01;
+            otherConfigure.contentInsetOfSpacingTB = 0.01;
+            otherConfigure.horizontalSpacing = 0.01;
+            otherConfigure.verticalSpacing = 0.01;
+            otherConfigure.height = 80;
+            otherConfigure.column = 5;
+            NSArray *otherDataSource = @[@"美食", @"卖场便利", @"水果", @"跑腿代购", @"甜品饮品", @"星选好店", @"送药上门", @"大牌会吃", @"取送件", @"签到领红包"];
+            SGTagsView *otherTageView = [SGTagsView tagsViewWithFrame:CGRectMake(0, CGRectGetMaxY(mtagsView.frame) + 50, self.view.frame.size.width, 50) configure:otherConfigure];
+            otherTageView.tags = otherDataSource;
             NSArray *tia = @[@"luckdraw_icon", @"luckdraw_icon", @"luckdraw_icon", @"luckdraw_icon", @"luckdraw_icon", @"luckdraw_icon", @"luckdraw_icon", @"luckdraw_icon", @"luckdraw_icon", @"luckdraw_icon"];
-            [t setImageNames:tia imagePositionStyle:(SGImagePositionStyleTop) spacing:5];
-            [self.view addSubview:t];
+            [otherTageView setImageNames:tia imagePositionStyle:(SGImagePositionStyleTop) spacing:5];
+            [self.view addSubview:otherTageView];
         };
     };
 }

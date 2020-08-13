@@ -16,7 +16,6 @@
 - (instancetype)init {
     if (self = [super init]) {
         self.cover = YES;
-        self.corner = YES;
         self.penetrationEffect = YES;
     }
     return self;
@@ -61,11 +60,25 @@
     return _cancelColor;
 }
 
+- (UIColor *)coverColor {
+    if (!_coverColor) {
+        _coverColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
+    }
+    return _coverColor;
+}
+
 - (CGFloat)cellHeight {
-    if (_cellHeight < 44) {
+    if (!_cellHeight) {
         _cellHeight = 44;
     }
     return _cellHeight;
+}
+
+- (CGFloat)cornerRadius {
+    if (!_cornerRadius) {
+        _cornerRadius = 10;
+    }
+    return _cornerRadius;
 }
 @end
 
@@ -90,7 +103,6 @@ static CGFloat const titleMargin_X = 20;
 static CGFloat const titleMargin_Y = 20;
 static CGFloat const topBottomMargin = 7;
 static CGFloat const highlightedbgValue = 0.92;
-static CGFloat const contentViewCornerValue = 10;
 static CGFloat const penetrationEffectValue = 0.82;
 
 - (instancetype)initWithTitle:(NSString *)title cancelTitle:(NSString *)cancelTitle otherTitles:(NSArray *)otherTitles configure:(nonnull SGActionSheetConfigure *)configure {
@@ -155,9 +167,7 @@ static CGFloat const penetrationEffectValue = 0.82;
     if (!_coverBtn) {
         _coverBtn = [UIButton buttonWithType:(UIButtonTypeCustom)];
         _coverBtn.frame = self.frame;
-        if (self.configure.cover == YES) {
-            _coverBtn.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.0];
-        } else {
+        if (self.configure.cover == NO) {
             _coverBtn.backgroundColor = [UIColor clearColor];
         }
         [_coverBtn addTarget:self action:@selector(dismiss) forControlEvents:(UIControlEventTouchUpInside)];
@@ -272,13 +282,14 @@ static CGFloat const penetrationEffectValue = 0.82;
     CGFloat contentViewHeight = topContentViewHeight + bottomContentButtonHeight + topBottomMargin;
     _contentView.frame = CGRectMake(0, contentViewY, width, contentViewHeight);
     
-    if (self.configure.corner) {
-        UIBezierPath *bPath = [UIBezierPath bezierPathWithRoundedRect:_contentView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(contentViewCornerValue, contentViewCornerValue)];
-        CAShapeLayer *sLayer = [[CAShapeLayer alloc] init];
-        sLayer.frame = _contentView.bounds;
-        sLayer.path = bPath.CGPath;
-        _contentView.layer.mask = sLayer;
+    if (self.configure.cornerRadius < 0 || self.configure.cornerRadius > 30) {
+        self.configure.cornerRadius = 10;
     }
+    UIBezierPath *bPath = [UIBezierPath bezierPathWithRoundedRect:_contentView.bounds byRoundingCorners:UIRectCornerTopLeft | UIRectCornerTopRight cornerRadii:CGSizeMake(self.configure.cornerRadius, self.configure.cornerRadius)];
+    CAShapeLayer *sLayer = [[CAShapeLayer alloc] init];
+    sLayer.frame = _contentView.bounds;
+    sLayer.path = bPath.CGPath;
+    _contentView.layer.mask = sLayer;
 }
 
 - (void)btn_action:(UIButton *)button {
@@ -331,10 +342,10 @@ static CGFloat const penetrationEffectValue = 0.82;
     [self dismiss];
 }
 
-- (void)show {
+- (void)popupActionSheet {
     [UIView animateWithDuration:animationDuration animations:^{
         if (self.configure.cover) {
-            self.coverBtn.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.3];
+            self.coverBtn.backgroundColor = self.configure.coverColor;
         }
         self.contentView.transform = CGAffineTransformMakeTranslation(0, - CGRectGetHeight(self.contentView.frame));
     }];
@@ -342,12 +353,12 @@ static CGFloat const penetrationEffectValue = 0.82;
 - (void)dismiss {
     [UIView animateWithDuration:animationDuration animations:^{
         if (self.configure.cover) {
-            self.coverBtn.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.0];
+            self.coverBtn.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0];
         }
         self.contentView.transform = CGAffineTransformIdentity;
     } completion:^(BOOL finished) {
-        [self.coverBtn removeFromSuperview];
         [self.contentView removeFromSuperview];
+        [self.coverBtn removeFromSuperview];
         [self removeFromSuperview];
     }];
 }

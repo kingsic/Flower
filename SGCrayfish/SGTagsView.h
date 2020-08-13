@@ -10,13 +10,13 @@
 @class SGTagsView;
 
 typedef enum : NSUInteger {
-    /** 均分垂直样式，默认 */
-    SGTagsViewStyleEquable,
-    /** 自适应垂直样式 */
-    SGTagsViewStyleVertical,
-    /** 水平样式*/
-    SGTagsViewStyleHorizontal,
-} SGTagsViewStyle;
+    /** 标签均分垂直布局样式，默认 */
+    SGTagsStyleEquableVertical,
+    /** 标签自适应垂直布局样式 */
+    SGTagsStyleVertical,
+    /** 标签水平布局样式*/
+    SGTagsStyleHorizontal,
+} SGTagsStyle;
 typedef enum : NSUInteger {
     /** 内容居中样式，默认 */
     SGControlContentHorizontalAlignmentCenter,
@@ -29,14 +29,14 @@ typedef enum : NSUInteger {
 @interface SGTagsViewConfigure : NSObject
 /** 类方法 */
 + (instancetype)configure;
-/** SGTagsView 样式 */
-@property (nonatomic, assign) SGTagsViewStyle tagsViewStyle;
-/** 标签是否能够选择，默认为 YES */
+/** SGTagsView 内部标签布局样式 */
+@property (nonatomic, assign) SGTagsStyle tagsStyle;
+/** 标签是否能够被选择，默认为 YES */
 @property (nonatomic, assign) BOOL selected;
 /** SGTagsView 是否需要弹性效果，默认为 NO */
 @property (nonatomic, assign) BOOL bounces;
-/** SGTagsView 是否支持多选，默认为 NO */
-@property (nonatomic, assign) BOOL multipleSelected;
+/** 标签是否支持多选，默认为 NO */
+@property (nonatomic, assign) BOOL multipleSelect;
 /** 标签文字字号大小，默认 15 号字体 */
 @property (nonatomic, strong) UIFont *font;
 /** 普通状态下标签文字颜色，默认为黑色 */
@@ -65,10 +65,10 @@ typedef enum : NSUInteger {
 @property (nonatomic, assign) CGFloat height;
 /** SGTagsViewStyleEquable 样式下标签的列数，默认为 3 */
 @property (nonatomic, assign) NSInteger column;
-/** 内容视图距离父视图左右边的间距，默认为 10.0f */
-@property (nonatomic, assign) CGFloat contentSpacingLR;
-/** 内容视图距离父视图上下边的间距，默认为 10.0f */
-@property (nonatomic, assign) CGFloat contentSpacingTB;
+/** 标签距父视图左右内边距，默认为 10.0f */
+@property (nonatomic, assign) CGFloat contentInsetOfSpacingLR;
+/** 标签距父视图上下内边距，默认为 10.0f */
+@property (nonatomic, assign) CGFloat contentInsetOfSpacingTB;
 /** 标签内容水平对齐样式 */
 @property (nonatomic, assign) SGControlContentHorizontalAlignment contentHorizontalAlignment;
 /** SGControlContentHorizontalAlignmentLeft、SGControlContentHorizontalAlignmentRight样式下，距离标签内边距，默认为 5.0f */
@@ -86,9 +86,9 @@ typedef enum : NSUInteger {
     SGImagePositionStyleBottom,
 } SGImagePositionStyle;
 
-typedef void(^SGTagsViewContentHeightBlock)(SGTagsView *tagsView, CGFloat height);
-typedef void(^SGTagsViewSingleSelectedBlock)(SGTagsView *tagsView, NSString *tag, NSInteger index);
-typedef void(^SGTagsViewMultipleSelectedBlock)(SGTagsView *tagsView, NSArray *tags, NSArray *indexs);
+typedef void(^SGTagsViewHeightBlock)(SGTagsView *tagsView, CGFloat height);
+typedef void(^SGTagsViewSingleSelectBlock)(SGTagsView *tagsView, NSString *tag, NSInteger index);
+typedef void(^SGTagsViewMultipleSelectBlock)(SGTagsView *tagsView, NSArray *tags, NSArray *indexs);
 
 @interface SGTagsView : UIView
 /** 对象方法 */
@@ -97,16 +97,16 @@ typedef void(^SGTagsViewMultipleSelectedBlock)(SGTagsView *tagsView, NSArray *ta
 + (instancetype)tagsViewWithFrame:(CGRect)frame configure:(SGTagsViewConfigure *)configure;
 /** 标签数组 */
 @property (nonatomic, strong) NSArray *tags;
-/** 根据下标数组值选取对应的标签（主要用于初始化默认选中的标签，multipleSelected = NO 时，仅支持最后一个值所对应的标签） */
+/** 根据下标数组值选取对应的标签（主要用于初始化默认选中的标签，multipleSelect = NO 时，仅支持最后一个值所对应的标签） */
 @property (nonatomic, strong) NSArray *tagIndexs;
 /** 是否固定 SGTagsView 初始 frame 的高度，默认为 NO（不固定）；设为 YES 时，内容超出初始设定的 frame 的高度时，将会滚动 */
 @property (nonatomic, assign) BOOL isFixedHeight;
-/** 均分、垂直样式下标签内部布局完成之后返回高度的回调函数 */
-@property (nonatomic, copy) SGTagsViewContentHeightBlock contentHeightBlock;
-/** 单选标签选中回调函数 */
-@property (nonatomic, copy) SGTagsViewSingleSelectedBlock singleSelectedBlock;
-/** 多选标签选中回调函数 */
-@property (nonatomic, copy) SGTagsViewMultipleSelectedBlock multipleSelectedBlock;
+/** 均分垂直、垂直样式下标签布局完成后返回 SGTagsView 高度的回调函数 */
+@property (nonatomic, copy) SGTagsViewHeightBlock heightBlock;
+/** 标签单选回调函数 */
+@property (nonatomic, copy) SGTagsViewSingleSelectBlock singleSelectBlock;
+/** 标签多选回调函数 */
+@property (nonatomic, copy) SGTagsViewMultipleSelectBlock multipleSelectBlock;
 
 /** 设置标签内部的小图标 */
 - (void)setImageNames:(NSArray *)imageNames imagePositionStyle:(SGImagePositionStyle)imagePositionStyle spacing:(CGFloat)spacing;

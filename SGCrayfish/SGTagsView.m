@@ -109,17 +109,17 @@
     return _column;
 }
 
-- (CGFloat)contentSpacingLR {
-    if (_contentSpacingLR <= 0) {
-        _contentSpacingLR = 10.0f;
+- (CGFloat)contentInsetOfSpacingLR {
+    if (_contentInsetOfSpacingLR <= 0) {
+        _contentInsetOfSpacingLR = 10.0f;
     }
-    return _contentSpacingLR;
+    return _contentInsetOfSpacingLR;
 }
-- (CGFloat)contentSpacingTB {
-    if (_contentSpacingTB <= 0) {
-        _contentSpacingTB = 10.0f;
+- (CGFloat)contentInsetOfSpacingTB {
+    if (_contentInsetOfSpacingTB <= 0) {
+        _contentInsetOfSpacingTB = 10.0f;
     }
-    return _contentSpacingTB;
+    return _contentInsetOfSpacingTB;
 }
 - (CGFloat)contentHorizontalAlignmentSpacing {
     if (_contentHorizontalAlignmentSpacing <= 0) {
@@ -168,7 +168,7 @@
 
 - (void)initialization {
     self.backgroundColor = [UIColor whiteColor];
-    if (self.configure.tagsViewStyle == SGTagsViewStyleVertical) {
+    if (self.configure.tagsStyle == SGTagsStyleVertical) {
         self.tag_rown = 1;
     }
 }
@@ -205,83 +205,85 @@
 - (void)layoutSubviews {
     [super layoutSubviews];
     
-    CGFloat contentScrollViewX = self.configure.contentSpacingLR;
-    CGFloat contentScrollViewY = self.configure.contentSpacingTB;
-    CGFloat contentScrollViewW = self.frame.size.width - 2 * contentScrollViewX;
-    CGFloat contentScrollViewH = self.frame.size.height - 2 * contentScrollViewY;
+    CGFloat contentScrollViewX = 0;
+    CGFloat contentScrollViewY = 0;
+    CGFloat contentScrollViewW = self.frame.size.width;
+    CGFloat contentScrollViewH = self.frame.size.height;
     self.contentScrollView.frame = CGRectMake(contentScrollViewX, contentScrollViewY, contentScrollViewW, contentScrollViewH);
     
-    if (self.configure.tagsViewStyle == SGTagsViewStyleVertical) {
+    if (self.configure.tagsStyle == SGTagsStyleVertical) {
         self.tempMArr = [NSMutableArray arrayWithArray:self.btn_array];
-        [self P_layoutTagsViewTypeVertical];
-    } else if (self.configure.tagsViewStyle == SGTagsViewStyleHorizontal) {
-        [self P_layoutTagsViewStyleHorizontal];
+        [self P_layoutTagsTypeVertical];
+    } else if (self.configure.tagsStyle == SGTagsStyleHorizontal) {
+        [self P_layoutTagsStyleHorizontal];
     } else {
-        [self P_layoutTagsViewTypeEquable];
+        [self P_layoutTagsStyleEquableVertical];
     }
 }
-#pragma mark - - SGTagsViewStyleEquable 样式下 frame 计算
-- (void)P_layoutTagsViewTypeEquable {
+#pragma mark - - SGTagsStyleEquableVertical 样式下 frame 计算
+- (void)P_layoutTagsStyleEquableVertical {
     __block CGFloat btnX = 0;
     __block CGFloat btnY = 0;
-    CGFloat btnW = (CGRectGetWidth(self.contentScrollView.frame) - (self.configure.column - 1) * self.configure.horizontalSpacing) / self.configure.column;
+    CGFloat btnW = (CGRectGetWidth(self.contentScrollView.frame) - (self.configure.column - 1) * self.configure.horizontalSpacing - 2 * self.configure.contentInsetOfSpacingLR) / self.configure.column;
     CGFloat btnH = self.configure.height;
     [self.btn_array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UIButton *btn = obj;
-        btnX = (idx % self.configure.column) * (btnW + self.configure.horizontalSpacing);
-        btnY = (idx / self.configure.column) * (btnH + self.configure.verticalSpacing);
+        btnX = (idx % self.configure.column) * (btnW + self.configure.horizontalSpacing) + self.configure.contentInsetOfSpacingLR;
+        btnY = (idx / self.configure.column) * (btnH + self.configure.verticalSpacing) + self.configure.contentInsetOfSpacingTB;
         btn.frame = CGRectMake(btnX, btnY, btnW, btnH);
     }];
     UIButton *lastBtn = self.btn_array.lastObject;
     if (self.isFixedHeight == YES) {
         CGFloat lastBtnMaxY = CGRectGetMaxY(lastBtn.frame);
-        CGFloat allHeight = lastBtnMaxY;
+        CGFloat allHeight = lastBtnMaxY + self.configure.contentInsetOfSpacingTB;
         if (allHeight < _contentScrollView.frame.size.height) {
             _contentScrollView.contentSize = CGSizeMake(_contentScrollView.frame.size.width, _contentScrollView.frame.size.height);
         } else {
             _contentScrollView.contentSize = CGSizeMake(_contentScrollView.frame.size.width, allHeight);
+            _contentScrollView.showsVerticalScrollIndicator = YES;
         }
     } else {
-        CGFloat contentScrollViewH = CGRectGetMaxY(lastBtn.frame);
+        CGFloat contentScrollViewH = CGRectGetMaxY(lastBtn.frame) + self.configure.contentInsetOfSpacingTB;
         CGRect contentScrollViewFrame = self.contentScrollView.frame;
         contentScrollViewFrame.size.height = contentScrollViewH;
         self.contentScrollView.frame = contentScrollViewFrame;
         CGRect selfFrame = self.frame;
-        selfFrame.size.height = contentScrollViewH + 2 * self.configure.contentSpacingTB;
+        selfFrame.size.height = contentScrollViewH;
         self.frame = selfFrame;
     }
-    if (self.contentHeightBlock) {
-        self.contentHeightBlock(self, CGRectGetHeight(self.frame));
+    if (self.heightBlock) {
+        self.heightBlock(self, CGRectGetHeight(self.frame));
     }
 }
-#pragma mark - - SGTagsViewStyleVertical 样式下 frame 计算
-- (void)P_layoutTagsViewTypeVertical {
+#pragma mark - - SGTagsStyleVertical 样式下 frame 计算
+- (void)P_layoutTagsTypeVertical {
     [self P_layoutVerticalStyle];
     UIButton *lastBtn = self.btn_array.lastObject;
     if (self.isFixedHeight) {
         CGFloat lastBtnMaxY = CGRectGetMaxY(lastBtn.frame);
-        CGFloat allHeight = lastBtnMaxY;
+        CGFloat allHeight = lastBtnMaxY + self.configure.contentInsetOfSpacingTB;
         if (allHeight < _contentScrollView.frame.size.height) {
             _contentScrollView.contentSize = CGSizeMake(_contentScrollView.frame.size.width, _contentScrollView.frame.size.height);
         } else {
             _contentScrollView.contentSize = CGSizeMake(_contentScrollView.frame.size.width, allHeight);
+            _contentScrollView.showsVerticalScrollIndicator = YES;
         }
     } else {
-        CGFloat contentScrollViewH = CGRectGetMaxY(lastBtn.frame);
+        CGFloat contentScrollViewH = CGRectGetMaxY(lastBtn.frame) +  + self.configure.contentInsetOfSpacingTB;
         CGRect contentScrollViewFrame = self.contentScrollView.frame;
         contentScrollViewFrame.size.height = contentScrollViewH;
         self.contentScrollView.frame = contentScrollViewFrame;
         CGRect selfFrame = self.frame;
-        selfFrame.size.height = contentScrollViewH + 2 * self.configure.contentSpacingTB;
+        selfFrame.size.height = contentScrollViewH;
         self.frame = selfFrame;
     }
-    if (self.contentHeightBlock) {
-        self.contentHeightBlock(self, CGRectGetHeight(self.frame));
+    if (self.heightBlock) {
+        self.heightBlock(self, CGRectGetHeight(self.frame));
     }
 }
 - (void)P_layoutVerticalStyle {
-    __block CGFloat btnX = 0;
-    CGFloat btnY = (self.tag_rown - 1) * (self.configure.verticalSpacing + self.configure.height);
+    __block CGFloat btnX = self.configure.contentInsetOfSpacingLR;
+    CGFloat btnY = (self.tag_rown - 1) * (self.configure.verticalSpacing + self.configure.height) + self.configure.contentInsetOfSpacingLR;
     CGFloat btnH = self.configure.height;
     CGFloat contentScrollViewWidth = self.contentScrollView.frame.size.width;
     [self.tempMArr enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
@@ -300,11 +302,11 @@
         }
     }];
 }
-#pragma mark - - SGTagsViewStyleHorizontal 样式下 frame 计算
-- (void)P_layoutTagsViewStyleHorizontal {
-    __block CGFloat btnX = 0;
-    CGFloat btnY = 0;
-    CGFloat btnH = self.contentScrollView.frame.size.height;
+#pragma mark - - SGTagsStyleHorizontal 样式下 frame 计算
+- (void)P_layoutTagsStyleHorizontal {
+    __block CGFloat btnX = self.configure.contentInsetOfSpacingLR;
+    CGFloat btnY = self.configure.contentInsetOfSpacingTB;
+    CGFloat btnH = self.contentScrollView.frame.size.height - 2 * btnY;
     [self.btn_array enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         UIButton *btn = obj;
         CGSize tempSize = [self P_sizeWithString:btn.currentTitle font:self.configure.font];
@@ -320,7 +322,7 @@
     }];
     UIButton *lastBtn = self.btn_array.lastObject;
     CGFloat lastBtnMaxX = CGRectGetMaxX(lastBtn.frame);
-    CGFloat allWidth = lastBtnMaxX;
+    CGFloat allWidth = lastBtnMaxX + self.configure.contentInsetOfSpacingLR;
     if (allWidth < _contentScrollView.frame.size.width) {
         _contentScrollView.contentSize = CGSizeMake(_contentScrollView.frame.size.width, btnH);
     } else {
@@ -352,7 +354,7 @@
         } else {
             btn.layer.borderWidth = self.configure.borderWidth;
         }
-        if (self.configure.tagsViewStyle == SGTagsViewStyleVertical || self.configure.tagsViewStyle == SGTagsViewStyleEquable) {
+        if (self.configure.tagsStyle == SGTagsStyleVertical || self.configure.tagsStyle == SGTagsStyleEquableVertical) {
             if (self.configure.cornerRadius > 0.5 * self.configure.height) {
                 btn.layer.cornerRadius = 0.5 * self.configure.height;
             } else {
@@ -381,7 +383,7 @@
 }
 #pragma mark - - - 标题按钮的点击事件
 - (void)P_btn_action:(UIButton *)button {
-    if (self.configure.multipleSelected) {
+    if (self.configure.multipleSelect) {
         button.selected = !(button.selected);
         if (button.isSelected) {
             [self.mArrayTag addObject:button.titleLabel.text];
@@ -396,16 +398,16 @@
             button.layer.borderColor = self.configure.borderColor.CGColor;
             [button setTitleColor:self.configure.color forState:(UIControlStateNormal)];
         }
-        if (self.multipleSelectedBlock) {
-            self.multipleSelectedBlock(self, self.mArrayTag, self.mArrayIndex);
+        if (self.multipleSelectBlock) {
+            self.multipleSelectBlock(self, self.mArrayTag, self.mArrayIndex);
         }
         if (self.contentScrollView.contentSize.width > self.contentScrollView.frame.size.width) {
             [self P_selectedBtnCenter:button];
         }
     } else {
         [self changeSelectedButton:button];
-        if (self.singleSelectedBlock) {
-            self.singleSelectedBlock(self, button.titleLabel.text, button.tag);
+        if (self.singleSelectBlock) {
+            self.singleSelectBlock(self, button.titleLabel.text, button.tag);
         }
         if (self.contentScrollView.contentSize.width > self.contentScrollView.frame.size.width) {
             [self P_selectedBtnCenter:button];

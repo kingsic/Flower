@@ -11,7 +11,7 @@
 
 
 ## Installation
-* 1、CocoaPods 导入 pod 'SGCrayfish', '~> 0.1.3'
+* 1、CocoaPods 导入 pod 'SGCrayfish', '~> 0.1.5'
 * 2、下载、拖拽 “SGCrayfish” 文件夹到工程中
 
 ## 代码介绍
@@ -23,7 +23,7 @@
     SGTagsView *tagsView = [SGTagsView tagsViewWithFrame:CGRectMake(0, 100, self.view.frame.size.width, 50) configure:configure];
     tagsView.tags = tags;
     [self.view addSubview:tagsView];
-    tagsView.singleSelectedBlock = ^(SGTagsView * _Nonnull tagsView, NSString *tag, NSInteger index) {
+    tagsView.singleSelectBlock = ^(SGTagsView * _Nonnull tagsView, NSString *tag, NSInteger index) {
         NSLog(@"%@ - - %ld", tag, index);
     };
 ```
@@ -35,7 +35,7 @@
     as.otherTitleClickBlock = ^(NSInteger index) {
         NSLog(@"index  - - %ld", index);
     };
-    [as show];
+    [as popupActionSheet];
 ```
 
 
