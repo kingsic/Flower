@@ -1,6 +1,6 @@
 //
 //  SGCrayfish.h
-//  Version 0.1.5
+//  Version 0.1.6
 //  GitHub：https://github.com/kingsic/SGCrayfish
 //
 //  Created by kingsic on 2019/7/13.

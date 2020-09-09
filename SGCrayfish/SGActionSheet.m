@@ -342,7 +342,7 @@ static CGFloat const penetrationEffectValue = 0.82;
     [self dismiss];
 }
 
-- (void)popupActionSheet {
+- (void)actionSheet {
     [UIView animateWithDuration:animationDuration animations:^{
         if (self.configure.cover) {
             self.coverBtn.backgroundColor = self.configure.coverColor;

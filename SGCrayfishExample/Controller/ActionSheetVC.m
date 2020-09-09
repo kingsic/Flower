@@ -35,7 +35,7 @@
                 NSLog(@"index  - - %ld", index);
             };
             [as resetOtherTitleColor:[UIColor redColor] forIndex:0];
-            [as popupActionSheet];
+            [as actionSheet];
         } else {
             SGActionSheetConfigure *asc = [SGActionSheetConfigure configure];
             asc.penetrationEffect = NO;
@@ -43,7 +43,7 @@
             as.otherTitleClickBlock = ^(NSInteger index) {
                 NSLog(@"index  - - %ld", index);
             };
-            [as popupActionSheet];
+            [as actionSheet];
         }
     };
 }

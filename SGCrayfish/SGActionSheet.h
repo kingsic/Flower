@@ -53,7 +53,7 @@ typedef void(^SGActionSheetOtherTitleClickBlock)(NSInteger index);
 /** 类方法 */
 + (instancetype)actionSheetWithTitle:(NSString *)title cancelTitle:(NSString *)cancelTitle otherTitles:(NSArray *)otherTitles configure:(SGActionSheetConfigure *)configure;
 /** 弹出 SGActionSheet */
-- (void)popupActionSheet;
+- (void)actionSheet;
 
 /** 其他按钮点击回调函数 */
 @property (nonatomic, copy) SGActionSheetOtherTitleClickBlock otherTitleClickBlock;

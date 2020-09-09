@@ -212,7 +212,6 @@
     self.contentScrollView.frame = CGRectMake(contentScrollViewX, contentScrollViewY, contentScrollViewW, contentScrollViewH);
     
     if (self.configure.tagsStyle == SGTagsStyleVertical) {
-        self.tempMArr = [NSMutableArray arrayWithArray:self.btn_array];
         [self P_layoutTagsTypeVertical];
     } else if (self.configure.tagsStyle == SGTagsStyleHorizontal) {
         [self P_layoutTagsStyleHorizontal];
@@ -373,6 +372,7 @@
         [self.contentScrollView addSubview:btn];
     }
     self.btn_array = [NSArray arrayWithArray:tempBtnMArr];
+    self.tempMArr = [NSMutableArray arrayWithArray:self.btn_array];
 }
 #pragma mark - - - 根据下标数组选择对应标签
 - (void)setTagIndexs:(NSArray *)tagIndexs {
