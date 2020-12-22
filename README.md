@@ -5,6 +5,8 @@
 
 
 ## 内容介绍
+|视图|注释|
+|----|-----|
 |SGLabel|文字从左上方开始布局
 |SGTextView|placeholder、placeholderColor
 |SGTagsView|标签视图
@@ -14,7 +16,8 @@
 
 
 ## Installation
-* 下载、拖拽 “SGFastfish” 文件夹到工程中
+* 1、CocoaPods 导入 pod 'SGFastfish', '~> 1.0.0'
+* 2、下载、拖拽 “SGFastfish” 文件夹到工程中
 
 ## 代码介绍
 #### SGTagsView 的使用（详细使用, 请参考 Demo）
