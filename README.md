@@ -1,26 +1,31 @@
-# SGFastfish
+# Flower
 
 
 * 本框架中的 SGTagsView 设计来源于 [SGPagingView](https://github.com/kingsic/SGPagingView) 框架中的 SGPageTitleView
 
 
-## 内容介绍
+## Flower
 |视图|注释|
 |----|-----|
 |SGLabel|文字从左上方开始布局
-|SGTextView|placeholder、placeholderColor
+|SGTextView|placeholder、placeholderColor、limitNumber
+|SGTagsView|标签视图
+|SGItemsView|item视图
+
+
+## FlowerObjc
+|视图|注释|
+|----|-----|
+|SGLabel|文字从左上方开始布局
+|SGTextView|placeholder、placeholderColor、limitNumber
 |SGTagsView|标签视图
 |SGItemsView|item视图
 |SGActionSheet|底部弹窗视图（微信、微博样式）
 |SGGuidePageView|引导页
 
 
-## Installation
-* 1、CocoaPods 导入 pod 'SGFastfish', '~> 1.0.0'
-* 2、下载、拖拽 “SGFastfish” 文件夹到工程中
-
-## 代码介绍
-#### SGTagsView 的使用（详细使用, 请参考 Demo）
+## 代码介绍（详细使用，请参考 API）
+#### SGTagsView 的使用
 ``` 
     SGTagsViewConfigure *configure = [SGTagsViewConfigure configure];
 
@@ -33,7 +38,7 @@
     };
 ```
 
-#### SGActionSheet 的使用（详细使用, 请参考 Demo）
+#### SGActionSheet 的使用
 ``` 
     SGActionSheetConfigure *asc = [SGActionSheetConfigure configure];
     SGActionSheet *as = [[SGActionSheet alloc] initWithOtherTitles:@[@"确定"] configure:asc];
