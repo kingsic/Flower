@@ -26,6 +26,7 @@ class ItemsViewVC: UIViewController {
         items.configureImgViewBlock { imgView, index in
             imgView.image = UIImage.init(named: images[index])
         }
+        items.contentInsetTop = 11
         view.addSubview(items)
         
         let images2 = ["bg_image", "bg_image", "bg_image", "bg_image", "bg_image", "bg_image", "bg_image", "bg_image"]

@@ -101,7 +101,7 @@
 		8DA9D16626E766DA009CBAFC = {
 			isa = PBXGroup;
 			children = (
-				8DA9D45726EA1140009CBAFC /* Source */,
+				8DA9D45726EA1140009CBAFC /* Sources */,
 				8DA9D17126E766DA009CBAFC /* Flower */,
 				8DA9D18826E766DF009CBAFC /* FlowerTests */,
 				8DA9D19326E766DF009CBAFC /* FlowerUITests */,
@@ -163,13 +163,13 @@
 			path = Example;
 			sourceTree = "<group>";
 		};
-		8DA9D45726EA1140009CBAFC /* Source */ = {
+		8DA9D45726EA1140009CBAFC /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				8DA9D45826EA1140009CBAFC /* Tools */,
 				8DA9D45C26EA1140009CBAFC /* UIKit */,
 			);
-			path = Source;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		8DA9D45826EA1140009CBAFC /* Tools */ = {

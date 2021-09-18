@@ -117,7 +117,7 @@
 		8DA9D1AD26E76F83009CBAFC = {
 			isa = PBXGroup;
 			children = (
-				8DA9D43F26EA103C009CBAFC /* Source */,
+				8DA9D43F26EA103C009CBAFC /* SourcesObjc */,
 				8DA9D1B826E76F83009CBAFC /* FlowerObjc */,
 				8DA9D1D426E76F85009CBAFC /* FlowerObjcTests */,
 				8DA9D1DF26E76F85009CBAFC /* FlowerObjcUITests */,
@@ -187,13 +187,13 @@
 			path = Example;
 			sourceTree = "<group>";
 		};
-		8DA9D43F26EA103C009CBAFC /* Source */ = {
+		8DA9D43F26EA103C009CBAFC /* SourcesObjc */ = {
 			isa = PBXGroup;
 			children = (
 				8DA9D44026EA103C009CBAFC /* Tools */,
 				8DA9D44326EA103C009CBAFC /* UIKit */,
 			);
-			path = Source;
+			path = SourcesObjc;
 			sourceTree = "<group>";
 		};
 		8DA9D44026EA103C009CBAFC /* Tools */ = {

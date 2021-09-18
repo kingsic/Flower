@@ -10,21 +10,21 @@ import UIKit
 
 class SGTextView: UITextView  {
     /// PlaceHolder
-    var placeHolder: String? {
+    public var placeHolder: String? {
         didSet {
             placeHolderLabel.text = placeHolder
         }
     }
     
     /// PlaceHolder Color
-    var placeHolderColor: UIColor? {
+    public var placeHolderColor: UIColor? {
         didSet {
             placeHolderLabel.textColor = placeHolderColor
         }
     }
     
     /// Limit input words
-    var limitNumber: Int?
+    public var limitNumber: Int?
     
     /// PlaceHolder Label 
     private lazy var placeHolderLabel: UILabel = {

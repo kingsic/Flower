@@ -28,6 +28,21 @@ class SGItemsView: UIView {
     /// Item size. consider the top and bottom values of the contentinset property when setting the height
     public var itemSize: CGSize?
     
+    /// Item content Inset of top, defalut is 0.0
+    ///
+    /// The maximum value cannot exceed 1/6 of itemSize
+    public var contentInsetTop: CGFloat = 5.0
+    
+    /// Item content Inset of bottom, defalut is 0.0
+    ///
+    /// The maximum value cannot exceed 1/6 of itemSize
+    public var contentInsetBottom: CGFloat = 5.0
+
+    /// Item space between image and title, defalut is 0.0
+    ///
+    /// The maximum value cannot exceed 1/6 of itemSize
+    public var spacing: CGFloat = 5.0
+    
     /// Default UIEdgeInsetsZero. add additional scroll area around content
     public var contentInset: UIEdgeInsets {
         set {
@@ -135,6 +150,9 @@ extension SGItemsView: UICollectionViewDelegate, UICollectionViewDataSource {
         if let configureImgViewBlock = tempConfigureImgViewBlock {
             configureImgViewBlock(cell.imgView, indexPath.item)
         }
+        cell.contentInsetOfTop = contentInsetTop
+        cell.contentInsetOfBottom = contentInsetBottom
+        cell.spacing = spacing
         cell.titleLab.text = (titles?[indexPath.item] as! String)
         cell.titleLab.font = titleFont
         cell.titleLab.textColor = titleColor
@@ -157,6 +175,10 @@ extension SGItemsView: UICollectionViewDelegate, UICollectionViewDataSource {
 
 
 private class SGItemCell: UICollectionViewCell {
+    public var contentInsetOfTop: CGFloat = 0.0
+    public var contentInsetOfBottom: CGFloat = 0.0
+    public var spacing: CGFloat = 0.0
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         addSubview(imgView)
@@ -167,16 +189,32 @@ private class SGItemCell: UICollectionViewCell {
     }
     override func layoutSubviews() {
         super.layoutSubviews()
-        let iv_y: CGFloat = 5
-        let iv_height: CGFloat = self.frame.size.height / 3 * 2 - iv_y
+        
+        let max_v: CGFloat = 6
+        
+        if contentInsetOfTop > self.frame.size.height / max_v {
+            contentInsetOfTop = 0.0
+        }
+        if contentInsetOfBottom >  self.frame.size.height / max_v {
+            contentInsetOfBottom = 0.0
+        }
+        if spacing > self.frame.size.height / max_v {
+            spacing = 0.0
+        }
+        
+        let lab_height = titleLab.text!.calculateStringHeight(width: self.frame.size.width, font: titleLab.font)
+        let img_height: CGFloat = self.frame.size.height - contentInsetOfTop - contentInsetOfBottom - lab_height - spacing
+        
+        let iv_y: CGFloat = contentInsetOfTop
+        let iv_height: CGFloat = img_height
         let iv_width: CGFloat = iv_height
         let iv_x: CGFloat = 0.5 * (self.frame.size.width - iv_width)
         imgView.frame = CGRect.init(x: iv_x, y: iv_y, width: iv_width, height: iv_height)
 
         let tl_x: CGFloat = 0
-        let tl_y: CGFloat = self.frame.size.height / 3 * 2
+        let tl_y: CGFloat = imgView.frame.maxY + spacing
         let tl_width: CGFloat = self.frame.size.width
-        let tl_height: CGFloat = self.frame.size.height / 3
+        let tl_height: CGFloat = lab_height
         titleLab.frame = CGRect.init(x: tl_x, y: tl_y, width: tl_width, height: tl_height)
     }
     
@@ -191,3 +229,19 @@ private class SGItemCell: UICollectionViewCell {
     }()
 }
 
+
+extension String {
+    ///
+    /// Calculate the height of a string based on width and font size
+    ///
+    /// - parameter width: CGFloat
+    /// - parameter font: UIFont
+    ///
+    /// - returns: The height of the calculated string
+    ///
+    fileprivate func calculateStringHeight(width: CGFloat, font: UIFont) -> CGFloat {
+        let attrs = [NSAttributedString.Key.font: font]
+        let tempRect = (self as NSString).boundingRect(with: CGSize(width: width, height: 0), options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: attrs, context: nil)
+        return tempRect.size.height
+    }
+}
