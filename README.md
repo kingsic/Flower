@@ -7,10 +7,11 @@
 ## Flower
 |视图|注释|
 |----|-----|
-|SGLabel|文字从左上方开始布局
-|SGTextView|placeholder、placeholderColor、limitNumber
-|SGTagsView|标签视图
+|SGBaseItemsView|baseItems视图
+|SGEdgeLabel|内边距的UILabel
 |SGItemsView|item视图
+|SGTagsView|标签视图
+|SGTextView|placeholder、placeholderColor、limitNumber
 
 
 ## FlowerObjc

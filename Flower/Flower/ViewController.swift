@@ -11,8 +11,8 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let dataSource = ["SGItemsView", "SGLabel", "SGTagsView", "SGTextView"]
-    let dataSourceVC = [ItemsViewVC(), LabelVC(), TagsViewVC(), TextViewVC()]
+    let dataSource = ["SGEdgeLabel", "SGItemsView", "SGTagsView", "SGTextView"]
+    let dataSourceVC = [EdgeLabelVC(), ItemsViewVC(), TagsViewVC(), TextViewVC()]
     
     override func viewDidLoad() {
         super.viewDidLoad()

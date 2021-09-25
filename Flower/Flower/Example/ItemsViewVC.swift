@@ -8,7 +8,7 @@
 import UIKit
 
 class ItemsViewVC: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,17 +40,55 @@ class ItemsViewVC: UIViewController {
         }
         items2.contentInset = UIEdgeInsets.init(top: 10, left: 0, bottom: 0, right: 0)
         view.addSubview(items2)
+        items2.setItemTitle(color: .red, index: 2)
+        
+        
+        let baseItem = SGBaseItemsView()
+        baseItem.frame = CGRect.init(x: 20, y: items2.frame.maxY + 20, width: screenWidth - 40, height: 90)
+        baseItem.backgroundColor = .green
+        baseItem.itemSize = CGSize.init(width: 130, height: 80)
+        view.addSubview(baseItem)
+        baseItem.register(BaseItemsCell.self, reuseIdentifier: "BaseCellID")
+        baseItem.delegate = self
+        baseItem.dataSource = self
+        baseItem.scrollDirectionHorizontal = true
+        baseItem.contentInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
+//        baseItem.minimumLineSpacing = 20
+    }
+
+}
+
+extension ItemsViewVC: SGBaseItemsViewDataSource, SGBaseItemsViewDelegate {
+    func itemsView(_ itemsView: SGBaseItemsView, numberOfItems: Int) -> Int {
+        return 6
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func itemsView(_ itemsView: SGBaseItemsView, didSelectItemAt index: Int) {
+        print("当前点击的item下标值为：\(index)")
     }
-    */
+}
 
+class BaseItemsCell: UICollectionViewCell {
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = .orange
+        
+        let height: CGFloat = 20
+        let y: CGFloat = 0.5 * (frame.size.height - height)
+        
+        let btn = UIButton()
+        btn.frame = CGRect(x: 10, y: y, width: frame.size.width - 20, height: height)
+        btn.setTitle("btn", for: .normal)
+        btn.backgroundColor = .red
+        btn.addTarget(self, action: #selector(btn_action), for: .touchUpInside)
+        self.addSubview(btn)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc func btn_action() {
+        print("btn_action")
+    }
 }

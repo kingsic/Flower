@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SGItemsView: UIView {
+public class SGItemsView: UIView {
     /// Item titles
     public var titles: Array<Any>?
     
@@ -18,7 +18,7 @@ class SGItemsView: UIView {
     /// Title color，default black
     public var titleColor: UIColor = .black
     
-    typealias ConfigureImgViewBlock = (_ imageView: UIImageView, _ index: Int) -> Void
+    public typealias ConfigureImgViewBlock = (_ imageView: UIImageView, _ index: Int) -> Void
     private var tempConfigureImgViewBlock: ConfigureImgViewBlock?
     /// Configure imageView callback method, leave the imageView to external processing, such as network or local loading image
     public func configureImgViewBlock(imgViewBlock: @escaping ConfigureImgViewBlock) {
@@ -28,17 +28,17 @@ class SGItemsView: UIView {
     /// Item size. consider the top and bottom values of the contentinset property when setting the height
     public var itemSize: CGSize?
     
-    /// Item content Inset of top, defalut is 0.0
+    /// Item content Inset of top, defalut is 5.0
     ///
     /// The maximum value cannot exceed 1/6 of itemSize
     public var contentInsetTop: CGFloat = 5.0
     
-    /// Item content Inset of bottom, defalut is 0.0
+    /// Item content Inset of bottom, defalut is 5.0
     ///
     /// The maximum value cannot exceed 1/6 of itemSize
     public var contentInsetBottom: CGFloat = 5.0
 
-    /// Item space between image and title, defalut is 0.0
+    /// Item space between image and title, defalut is 5.0
     ///
     /// The maximum value cannot exceed 1/6 of itemSize
     public var spacing: CGFloat = 5.0
@@ -86,7 +86,7 @@ class SGItemsView: UIView {
         }
     }
     
-    typealias ItemClickBlock = (_ index: Int) -> Void
+    public typealias ItemClickBlock = (_ index: Int) -> Void
     private var tempItemClickBlock: ItemClickBlock?
     /// Item click callback method
     public func itemClickBlock(itemClick: ItemClickBlock?) {
@@ -108,7 +108,7 @@ class SGItemsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         if let tempItemSize = itemSize {
             CVFLayout.itemSize = CGSize(width: tempItemSize.width, height: tempItemSize.height)
@@ -141,11 +141,11 @@ class SGItemsView: UIView {
 }
 
 extension SGItemsView: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return titles?.count ?? 0
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellID", for: indexPath) as! SGItemCell
         if let configureImgViewBlock = tempConfigureImgViewBlock {
             configureImgViewBlock(cell.imgView, indexPath.item)
@@ -166,7 +166,7 @@ extension SGItemsView: UICollectionViewDelegate, UICollectionViewDataSource {
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let itemClickBlock = tempItemClickBlock {
             itemClickBlock(indexPath.item)
         }

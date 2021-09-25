@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SGTextView: UITextView  {
+public class SGTextView: UITextView  {
     /// PlaceHolder
     public var placeHolder: String? {
         didSet {
@@ -35,7 +35,7 @@ class SGTextView: UITextView  {
         return $0
     }(UILabel())
     
-    override var font: UIFont? {
+    public override var font: UIFont? {
         didSet {
             if font != nil {
                 // 让在属性哪里修改的字体,赋给给我们占位label
@@ -44,7 +44,7 @@ class SGTextView: UITextView  {
         }
     }
     
-    override var text: String? {
+    public override var text: String? {
         didSet {
             // 根据文本是否有内容而显示占位label
             placeHolderLabel.isHidden = hasText
@@ -93,19 +93,18 @@ class SGTextView: UITextView  {
             }
         }
     }
-    // 移除通知
-    deinit {
-        NotificationCenter.default.removeObserver(self)
-    }
     
-    // 子控件布局
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         // 设置占位文字的坐标
         placeHolderLabel.frame.origin.x = 5
         placeHolderLabel.frame.origin.y = 7
     }
     
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
     
 }
 

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D989CF726FACA3500AB1FC9 /* SGBaseItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D989CF626FACA3500AB1FC9 /* SGBaseItemsView.swift */; };
 		8DA9D17326E766DA009CBAFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D17226E766DA009CBAFC /* AppDelegate.swift */; };
 		8DA9D17526E766DA009CBAFC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D17426E766DA009CBAFC /* SceneDelegate.swift */; };
 		8DA9D17726E766DA009CBAFC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D17626E766DA009CBAFC /* ViewController.swift */; };
@@ -15,14 +16,14 @@
 		8DA9D17F26E766DF009CBAFC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DA9D17D26E766DF009CBAFC /* LaunchScreen.storyboard */; };
 		8DA9D18A26E766DF009CBAFC /* FlowerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D18926E766DF009CBAFC /* FlowerTests.swift */; };
 		8DA9D19526E766DF009CBAFC /* FlowerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D19426E766DF009CBAFC /* FlowerUITests.swift */; };
-		8DA9D21826E85488009CBAFC /* LabelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D21726E85488009CBAFC /* LabelVC.swift */; };
+		8DA9D21826E85488009CBAFC /* EdgeLabelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D21726E85488009CBAFC /* EdgeLabelVC.swift */; };
 		8DA9D21A26E854A7009CBAFC /* TagsViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D21926E854A7009CBAFC /* TagsViewVC.swift */; };
 		8DA9D21E26E858C3009CBAFC /* TextViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D21D26E858C3009CBAFC /* TextViewVC.swift */; };
 		8DA9D22426E8C9C6009CBAFC /* ItemsViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D22326E8C9C6009CBAFC /* ItemsViewVC.swift */; };
 		8DA9D46126EA1140009CBAFC /* ImageDownload.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D45926EA1140009CBAFC /* ImageDownload.swift */; };
 		8DA9D46226EA1140009CBAFC /* GCDAsync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D45A26EA1140009CBAFC /* GCDAsync.swift */; };
 		8DA9D46326EA1140009CBAFC /* AppTools.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D45B26EA1140009CBAFC /* AppTools.swift */; };
-		8DA9D46426EA1140009CBAFC /* SGLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D45D26EA1140009CBAFC /* SGLabel.swift */; };
+		8DA9D46426EA1140009CBAFC /* SGEdgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D45D26EA1140009CBAFC /* SGEdgeLabel.swift */; };
 		8DA9D46526EA1140009CBAFC /* SGItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D45E26EA1140009CBAFC /* SGItemsView.swift */; };
 		8DA9D46626EA1140009CBAFC /* SGTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D45F26EA1140009CBAFC /* SGTextView.swift */; };
 		8DA9D46726EA1140009CBAFC /* SGTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D46026EA1140009CBAFC /* SGTagsView.swift */; };
@@ -46,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8D989CF626FACA3500AB1FC9 /* SGBaseItemsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGBaseItemsView.swift; sourceTree = "<group>"; };
 		8DA9D16F26E766DA009CBAFC /* Flower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA9D17226E766DA009CBAFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DA9D17426E766DA009CBAFC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,14 +62,14 @@
 		8DA9D19026E766DF009CBAFC /* FlowerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FlowerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA9D19426E766DF009CBAFC /* FlowerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlowerUITests.swift; sourceTree = "<group>"; };
 		8DA9D19626E766DF009CBAFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8DA9D21726E85488009CBAFC /* LabelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelVC.swift; sourceTree = "<group>"; };
+		8DA9D21726E85488009CBAFC /* EdgeLabelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeLabelVC.swift; sourceTree = "<group>"; };
 		8DA9D21926E854A7009CBAFC /* TagsViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsViewVC.swift; sourceTree = "<group>"; };
 		8DA9D21D26E858C3009CBAFC /* TextViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewVC.swift; sourceTree = "<group>"; };
 		8DA9D22326E8C9C6009CBAFC /* ItemsViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewVC.swift; sourceTree = "<group>"; };
 		8DA9D45926EA1140009CBAFC /* ImageDownload.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageDownload.swift; sourceTree = "<group>"; };
 		8DA9D45A26EA1140009CBAFC /* GCDAsync.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GCDAsync.swift; sourceTree = "<group>"; };
 		8DA9D45B26EA1140009CBAFC /* AppTools.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppTools.swift; sourceTree = "<group>"; };
-		8DA9D45D26EA1140009CBAFC /* SGLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGLabel.swift; sourceTree = "<group>"; };
+		8DA9D45D26EA1140009CBAFC /* SGEdgeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGEdgeLabel.swift; sourceTree = "<group>"; };
 		8DA9D45E26EA1140009CBAFC /* SGItemsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGItemsView.swift; sourceTree = "<group>"; };
 		8DA9D45F26EA1140009CBAFC /* SGTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGTextView.swift; sourceTree = "<group>"; };
 		8DA9D46026EA1140009CBAFC /* SGTagsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGTagsView.swift; sourceTree = "<group>"; };
@@ -155,8 +157,8 @@
 		8DA9D21626E85456009CBAFC /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				8DA9D21726E85488009CBAFC /* EdgeLabelVC.swift */,
 				8DA9D22326E8C9C6009CBAFC /* ItemsViewVC.swift */,
-				8DA9D21726E85488009CBAFC /* LabelVC.swift */,
 				8DA9D21926E854A7009CBAFC /* TagsViewVC.swift */,
 				8DA9D21D26E858C3009CBAFC /* TextViewVC.swift */,
 			);
@@ -185,8 +187,9 @@
 		8DA9D45C26EA1140009CBAFC /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				8D989CF626FACA3500AB1FC9 /* SGBaseItemsView.swift */,
+				8DA9D45D26EA1140009CBAFC /* SGEdgeLabel.swift */,
 				8DA9D45E26EA1140009CBAFC /* SGItemsView.swift */,
-				8DA9D45D26EA1140009CBAFC /* SGLabel.swift */,
 				8DA9D46026EA1140009CBAFC /* SGTagsView.swift */,
 				8DA9D45F26EA1140009CBAFC /* SGTextView.swift */,
 			);
@@ -327,6 +330,7 @@
 				8DA9D46226EA1140009CBAFC /* GCDAsync.swift in Sources */,
 				8DA9D46126EA1140009CBAFC /* ImageDownload.swift in Sources */,
 				8DA9D46526EA1140009CBAFC /* SGItemsView.swift in Sources */,
+				8D989CF726FACA3500AB1FC9 /* SGBaseItemsView.swift in Sources */,
 				8DA9D17726E766DA009CBAFC /* ViewController.swift in Sources */,
 				8DA9D17326E766DA009CBAFC /* AppDelegate.swift in Sources */,
 				8DA9D46626EA1140009CBAFC /* SGTextView.swift in Sources */,
@@ -334,9 +338,9 @@
 				8DA9D46326EA1140009CBAFC /* AppTools.swift in Sources */,
 				8DA9D17526E766DA009CBAFC /* SceneDelegate.swift in Sources */,
 				8DA9D21E26E858C3009CBAFC /* TextViewVC.swift in Sources */,
-				8DA9D46426EA1140009CBAFC /* SGLabel.swift in Sources */,
+				8DA9D46426EA1140009CBAFC /* SGEdgeLabel.swift in Sources */,
 				8DA9D22426E8C9C6009CBAFC /* ItemsViewVC.swift in Sources */,
-				8DA9D21826E85488009CBAFC /* LabelVC.swift in Sources */,
+				8DA9D21826E85488009CBAFC /* EdgeLabelVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
