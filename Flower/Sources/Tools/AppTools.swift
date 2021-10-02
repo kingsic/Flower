@@ -35,6 +35,13 @@ public class AppTools: NSObject {
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"]
         return appVersion as! String
     }
+    /// Get the app build version number
+    ///
+    /// - returns: App build version number
+    public class func appBuildVersion() -> String {
+        let appVersion = Bundle.main.infoDictionary?["CFBundleVersion"]
+        return appVersion as! String
+    }
 
     /// Jump to app store
     ///
