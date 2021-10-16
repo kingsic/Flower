@@ -66,12 +66,18 @@ extension ItemsViewVC: SGBaseItemsViewDataSource, SGBaseItemsViewDelegate {
         return 6
     }
     
+    func itemsView(_ itemsView: SGBaseItemsView, cell: UICollectionViewCell, cellForItemAt index: Int) {
+        (cell as! BaseItemsCell).btn.setTitle("index - \(index)", for: .normal)
+    }
+    
     func itemsView(_ itemsView: SGBaseItemsView, didSelectItemAt index: Int) {
         print("当前点击的item下标值为：\(index)")
     }
 }
 
 class BaseItemsCell: UICollectionViewCell {
+    var btn = UIButton()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .orange
@@ -79,7 +85,6 @@ class BaseItemsCell: UICollectionViewCell {
         let height: CGFloat = 20
         let y: CGFloat = 0.5 * (frame.size.height - height)
         
-        let btn = UIButton()
         btn.frame = CGRect(x: 10, y: y, width: frame.size.width - 20, height: height)
         btn.setTitle("btn", for: .normal)
         btn.backgroundColor = .red

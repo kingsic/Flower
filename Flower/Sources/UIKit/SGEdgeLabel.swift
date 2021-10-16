@@ -21,6 +21,9 @@ public extension SGEdgeInsets {
 public class SGEdgeLabel: UILabel {
     /// 文本内边距
     public var contentInset: SGEdgeInsets = .zero
+    
+    /// 文本是否自适应，默认为：false
+    public var autosized: Bool = false
 
     public override func drawText(in rect: CGRect) {
         let tempRect = self.textRect(forBounds: rect, limitedToNumberOfLines: self.numberOfLines)
@@ -29,13 +32,19 @@ public class SGEdgeLabel: UILabel {
 
     public override func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
         var rect: CGRect = super.textRect(forBounds: bounds, limitedToNumberOfLines: numberOfLines)
+        let offsetTop = contentInset.top < 0 ? 0 : contentInset.top
         let offsetLeft = contentInset.left < 0 ? 0 : contentInset.left
         let offsetRight = contentInset.right < 0 ? 0 : contentInset.right
-        let offsetTop = contentInset.top < 0 ? 0 : contentInset.top
-
+        
         rect.origin.x = offsetLeft
         rect.origin.y = offsetTop
-        rect.size.width -= offsetLeft + offsetRight
+        
+        if autosized {
+            rect.size.width += offsetLeft + offsetRight
+        } else {
+            rect.size.width -= offsetLeft + offsetRight
+        }
+        
         return rect
     }
 

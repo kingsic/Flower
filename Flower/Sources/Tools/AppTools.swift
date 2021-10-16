@@ -18,6 +18,28 @@ public let safeAreaInsetsBottom = statusBarHeight == 20 ? 0 : 34;
 
 
 public class AppTools: NSObject {
+    /// After processing the hidden navigation bar, the scrollView offsets the status bar height downward
+    ///
+    /// - parameter scrollView: ScrollView
+    ///
+    /// - parameter controller: Controller of Scrollview
+    public class func adjust(scrollView: UIScrollView, controller: UIViewController) {
+        if #available(iOS 11.0, *) {
+            scrollView.contentInsetAdjustmentBehavior = .never
+        } else {
+            controller.automaticallyAdjustsScrollViewInsets = false
+        }
+    }
+    
+    /// Make a call
+    ///
+    /// - parameter number: Telephone number
+    public class func callPhone(number: String) {
+        let phoneNum = "telprompt://\(number)"
+        guard let url = URL.init(string: phoneNum) else { return }
+        UIApplication.shared.open(url, options: Dictionary(), completionHandler: nil)
+    }
+    
     /// Get the app name
     ///
     /// - returns: App name
@@ -66,14 +88,6 @@ public class AppTools: NSObject {
             }
         }
     }
-
-    /// Make a call
-    ///
-    /// - parameter number: Telephone number
-    public class func callPhone(number: String) {
-        let phoneNum = "telprompt://\(number)"
-        guard let url = URL.init(string: phoneNum) else { return }
-        UIApplication.shared.open(url, options: Dictionary(), completionHandler: nil)
-    }
+    
 }
 

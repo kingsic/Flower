@@ -8,9 +8,11 @@
 
 import UIKit
 
-public protocol SGBaseItemsViewDataSource {
+@objc public protocol SGBaseItemsViewDataSource: NSObjectProtocol {
     /// Number of returned items
     func itemsView(_ itemsView: SGBaseItemsView, numberOfItems: Int) -> Int
+    /// Data source
+    func itemsView(_ itemsView: SGBaseItemsView, cell: UICollectionViewCell, cellForItemAt index: Int)
 }
 
 @objc public protocol SGBaseItemsViewDelegate: NSObjectProtocol {
@@ -92,16 +94,22 @@ public class SGBaseItemsView: UIView {
     }
     
     /// Default false. if true, show indicator while we are tracking. fades out after tracking
-    public var showsHorizontalScrollIndicator: Bool {
-        set {
-            if newValue == true {
-                collectionView.showsHorizontalScrollIndicator = true
+    public var showsHorizontalScrollIndicator: Bool? {
+        willSet {
+            if (newValue != nil) {
+                collectionView.showsHorizontalScrollIndicator = newValue!
             }
         }
-        get {
-            return false
+    }
+    /// Default false. if true, show indicator while we are tracking. fades out after tracking
+    public var showsVerticalScrollIndicator: Bool? {
+        willSet {
+            if (newValue != nil) {
+                collectionView.showsVerticalScrollIndicator = newValue!
+            }
         }
     }
+    
     
     public typealias ItemClickBlock = (_ index: Int) -> Void
     private var tempItemClickBlock: ItemClickBlock?
@@ -142,6 +150,7 @@ public class SGBaseItemsView: UIView {
         tempCollectionView.dataSource = self
         tempCollectionView.backgroundColor = self.backgroundColor
         tempCollectionView.showsHorizontalScrollIndicator = false
+        tempCollectionView.showsVerticalScrollIndicator = false
         return tempCollectionView
     }()
     
@@ -154,6 +163,9 @@ extension SGBaseItemsView: UICollectionViewDelegate, UICollectionViewDataSource 
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: tempIdentifier, for: indexPath)
+        if dataSource != nil && (dataSource?.responds(to: #selector(dataSource?.itemsView(_:cell:cellForItemAt:)))) != nil {
+            dataSource?.itemsView(self, cell: cell, cellForItemAt: indexPath.item)
+        }
         return cell
     }
     

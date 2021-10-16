@@ -30,17 +30,17 @@ public class SGItemsView: UIView {
     
     /// Item content Inset of top, defalut is 5.0
     ///
-    /// The maximum value cannot exceed 1/6 of itemSize
+    /// The maximum value cannot exceed 1/5 of itemSize
     public var contentInsetTop: CGFloat = 5.0
     
     /// Item content Inset of bottom, defalut is 5.0
     ///
-    /// The maximum value cannot exceed 1/6 of itemSize
+    /// The maximum value cannot exceed 1/5 of itemSize
     public var contentInsetBottom: CGFloat = 5.0
 
     /// Item space between image and title, defalut is 5.0
     ///
-    /// The maximum value cannot exceed 1/6 of itemSize
+    /// The maximum value cannot exceed 1/5 of itemSize
     public var spacing: CGFloat = 5.0
     
     /// Default UIEdgeInsetsZero. add additional scroll area around content
@@ -190,15 +190,15 @@ private class SGItemCell: UICollectionViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let max_v: CGFloat = 6
+        let max_v: CGFloat = 5
         
-        if contentInsetOfTop > self.frame.size.height / max_v {
+        if contentInsetOfTop > (self.frame.size.height / max_v) || contentInsetOfTop < 0 {
             contentInsetOfTop = 0.0
         }
-        if contentInsetOfBottom >  self.frame.size.height / max_v {
+        if contentInsetOfBottom > (self.frame.size.height / max_v) || contentInsetOfBottom < 0 {
             contentInsetOfBottom = 0.0
         }
-        if spacing > self.frame.size.height / max_v {
+        if spacing > (self.frame.size.height / max_v) || spacing < 0 {
             spacing = 0.0
         }
         
