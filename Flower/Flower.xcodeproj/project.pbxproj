@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D78CE1D272FFCE1009FCC7B /* DateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D78CE1C272FFCE1009FCC7B /* DateTool.swift */; };
 		8D989CF726FACA3500AB1FC9 /* SGBaseItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D989CF626FACA3500AB1FC9 /* SGBaseItemsView.swift */; };
 		8DA9D17326E766DA009CBAFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D17226E766DA009CBAFC /* AppDelegate.swift */; };
 		8DA9D17526E766DA009CBAFC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D17426E766DA009CBAFC /* SceneDelegate.swift */; };
@@ -27,6 +28,9 @@
 		8DA9D46526EA1140009CBAFC /* SGItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D45E26EA1140009CBAFC /* SGItemsView.swift */; };
 		8DA9D46626EA1140009CBAFC /* SGTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D45F26EA1140009CBAFC /* SGTextView.swift */; };
 		8DA9D46726EA1140009CBAFC /* SGTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D46026EA1140009CBAFC /* SGTagsView.swift */; };
+		8DD884E4274CAC0400B782E4 /* AppStoreTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD884E3274CAC0400B782E4 /* AppStoreTool.swift */; };
+		8DD884E6274CAC4A00B782E4 /* AppInfoTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD884E5274CAC4A00B782E4 /* AppInfoTool.swift */; };
+		8DD884E8274CDDAA00B782E4 /* SGButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DD884E7274CDDAA00B782E4 /* SGButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +51,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8D78CE1C272FFCE1009FCC7B /* DateTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTool.swift; sourceTree = "<group>"; };
 		8D989CF626FACA3500AB1FC9 /* SGBaseItemsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGBaseItemsView.swift; sourceTree = "<group>"; };
 		8DA9D16F26E766DA009CBAFC /* Flower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA9D17226E766DA009CBAFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -73,6 +78,9 @@
 		8DA9D45E26EA1140009CBAFC /* SGItemsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGItemsView.swift; sourceTree = "<group>"; };
 		8DA9D45F26EA1140009CBAFC /* SGTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGTextView.swift; sourceTree = "<group>"; };
 		8DA9D46026EA1140009CBAFC /* SGTagsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGTagsView.swift; sourceTree = "<group>"; };
+		8DD884E3274CAC0400B782E4 /* AppStoreTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreTool.swift; sourceTree = "<group>"; };
+		8DD884E5274CAC4A00B782E4 /* AppInfoTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppInfoTool.swift; sourceTree = "<group>"; };
+		8DD884E7274CDDAA00B782E4 /* SGButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -178,6 +186,9 @@
 			isa = PBXGroup;
 			children = (
 				8DA9D45B26EA1140009CBAFC /* AppTools.swift */,
+				8DD884E3274CAC0400B782E4 /* AppStoreTool.swift */,
+				8DD884E5274CAC4A00B782E4 /* AppInfoTool.swift */,
+				8D78CE1C272FFCE1009FCC7B /* DateTool.swift */,
 				8DA9D45A26EA1140009CBAFC /* GCDAsync.swift */,
 				8DA9D45926EA1140009CBAFC /* ImageDownload.swift */,
 			);
@@ -188,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				8D989CF626FACA3500AB1FC9 /* SGBaseItemsView.swift */,
+				8DD884E7274CDDAA00B782E4 /* SGButton.swift */,
 				8DA9D45D26EA1140009CBAFC /* SGEdgeLabel.swift */,
 				8DA9D45E26EA1140009CBAFC /* SGItemsView.swift */,
 				8DA9D46026EA1140009CBAFC /* SGTagsView.swift */,
@@ -327,13 +339,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DA9D21A26E854A7009CBAFC /* TagsViewVC.swift in Sources */,
+				8DD884E6274CAC4A00B782E4 /* AppInfoTool.swift in Sources */,
 				8DA9D46226EA1140009CBAFC /* GCDAsync.swift in Sources */,
 				8DA9D46126EA1140009CBAFC /* ImageDownload.swift in Sources */,
 				8DA9D46526EA1140009CBAFC /* SGItemsView.swift in Sources */,
 				8D989CF726FACA3500AB1FC9 /* SGBaseItemsView.swift in Sources */,
+				8DD884E8274CDDAA00B782E4 /* SGButton.swift in Sources */,
+				8D78CE1D272FFCE1009FCC7B /* DateTool.swift in Sources */,
 				8DA9D17726E766DA009CBAFC /* ViewController.swift in Sources */,
 				8DA9D17326E766DA009CBAFC /* AppDelegate.swift in Sources */,
 				8DA9D46626EA1140009CBAFC /* SGTextView.swift in Sources */,
+				8DD884E4274CAC0400B782E4 /* AppStoreTool.swift in Sources */,
 				8DA9D46726EA1140009CBAFC /* SGTagsView.swift in Sources */,
 				8DA9D46326EA1140009CBAFC /* AppTools.swift in Sources */,
 				8DA9D17526E766DA009CBAFC /* SceneDelegate.swift in Sources */,

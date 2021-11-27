@@ -27,6 +27,11 @@ public class SGBaseItemsView: UIView {
     /// Delegate
     public var delegate: SGBaseItemsViewDelegate?
     
+    /// Reload data
+    public func reloadData() {
+        collectionView.reloadData()
+    }
+    
     /// Item size. consider the top and bottom values of the contentinset property when setting the height
     public var itemSize: CGSize?
     

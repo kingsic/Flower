@@ -27,6 +27,9 @@
 		8DA9D45426EA103D009CBAFC /* SGLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D44726EA103C009CBAFC /* SGLabel.m */; };
 		8DA9D45526EA103D009CBAFC /* SGItemsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D44C26EA103C009CBAFC /* SGItemsView.m */; };
 		8DA9D45626EA103D009CBAFC /* SGGuidePageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D44E26EA103C009CBAFC /* SGGuidePageView.m */; };
+		8DF5131627323238009607B0 /* SGSensitiveWordsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5131327323238009607B0 /* SGSensitiveWordsTool.m */; };
+		8DF5131727323238009607B0 /* SensitiveWords.txt in Resources */ = {isa = PBXBuildFile; fileRef = 8DF5131427323238009607B0 /* SensitiveWords.txt */; };
+		8DF5131B2732327D009607B0 /* SGHighlightWordsTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF5131A2732327D009607B0 /* SGHighlightWordsTool.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +90,11 @@
 		8DA9D44D26EA103C009CBAFC /* SGLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGLabel.h; sourceTree = "<group>"; };
 		8DA9D44E26EA103C009CBAFC /* SGGuidePageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGGuidePageView.m; sourceTree = "<group>"; };
 		8DA9D44F26EA103C009CBAFC /* SGTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGTextView.h; sourceTree = "<group>"; };
+		8DF5131327323238009607B0 /* SGSensitiveWordsTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SGSensitiveWordsTool.m; sourceTree = "<group>"; };
+		8DF5131427323238009607B0 /* SensitiveWords.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = SensitiveWords.txt; sourceTree = "<group>"; };
+		8DF5131527323238009607B0 /* SGSensitiveWordsTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SGSensitiveWordsTool.h; sourceTree = "<group>"; };
+		8DF513192732327D009607B0 /* SGHighlightWordsTool.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SGHighlightWordsTool.h; sourceTree = "<group>"; };
+		8DF5131A2732327D009607B0 /* SGHighlightWordsTool.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SGHighlightWordsTool.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +209,8 @@
 			children = (
 				8DA9D44126EA103C009CBAFC /* AppTools.h */,
 				8DA9D44226EA103C009CBAFC /* AppTools.m */,
+				8DF5131827323246009607B0 /* HighlightWords */,
+				8DF5131227323238009607B0 /* SensitiveWords */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -222,6 +232,25 @@
 				8DA9D44626EA103C009CBAFC /* SGTextView.m */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		8DF5131227323238009607B0 /* SensitiveWords */ = {
+			isa = PBXGroup;
+			children = (
+				8DF5131427323238009607B0 /* SensitiveWords.txt */,
+				8DF5131527323238009607B0 /* SGSensitiveWordsTool.h */,
+				8DF5131327323238009607B0 /* SGSensitiveWordsTool.m */,
+			);
+			path = SensitiveWords;
+			sourceTree = "<group>";
+		};
+		8DF5131827323246009607B0 /* HighlightWords */ = {
+			isa = PBXGroup;
+			children = (
+				8DF513192732327D009607B0 /* SGHighlightWordsTool.h */,
+				8DF5131A2732327D009607B0 /* SGHighlightWordsTool.m */,
+			);
+			path = HighlightWords;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -327,6 +356,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8DA9D1C926E76F85009CBAFC /* LaunchScreen.storyboard in Resources */,
+				8DF5131727323238009607B0 /* SensitiveWords.txt in Resources */,
 				8DA9D1C626E76F85009CBAFC /* Assets.xcassets in Resources */,
 				8DA9D1C426E76F83009CBAFC /* Main.storyboard in Resources */,
 			);
@@ -359,6 +389,7 @@
 				8DA9D45526EA103D009CBAFC /* SGItemsView.m in Sources */,
 				8DA9D45626EA103D009CBAFC /* SGGuidePageView.m in Sources */,
 				8DA9D20E26E773A0009CBAFC /* TagsViewVC.m in Sources */,
+				8DF5131627323238009607B0 /* SGSensitiveWordsTool.m in Sources */,
 				8DA9D1CC26E76F85009CBAFC /* main.m in Sources */,
 				8DA9D45326EA103D009CBAFC /* SGTextView.m in Sources */,
 				8DA9D45426EA103D009CBAFC /* SGLabel.m in Sources */,
@@ -366,6 +397,7 @@
 				8DA9D20F26E773A0009CBAFC /* TextViewVC.m in Sources */,
 				8DA9D20D26E773A0009CBAFC /* LabelVC.m in Sources */,
 				8DA9D45026EA103D009CBAFC /* AppTools.m in Sources */,
+				8DF5131B2732327D009607B0 /* SGHighlightWordsTool.m in Sources */,
 				8DA9D45126EA103D009CBAFC /* SGTagsView.m in Sources */,
 				8DA9D45226EA103D009CBAFC /* SGActionSheet.m in Sources */,
 			);

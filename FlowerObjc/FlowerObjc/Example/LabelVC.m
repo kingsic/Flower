@@ -8,6 +8,7 @@
 
 #import "LabelVC.h"
 #import "SGLabel.h"
+#import "SGHighlightWordsTool.h"
 
 @interface LabelVC ()
 
@@ -21,12 +22,13 @@
     self.navigationItem.title = @"SGLabel";
     self.view.backgroundColor = [UIColor whiteColor];
 
-    NSString *tempStr = @"曾经沧海难为水，除却巫山不是云\n取次花丛懒回顾，半缘修道半缘君";
+    NSString *tempStr = @"曾经沧海难为水，除却巫山不是云\n取次花丛懒回顾，半缘修道半缘君\n\n这是高亮词";
     SGLabel *lab = [[SGLabel alloc] init];
     lab.frame = CGRectMake(50, 100, self.view.frame.size.width - 100, 100);
     lab.backgroundColor = [UIColor greenColor];
     lab.numberOfLines = 0;
     lab.text = tempStr;
+    lab.attributedText = [[[SGHighlightWordsTool alloc] init] highlightWithString:tempStr highlightWords:@"这是高亮词" highlightWordsColor:[UIColor redColor]];
     [self.view addSubview:lab];
 }
 
