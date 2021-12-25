@@ -11,8 +11,12 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let dataSource = ["SGEdgeLabel", "SGItemsView", "SGTagsView", "SGTextView"]
-    let dataSourceVC = [EdgeLabelVC(), ItemsViewVC(), TagsViewVC(), TextViewVC()]
+    let dataSource = [
+        ["SGEdgeLabel": EdgeLabelVC.self],
+        ["SGItemsView": ItemsViewVC.self],
+        ["SGTagsView": TagsViewVC.self],
+        ["SGTextView": TextViewVC.self]
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +26,14 @@ class ViewController: UIViewController {
         tableView.tableFooterView = UIView()
     }
 
-
 }
 
 extension ViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vc = dataSourceVC[indexPath.row]
-        navigationController?.pushViewController(vc, animated: true)
+        let vc = dataSource[indexPath.row].values.first
+        if let tempVC = vc {
+            navigationController?.pushViewController(tempVC.init(), animated: true)
+        }
     }
 }
 
@@ -42,7 +47,7 @@ extension ViewController: UITableViewDataSource {
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .none
         cell.backgroundColor = .clear
-        cell.textLabel?.text = dataSource[indexPath.row]
+        cell.textLabel?.text = dataSource[indexPath.row].keys.first
         return cell
     }
 }

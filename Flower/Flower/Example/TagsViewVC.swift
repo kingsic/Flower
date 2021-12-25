@@ -23,7 +23,7 @@ class TagsViewVC: UIViewController {
         tagsViewConfigure.style = .vertical
 
         let tagsView = SGTagsView.init(frame: CGRect.init(x: 20, y: navBarHeight + 20, width: screenWidth - 40, height: 200), configure: tagsViewConfigure)
-        tagsView.tags = ["Objective-C", "Swift", "Flutter", "Android", "Java"]
+        tagsView.tags = ["Objective-C", "Swift", "Flutter", "Java", "Kotlin"]
         tagsView.backgroundColor = .green
         tagsView.isFixedHeight = true
         view.addSubview(tagsView)

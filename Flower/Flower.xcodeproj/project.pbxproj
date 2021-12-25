@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8D78CE1D272FFCE1009FCC7B /* DateTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D78CE1C272FFCE1009FCC7B /* DateTool.swift */; };
 		8D989CF726FACA3500AB1FC9 /* SGBaseItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D989CF626FACA3500AB1FC9 /* SGBaseItemsView.swift */; };
+		8D9E965027721CE800378DD8 /* SGDragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9E964F27721CE800378DD8 /* SGDragView.swift */; };
 		8DA9D17326E766DA009CBAFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D17226E766DA009CBAFC /* AppDelegate.swift */; };
 		8DA9D17526E766DA009CBAFC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D17426E766DA009CBAFC /* SceneDelegate.swift */; };
 		8DA9D17726E766DA009CBAFC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D17626E766DA009CBAFC /* ViewController.swift */; };
@@ -53,6 +54,7 @@
 /* Begin PBXFileReference section */
 		8D78CE1C272FFCE1009FCC7B /* DateTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTool.swift; sourceTree = "<group>"; };
 		8D989CF626FACA3500AB1FC9 /* SGBaseItemsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGBaseItemsView.swift; sourceTree = "<group>"; };
+		8D9E964F27721CE800378DD8 /* SGDragView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGDragView.swift; sourceTree = "<group>"; };
 		8DA9D16F26E766DA009CBAFC /* Flower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA9D17226E766DA009CBAFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DA9D17426E766DA009CBAFC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 			children = (
 				8D989CF626FACA3500AB1FC9 /* SGBaseItemsView.swift */,
 				8DD884E7274CDDAA00B782E4 /* SGButton.swift */,
+				8D9E964F27721CE800378DD8 /* SGDragView.swift */,
 				8DA9D45D26EA1140009CBAFC /* SGEdgeLabel.swift */,
 				8DA9D45E26EA1140009CBAFC /* SGItemsView.swift */,
 				8DA9D46026EA1140009CBAFC /* SGTagsView.swift */,
@@ -344,6 +347,7 @@
 				8DA9D46126EA1140009CBAFC /* ImageDownload.swift in Sources */,
 				8DA9D46526EA1140009CBAFC /* SGItemsView.swift in Sources */,
 				8D989CF726FACA3500AB1FC9 /* SGBaseItemsView.swift in Sources */,
+				8D9E965027721CE800378DD8 /* SGDragView.swift in Sources */,
 				8DD884E8274CDDAA00B782E4 /* SGButton.swift in Sources */,
 				8D78CE1D272FFCE1009FCC7B /* DateTool.swift in Sources */,
 				8DA9D17726E766DA009CBAFC /* ViewController.swift in Sources */,
