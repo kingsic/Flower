@@ -15,7 +15,8 @@ class ViewController: UIViewController {
         ["SGEdgeLabel": EdgeLabelVC.self],
         ["SGItemsView": ItemsViewVC.self],
         ["SGTagsView": TagsViewVC.self],
-        ["SGTextView": TextViewVC.self]
+        ["SGTextView": TextViewVC.self],
+        ["文件数据储存相关": FileVC.self]
     ]
     
     override func viewDidLoad() {
