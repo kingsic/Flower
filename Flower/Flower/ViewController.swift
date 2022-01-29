@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     let dataSource = [
         ["SGEdgeLabel": EdgeLabelVC.self],
+        ["ExpandTableView": ExpandTableViewVC.self],        
         ["SGItemsView": ItemsViewVC.self],
         ["SGTagsView": TagsViewVC.self],
         ["SGTextView": TextViewVC.self],
