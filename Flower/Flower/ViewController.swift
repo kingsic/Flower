@@ -15,6 +15,7 @@ class ViewController: UIViewController {
         ["SGEdgeLabel": EdgeLabelVC.self],
         ["ExpandTableView": ExpandTableViewVC.self],        
         ["SGItemsView": ItemsViewVC.self],
+        ["SGPopupMenu": PopupMenuVC.self],
         ["SGTagsView": TagsViewVC.self],
         ["SGTextView": TextViewVC.self],
         ["文件数据储存相关": FileVC.self]
