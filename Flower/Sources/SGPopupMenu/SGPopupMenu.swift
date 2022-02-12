@@ -1,6 +1,6 @@
 //
 //  SGPopupMenu.swift
-//  SGPopupMenu
+//  Flower
 //
 //  Created by kingsic on 2022/2/2.
 //
@@ -9,6 +9,11 @@ import UIKit
 
 public enum TriangleLocation {
     case Default, Center, Left
+}
+
+public struct SeparatorInset {
+    public var left: CGFloat = 0.0
+    public var right: CGFloat = 0.0
 }
 
 public class SGPopupMenuConfigure: NSObject {
@@ -36,6 +41,9 @@ public class SGPopupMenuConfigure: NSObject {
     /// 分割线颜色，默认为：.black.withAlphaComponent(0.2)
     public var separatorColor: UIColor = .black.withAlphaComponent(0.2)
     
+    /// 分割线左右边距
+    public var separatorInset: SeparatorInset = .init()
+    
     /// 点击 item 时的背景颜色，默认为：.black.withAlphaComponent(0.2)
     public var selectedBackgroundColor: UIColor = .black.withAlphaComponent(0.2)
     
@@ -51,6 +59,9 @@ public class SGPopupMenuConfigure: NSObject {
     public func imageViewBlock(block: @escaping ImageViewBlock) {
         tempImageViewBlock = block
     }
+    
+    /// 是否需要三角形，默认为：true
+    public var isTriangle: Bool = true
     
     /// 三角形位置，默认为：.Default
     public var triangleLocation: TriangleLocation = .Default
@@ -100,7 +111,9 @@ public class SGPopupMenu: UIViewController {
         
         view.addSubview(popupMenu)
         popupMenu.addSubview(tableView)
-        view.addSubview(triangleView)
+        if configure.isTriangle {
+            view.addSubview(triangleView)
+        }
     }
     
     public override func viewDidAppear(_ animated: Bool) {
@@ -108,7 +121,7 @@ public class SGPopupMenu: UIViewController {
         view.backgroundColor = configure.backgroundColor
     }
     
-    lazy var triangleView : TriangleView = {
+    fileprivate lazy var triangleView : TriangleView = {
         let view = TriangleView(frame: .zero, configure: configure)
         let width: CGFloat = configure.triangleWidth
         let height: CGFloat = configure.triangleHeight
@@ -153,6 +166,12 @@ public class SGPopupMenu: UIViewController {
     }()
 }
 
+public extension UIViewController {
+    func popupMenu(_ menu: SGPopupMenu) {
+        present(menu, animated: false, completion: nil)
+    }
+}
+
 extension SGPopupMenu {
     func dataSourceDidSet() {
         guard dataSource?.count != 0 else {
@@ -188,8 +207,15 @@ extension SGPopupMenu: UITableViewDelegate, UITableViewDataSource {
         if let block = configure.tempImageViewBlock {
             block(cell.imageView!, indexPath.row)
         }
+
         if indexPath.row == dataSource!.count - 1 {
             cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: cell.bounds.width)
+        } else {
+            if configure.separatorInset.left != 0 && configure.separatorInset.right != 0 {
+                let left = configure.separatorInset.left < 0 ? 0 : configure.separatorInset.left
+                let right = configure.separatorInset.right < 0 ? 0 : configure.separatorInset.right
+                cell.separatorInset = UIEdgeInsets(top: 0, left: left, bottom: 0, right: right)
+            }
         }
         return cell
     }
@@ -209,14 +235,9 @@ extension SGPopupMenu {
     }
 }
 
-public extension UIViewController {
-    func popupMenu(_ menu: SGPopupMenu) {
-        present(menu, animated: false, completion: nil)
-    }
-}
 
-class TriangleView: UIView {
-    public var configure: SGPopupMenuConfigure!
+fileprivate class TriangleView: UIView {
+    var configure: SGPopupMenuConfigure!
 
     init(frame: CGRect, configure: SGPopupMenuConfigure) {
         super.init(frame: frame)

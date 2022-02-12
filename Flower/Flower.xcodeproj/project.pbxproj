@@ -39,6 +39,8 @@
 		8DA9D21E26E858C3009CBAFC /* TextViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D21D26E858C3009CBAFC /* TextViewVC.swift */; };
 		8DA9D22426E8C9C6009CBAFC /* ItemsViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D22326E8C9C6009CBAFC /* ItemsViewVC.swift */; };
 		8DDD2A8C27AAE5760079947C /* PopupMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDD2A8B27AAE5760079947C /* PopupMenuVC.swift */; };
+		8DEDBDAA27B0058B007A5BD2 /* SGActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEDBDA927B0058B007A5BD2 /* SGActionSheet.swift */; };
+		8DEDBDAC27B00617007A5BD2 /* ActionSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEDBDAB27B00617007A5BD2 /* ActionSheetVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,8 @@
 		8DA9D21D26E858C3009CBAFC /* TextViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewVC.swift; sourceTree = "<group>"; };
 		8DA9D22326E8C9C6009CBAFC /* ItemsViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewVC.swift; sourceTree = "<group>"; };
 		8DDD2A8B27AAE5760079947C /* PopupMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupMenuVC.swift; sourceTree = "<group>"; };
+		8DEDBDA927B0058B007A5BD2 /* SGActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SGActionSheet.swift; sourceTree = "<group>"; };
+		8DEDBDAB27B00617007A5BD2 /* ActionSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +214,7 @@
 		8DA9D21626E85456009CBAFC /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				8DEDBDAB27B00617007A5BD2 /* ActionSheetVC.swift */,
 				8DA9D21726E85488009CBAFC /* EdgeLabelVC.swift */,
 				8D307ACA279B2EC6009F22E1 /* ExpandTableViewVC.swift */,
 				8DA9D22326E8C9C6009CBAFC /* ItemsViewVC.swift */,
@@ -225,11 +230,44 @@
 		8DA9D45726EA1140009CBAFC /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				8D600C6D27AE7C99007E227A /* SGPopupMenu.swift */,
-				8D600C6E27AE7C99007E227A /* SGTagsView.swift */,
-				8D600C6C27AE7C99007E227A /* SGTextView.swift */,
+				8DEDBDAF27B24BAA007A5BD2 /* SGActionSheet */,
+				8DEDBDB027B24BAF007A5BD2 /* SGPopupMenu */,
+				8DEDBDB127B24BB5007A5BD2 /* SGTagsView */,
+				8DEDBDB227B24BBB007A5BD2 /* SGTextView */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		8DEDBDAF27B24BAA007A5BD2 /* SGActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				8DEDBDA927B0058B007A5BD2 /* SGActionSheet.swift */,
+			);
+			path = SGActionSheet;
+			sourceTree = "<group>";
+		};
+		8DEDBDB027B24BAF007A5BD2 /* SGPopupMenu */ = {
+			isa = PBXGroup;
+			children = (
+				8D600C6D27AE7C99007E227A /* SGPopupMenu.swift */,
+			);
+			path = SGPopupMenu;
+			sourceTree = "<group>";
+		};
+		8DEDBDB127B24BB5007A5BD2 /* SGTagsView */ = {
+			isa = PBXGroup;
+			children = (
+				8D600C6E27AE7C99007E227A /* SGTagsView.swift */,
+			);
+			path = SGTagsView;
+			sourceTree = "<group>";
+		};
+		8DEDBDB227B24BBB007A5BD2 /* SGTextView */ = {
+			isa = PBXGroup;
+			children = (
+				8D600C6C27AE7C99007E227A /* SGTextView.swift */,
+			);
+			path = SGTextView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -366,6 +404,7 @@
 				8DA9D21A26E854A7009CBAFC /* TagsViewVC.swift in Sources */,
 				8D4BC4E527802A2B00E850A0 /* FileVC.swift in Sources */,
 				8DA9D17726E766DA009CBAFC /* ViewController.swift in Sources */,
+				8DEDBDAC27B00617007A5BD2 /* ActionSheetVC.swift in Sources */,
 				8D600C8027AE7CA3007E227A /* SGDragView.swift in Sources */,
 				8D600C6427AE7C7D007E227A /* ImageDownload.swift in Sources */,
 				8D600C6827AE7C7D007E227A /* GCDAsync.swift in Sources */,
@@ -373,6 +412,7 @@
 				8DA9D17326E766DA009CBAFC /* AppDelegate.swift in Sources */,
 				8D600C7127AE7C99007E227A /* SGTagsView.swift in Sources */,
 				8D600C7B27AE7CA3007E227A /* SGBaseItemsView.swift in Sources */,
+				8DEDBDAA27B0058B007A5BD2 /* SGActionSheet.swift in Sources */,
 				8D600C7E27AE7CA3007E227A /* SGItemsView.swift in Sources */,
 				8D600C7027AE7C99007E227A /* SGPopupMenu.swift in Sources */,
 				8DDD2A8C27AAE5760079947C /* PopupMenuVC.swift in Sources */,

@@ -45,8 +45,10 @@ class PopupMenuVC: UIViewController {
         config.backgroundColor = .black.withAlphaComponent(0.2)
         config.color = .black.withAlphaComponent(0.5)
         config.separatorColor = .black.withAlphaComponent(0.6)
+        config.separatorInset = .init(left: 15, right: 15)
         config.textColor = .white
         config.height = 50
+        config.isTriangle = false
         
         let menu = SGPopupMenu(configure: config)
         menu.dataSource = ["发起群聊", "添加朋友", "扫一扫", "收付款"]

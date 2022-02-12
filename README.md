@@ -7,8 +7,8 @@
 ## Flower
 |视图|注释|
 |----|-----|
-|SGBaseItemsView|baseItems视图
-|SGEdgeLabel|内边距的UILabel
+|SGActionSheet|弹窗
+|SGPopupMenu|弹框菜单
 |SGItemsView|item视图
 |SGTagsView|标签视图
 |SGTextView|placeholder、placeholderColor、limitNumber

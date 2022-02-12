@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     let dataSource = [
+        ["SGActionSheet": ActionSheetVC.self],
         ["SGEdgeLabel": EdgeLabelVC.self],
         ["ExpandTableView": ExpandTableViewVC.self],        
         ["SGItemsView": ItemsViewVC.self],
