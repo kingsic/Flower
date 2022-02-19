@@ -8,7 +8,7 @@
 import UIKit
 
 public enum TriangleLocation {
-    case Default, Center, Left
+    case topLeft, topCenter, topRight, bottomLeft, bottomCenter, bottomRight
 }
 
 public struct SeparatorInset {
@@ -53,6 +53,9 @@ public class SGPopupMenuConfigure: NSObject {
     /// 文字大小，默认为：.systemFont(ofSize: 15)
     public var textFont: UIFont = .systemFont(ofSize: 15)
     
+    /// 文字对齐样式，默认为：.left
+    public var textAlignment: NSTextAlignment = .left
+    
     public typealias ImageViewBlock = (_ imageView: UIImageView, _ index: Int) -> Void
     fileprivate var tempImageViewBlock: ImageViewBlock?
     /// 图片回调方法
@@ -63,8 +66,8 @@ public class SGPopupMenuConfigure: NSObject {
     /// 是否需要三角形，默认为：true
     public var isTriangle: Bool = true
     
-    /// 三角形位置，默认为：.Default
-    public var triangleLocation: TriangleLocation = .Default
+    /// 三角形位置，默认为：.topCenter
+    public var triangleLocation: TriangleLocation = .topCenter
     
     /// 三角形位置的偏移量，默认为：15（当 triangleLocation = .Center 时，不起作用）
     public var triangleLocationOffset: CGFloat = 15
@@ -125,16 +128,27 @@ public class SGPopupMenu: UIViewController {
         let view = TriangleView(frame: .zero, configure: configure)
         let width: CGFloat = configure.triangleWidth
         let height: CGFloat = configure.triangleHeight
-        let y = popupMenu.frame.minY - height
+        var y = popupMenu.frame.minY - height
+        if configure.triangleLocation == .bottomLeft || configure.triangleLocation == .bottomCenter || configure.triangleLocation == .bottomRight {
+            y = popupMenu.frame.maxY
+        }
         var x: CGFloat = 0
-        if configure.triangleLocation == .Default {
+        if configure.triangleLocation == .topRight {
             let offset = configure.triangleLocationOffset < 0 ? 0 : configure.triangleLocationOffset
             x = popupMenu.frame.maxX - width - offset
-        } else if configure.triangleLocation == .Center {
+        } else if configure.triangleLocation == .topCenter {
             x = popupMenu.frame.midX - 0.5 * width
-        } else if configure.triangleLocation == .Left {
+        } else if configure.triangleLocation == .topLeft {
             let offset = configure.triangleLocationOffset < 0 ? 0 : configure.triangleLocationOffset
             x = popupMenu.frame.minX + offset
+        } else if configure.triangleLocation == .bottomLeft {
+            let offset = configure.triangleLocationOffset < 0 ? 0 : configure.triangleLocationOffset
+            x = popupMenu.frame.minX + offset
+        } else if configure.triangleLocation == .bottomCenter {
+            x = popupMenu.frame.midX - 0.5 * width
+        } else if configure.triangleLocation == .bottomRight {
+            let offset = configure.triangleLocationOffset < 0 ? 0 : configure.triangleLocationOffset
+            x = popupMenu.frame.maxX - width - offset
         }
         view.frame = CGRect(x: x, y: y, width: width, height: height)
         view.backgroundColor = .clear
@@ -204,6 +218,7 @@ extension SGPopupMenu: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = dataSource![indexPath.row]
         cell.textLabel?.textColor = configure.textColor
         cell.textLabel?.font = configure.textFont
+        cell.textLabel?.textAlignment = configure.textAlignment
         if let block = configure.tempImageViewBlock {
             block(cell.imageView!, indexPath.row)
         }
@@ -253,12 +268,20 @@ fileprivate class TriangleView: UIView {
         super.draw(rect)
         
         let context = UIGraphicsGetCurrentContext()
-        context?.move(to: CGPoint(x: rect.size.width * 0.5, y: 0))
-        context?.addLine(to: CGPoint(x: 0, y: rect.size.height))
-        context?.addLine(to: CGPoint(x: rect.size.width, y: rect.size.height))
+        if configure.triangleLocation == .bottomLeft || configure.triangleLocation == .bottomCenter || configure.triangleLocation == .bottomRight {
+            context?.move(to: CGPoint(x: rect.size.width * 0.5, y: rect.size.height))
+            context?.addLine(to: CGPoint(x: 0, y: 0))
+            context?.addLine(to: CGPoint(x: rect.size.width, y: 0))
+        } else {
+            context?.move(to: CGPoint(x: rect.size.width * 0.5, y: 0))
+            context?.addLine(to: CGPoint(x: 0, y: rect.size.height))
+            context?.addLine(to: CGPoint(x: rect.size.width, y: rect.size.height))
+        }
+
         context?.closePath()
         configure.color.setStroke()
         configure.color.setFill()
         context?.drawPath(using: .fillStroke)
     }
 }
+
