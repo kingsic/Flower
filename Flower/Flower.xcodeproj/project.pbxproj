@@ -26,6 +26,7 @@
 		8D600C7E27AE7CA3007E227A /* SGItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D600C7627AE7CA3007E227A /* SGItemsView.swift */; };
 		8D600C8027AE7CA3007E227A /* SGDragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D600C7827AE7CA3007E227A /* SGDragView.swift */; };
 		8D600C8127AE7CA4007E227A /* SGEdgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D600C7927AE7CA3007E227A /* SGEdgeLabel.swift */; };
+		8D897562286D681800EFA6FA /* SGDashedlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D897561286D681800EFA6FA /* SGDashedlineView.swift */; };
 		8DA9D17326E766DA009CBAFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D17226E766DA009CBAFC /* AppDelegate.swift */; };
 		8DA9D17526E766DA009CBAFC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D17426E766DA009CBAFC /* SceneDelegate.swift */; };
 		8DA9D17726E766DA009CBAFC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D17626E766DA009CBAFC /* ViewController.swift */; };
@@ -80,6 +81,7 @@
 		8D600C7627AE7CA3007E227A /* SGItemsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGItemsView.swift; sourceTree = "<group>"; };
 		8D600C7827AE7CA3007E227A /* SGDragView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGDragView.swift; sourceTree = "<group>"; };
 		8D600C7927AE7CA3007E227A /* SGEdgeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGEdgeLabel.swift; sourceTree = "<group>"; };
+		8D897561286D681800EFA6FA /* SGDashedlineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGDashedlineView.swift; sourceTree = "<group>"; };
 		8DA9D16F26E766DA009CBAFC /* Flower.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flower.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8DA9D17226E766DA009CBAFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8DA9D17426E766DA009CBAFC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 			children = (
 				8D600C7327AE7CA3007E227A /* SGBaseItemsView.swift */,
 				8D600C7527AE7CA3007E227A /* SGButton.swift */,
+				8D897561286D681800EFA6FA /* SGDashedlineView.swift */,
 				8D600C7627AE7CA3007E227A /* SGItemsView.swift */,
 				8D600C7827AE7CA3007E227A /* SGDragView.swift */,
 				8D600C7927AE7CA3007E227A /* SGEdgeLabel.swift */,
@@ -407,6 +410,7 @@
 				8DEDBDAC27B00617007A5BD2 /* ActionSheetVC.swift in Sources */,
 				8D600C8027AE7CA3007E227A /* SGDragView.swift in Sources */,
 				8D600C6427AE7C7D007E227A /* ImageDownload.swift in Sources */,
+				8D897562286D681800EFA6FA /* SGDashedlineView.swift in Sources */,
 				8D600C6827AE7C7D007E227A /* GCDAsync.swift in Sources */,
 				8D600C6527AE7C7D007E227A /* AlamofireArrayParameters.swift in Sources */,
 				8DA9D17326E766DA009CBAFC /* AppDelegate.swift in Sources */,
