@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     
     let dataSource = [
         ["SGActionSheet": ActionSheetVC.self],
+        ["SGCycleScrollView": CycleScrollViewVC.self],
         ["SGEdgeLabel": EdgeLabelVC.self],
         ["ExpandTableView": ExpandTableViewVC.self],        
         ["SGItemsView": ItemsViewVC.self],

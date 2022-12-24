@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D22B23B294FECE30091BD7B /* SGCycleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D22B23A294FECE20091BD7B /* SGCycleScrollView.swift */; };
+		8D22B23E294FED320091BD7B /* CycleScrollViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D22B23C294FED320091BD7B /* CycleScrollViewVC.swift */; };
+		8D22B23F294FED320091BD7B /* CycleScrollViewVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D22B23D294FED320091BD7B /* CycleScrollViewVC.xib */; };
 		8D307ACB279B2EC6009F22E1 /* ExpandTableViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D307ACA279B2EC6009F22E1 /* ExpandTableViewVC.swift */; };
 		8D4BC4E527802A2B00E850A0 /* FileVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D4BC4E327802A2B00E850A0 /* FileVC.swift */; };
 		8D4BC4E627802A2B00E850A0 /* FileVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8D4BC4E427802A2B00E850A0 /* FileVC.xib */; };
@@ -62,6 +65,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8D22B23A294FECE20091BD7B /* SGCycleScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGCycleScrollView.swift; sourceTree = "<group>"; };
+		8D22B23C294FED320091BD7B /* CycleScrollViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CycleScrollViewVC.swift; sourceTree = "<group>"; };
+		8D22B23D294FED320091BD7B /* CycleScrollViewVC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CycleScrollViewVC.xib; sourceTree = "<group>"; };
 		8D307ACA279B2EC6009F22E1 /* ExpandTableViewVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandTableViewVC.swift; sourceTree = "<group>"; };
 		8D4BC4E327802A2B00E850A0 /* FileVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileVC.swift; sourceTree = "<group>"; };
 		8D4BC4E427802A2B00E850A0 /* FileVC.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FileVC.xib; sourceTree = "<group>"; };
@@ -130,6 +136,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D22B239294FECE20091BD7B /* SGCycleScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				8D22B23A294FECE20091BD7B /* SGCycleScrollView.swift */,
+			);
+			path = SGCycleScrollView;
+			sourceTree = "<group>";
+		};
 		8D600C5B27AE7C7D007E227A /* Tools */ = {
 			isa = PBXGroup;
 			children = (
@@ -218,6 +232,8 @@
 			isa = PBXGroup;
 			children = (
 				8DEDBDAB27B00617007A5BD2 /* ActionSheetVC.swift */,
+				8D22B23C294FED320091BD7B /* CycleScrollViewVC.swift */,
+				8D22B23D294FED320091BD7B /* CycleScrollViewVC.xib */,
 				8DA9D21726E85488009CBAFC /* EdgeLabelVC.swift */,
 				8D307ACA279B2EC6009F22E1 /* ExpandTableViewVC.swift */,
 				8DA9D22326E8C9C6009CBAFC /* ItemsViewVC.swift */,
@@ -234,6 +250,7 @@
 			isa = PBXGroup;
 			children = (
 				8DEDBDAF27B24BAA007A5BD2 /* SGActionSheet */,
+				8D22B239294FECE20091BD7B /* SGCycleScrollView */,
 				8DEDBDB027B24BAF007A5BD2 /* SGPopupMenu */,
 				8DEDBDB127B24BB5007A5BD2 /* SGTagsView */,
 				8DEDBDB227B24BBB007A5BD2 /* SGTextView */,
@@ -380,6 +397,7 @@
 				8DA9D17F26E766DF009CBAFC /* LaunchScreen.storyboard in Resources */,
 				8DA9D17C26E766DF009CBAFC /* Assets.xcassets in Resources */,
 				8DA9D17A26E766DA009CBAFC /* Main.storyboard in Resources */,
+				8D22B23F294FED320091BD7B /* CycleScrollViewVC.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,8 +426,10 @@
 				8D4BC4E527802A2B00E850A0 /* FileVC.swift in Sources */,
 				8DA9D17726E766DA009CBAFC /* ViewController.swift in Sources */,
 				8DEDBDAC27B00617007A5BD2 /* ActionSheetVC.swift in Sources */,
+				8D22B23E294FED320091BD7B /* CycleScrollViewVC.swift in Sources */,
 				8D600C8027AE7CA3007E227A /* SGDragView.swift in Sources */,
 				8D600C6427AE7C7D007E227A /* ImageDownload.swift in Sources */,
+				8D22B23B294FECE30091BD7B /* SGCycleScrollView.swift in Sources */,
 				8D897562286D681800EFA6FA /* SGDashedlineView.swift in Sources */,
 				8D600C6827AE7C7D007E227A /* GCDAsync.swift in Sources */,
 				8D600C6527AE7C7D007E227A /* AlamofireArrayParameters.swift in Sources */,

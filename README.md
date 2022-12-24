@@ -8,6 +8,7 @@
 |视图|注释|
 |----|-----|
 |SGActionSheet|弹窗
+|SGCycleScrollView|文字、图片轮播
 |SGPopupMenu|弹框菜单
 |SGItemsView|item视图
 |SGTagsView|标签视图

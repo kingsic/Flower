@@ -298,10 +298,10 @@ private extension SGTagsView {
             btn.layer.borderColor = configure.borderColor.cgColor
             if configure.contentHorizontalAlignment == .left {
                 btn.contentHorizontalAlignment = .left
-                btn.contentEdgeInsets = UIEdgeInsets(top: 0, left: configure.contentInset.left, bottom: 0, right: 0)
+                btn.contentEdgeInsets = UIEdgeInsets(top: 0, left: configure.padding, bottom: 0, right: 0)
             } else if configure.contentHorizontalAlignment == .right {
                 btn.contentHorizontalAlignment = .right
-                btn.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: configure.contentInset.right)
+                btn.contentEdgeInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: configure.padding)
             }
             contentView.addSubview(btn)
             tempBtns!.append(btn)
