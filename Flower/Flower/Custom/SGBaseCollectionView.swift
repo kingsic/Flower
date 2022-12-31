@@ -1,6 +1,6 @@
 //
-//  SGBaseItemsView.swift
-//  SGBaseItemsView
+//  SGBaseCollectionView.swift
+//  SGBaseCollectionView
 //
 //  Created by kingsic on 2020/10/23.
 //  Copyright © 2020 kingsic. All rights reserved.
@@ -8,24 +8,24 @@
 
 import UIKit
 
-@objc public protocol SGBaseItemsViewDataSource: NSObjectProtocol {
+@objc public protocol SGBaseCollectionViewDataSource: NSObjectProtocol {
     /// Number of returned items
-    func itemsView(_ itemsView: SGBaseItemsView, numberOfItems: Int) -> Int
+    func collectionView(_ baseCollectionView: SGBaseCollectionView, numberOfItems: Int) -> Int
     /// Data source
-    func itemsView(_ itemsView: SGBaseItemsView, cell: UICollectionViewCell, cellForItemAt index: Int)
+    func collectionView(_ baseCollectionView: SGBaseCollectionView, cell: UICollectionViewCell, cellForItemAt index: Int)
 }
 
-@objc public protocol SGBaseItemsViewDelegate: NSObjectProtocol {
+@objc public protocol SGBaseCollectionViewDelegate: NSObjectProtocol {
     /// Click event of item
-    func itemsView(_ itemsView: SGBaseItemsView, didSelectItemAt index: Int)
+    func collectionView(_ baseCollectionView: SGBaseCollectionView, didSelectItemAt index: Int)
 }
 
-public class SGBaseItemsView: UIView {
+public class SGBaseCollectionView: UIView {
     /// DataSource
-    public var dataSource: SGBaseItemsViewDataSource?
+    public var dataSource: SGBaseCollectionViewDataSource?
     
     /// Delegate
-    public var delegate: SGBaseItemsViewDelegate?
+    public var delegate: SGBaseCollectionViewDelegate?
     
     /// Reload data
     public func reloadData() {
@@ -115,14 +115,6 @@ public class SGBaseItemsView: UIView {
         }
     }
     
-    
-    public typealias ItemClickBlock = (_ index: Int) -> Void
-    private var tempItemClickBlock: ItemClickBlock?
-    /// Item click callback method
-    public func itemClickBlock(itemClick: ItemClickBlock?) {
-        tempItemClickBlock = itemClick
-    }
-    
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -161,22 +153,22 @@ public class SGBaseItemsView: UIView {
     
 }
 
-extension SGBaseItemsView: UICollectionViewDelegate, UICollectionViewDataSource {
+extension SGBaseCollectionView: UICollectionViewDelegate, UICollectionViewDataSource {
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSource?.itemsView(self, numberOfItems: section) ?? 0
+        return dataSource?.collectionView(self, numberOfItems: section) ?? 0
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: tempIdentifier, for: indexPath)
-        if dataSource != nil && (dataSource?.responds(to: #selector(dataSource?.itemsView(_:cell:cellForItemAt:)))) != nil {
-            dataSource?.itemsView(self, cell: cell, cellForItemAt: indexPath.item)
+        if dataSource != nil && (dataSource?.responds(to: #selector(dataSource?.collectionView(_:cell:cellForItemAt:)))) != nil {
+            dataSource?.collectionView(self, cell: cell, cellForItemAt: indexPath.item)
         }
         return cell
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if delegate != nil && ((delegate?.responds(to: #selector(delegate?.itemsView(_:didSelectItemAt:)))) != nil) {
-            delegate?.itemsView(self, didSelectItemAt: indexPath.row)
+        if delegate != nil && ((delegate?.responds(to: #selector(delegate?.collectionView(_:didSelectItemAt:)))) != nil) {
+            delegate?.collectionView(self, didSelectItemAt: indexPath.row)
         }
     }
 }

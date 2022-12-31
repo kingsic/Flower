@@ -24,9 +24,8 @@
 		8D600C6F27AE7C99007E227A /* SGTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D600C6C27AE7C99007E227A /* SGTextView.swift */; };
 		8D600C7027AE7C99007E227A /* SGPopupMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D600C6D27AE7C99007E227A /* SGPopupMenu.swift */; };
 		8D600C7127AE7C99007E227A /* SGTagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D600C6E27AE7C99007E227A /* SGTagsView.swift */; };
-		8D600C7B27AE7CA3007E227A /* SGBaseItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D600C7327AE7CA3007E227A /* SGBaseItemsView.swift */; };
+		8D600C7B27AE7CA3007E227A /* SGBaseCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D600C7327AE7CA3007E227A /* SGBaseCollectionView.swift */; };
 		8D600C7D27AE7CA3007E227A /* SGButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D600C7527AE7CA3007E227A /* SGButton.swift */; };
-		8D600C7E27AE7CA3007E227A /* SGItemsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D600C7627AE7CA3007E227A /* SGItemsView.swift */; };
 		8D600C8027AE7CA3007E227A /* SGDragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D600C7827AE7CA3007E227A /* SGDragView.swift */; };
 		8D600C8127AE7CA4007E227A /* SGEdgeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D600C7927AE7CA3007E227A /* SGEdgeLabel.swift */; };
 		8D897562286D681800EFA6FA /* SGDashedlineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D897561286D681800EFA6FA /* SGDashedlineView.swift */; };
@@ -41,7 +40,7 @@
 		8DA9D21826E85488009CBAFC /* EdgeLabelVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D21726E85488009CBAFC /* EdgeLabelVC.swift */; };
 		8DA9D21A26E854A7009CBAFC /* TagsViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D21926E854A7009CBAFC /* TagsViewVC.swift */; };
 		8DA9D21E26E858C3009CBAFC /* TextViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D21D26E858C3009CBAFC /* TextViewVC.swift */; };
-		8DA9D22426E8C9C6009CBAFC /* ItemsViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D22326E8C9C6009CBAFC /* ItemsViewVC.swift */; };
+		8DA9D22426E8C9C6009CBAFC /* BaseCollectionViewVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DA9D22326E8C9C6009CBAFC /* BaseCollectionViewVC.swift */; };
 		8DDD2A8C27AAE5760079947C /* PopupMenuVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DDD2A8B27AAE5760079947C /* PopupMenuVC.swift */; };
 		8DEDBDAA27B0058B007A5BD2 /* SGActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEDBDA927B0058B007A5BD2 /* SGActionSheet.swift */; };
 		8DEDBDAC27B00617007A5BD2 /* ActionSheetVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8DEDBDAB27B00617007A5BD2 /* ActionSheetVC.swift */; };
@@ -82,9 +81,8 @@
 		8D600C6C27AE7C99007E227A /* SGTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGTextView.swift; sourceTree = "<group>"; };
 		8D600C6D27AE7C99007E227A /* SGPopupMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGPopupMenu.swift; sourceTree = "<group>"; };
 		8D600C6E27AE7C99007E227A /* SGTagsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGTagsView.swift; sourceTree = "<group>"; };
-		8D600C7327AE7CA3007E227A /* SGBaseItemsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGBaseItemsView.swift; sourceTree = "<group>"; };
+		8D600C7327AE7CA3007E227A /* SGBaseCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGBaseCollectionView.swift; sourceTree = "<group>"; };
 		8D600C7527AE7CA3007E227A /* SGButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGButton.swift; sourceTree = "<group>"; };
-		8D600C7627AE7CA3007E227A /* SGItemsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGItemsView.swift; sourceTree = "<group>"; };
 		8D600C7827AE7CA3007E227A /* SGDragView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGDragView.swift; sourceTree = "<group>"; };
 		8D600C7927AE7CA3007E227A /* SGEdgeLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGEdgeLabel.swift; sourceTree = "<group>"; };
 		8D897561286D681800EFA6FA /* SGDashedlineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SGDashedlineView.swift; sourceTree = "<group>"; };
@@ -105,7 +103,7 @@
 		8DA9D21726E85488009CBAFC /* EdgeLabelVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EdgeLabelVC.swift; sourceTree = "<group>"; };
 		8DA9D21926E854A7009CBAFC /* TagsViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsViewVC.swift; sourceTree = "<group>"; };
 		8DA9D21D26E858C3009CBAFC /* TextViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewVC.swift; sourceTree = "<group>"; };
-		8DA9D22326E8C9C6009CBAFC /* ItemsViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsViewVC.swift; sourceTree = "<group>"; };
+		8DA9D22326E8C9C6009CBAFC /* BaseCollectionViewVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewVC.swift; sourceTree = "<group>"; };
 		8DDD2A8B27AAE5760079947C /* PopupMenuVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopupMenuVC.swift; sourceTree = "<group>"; };
 		8DEDBDA927B0058B007A5BD2 /* SGActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SGActionSheet.swift; sourceTree = "<group>"; };
 		8DEDBDAB27B00617007A5BD2 /* ActionSheetVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetVC.swift; sourceTree = "<group>"; };
@@ -162,10 +160,9 @@
 		8D600C7227AE7CA3007E227A /* Custom */ = {
 			isa = PBXGroup;
 			children = (
-				8D600C7327AE7CA3007E227A /* SGBaseItemsView.swift */,
+				8D600C7327AE7CA3007E227A /* SGBaseCollectionView.swift */,
 				8D600C7527AE7CA3007E227A /* SGButton.swift */,
 				8D897561286D681800EFA6FA /* SGDashedlineView.swift */,
-				8D600C7627AE7CA3007E227A /* SGItemsView.swift */,
 				8D600C7827AE7CA3007E227A /* SGDragView.swift */,
 				8D600C7927AE7CA3007E227A /* SGEdgeLabel.swift */,
 			);
@@ -236,7 +233,7 @@
 				8D22B23D294FED320091BD7B /* CycleScrollViewVC.xib */,
 				8DA9D21726E85488009CBAFC /* EdgeLabelVC.swift */,
 				8D307ACA279B2EC6009F22E1 /* ExpandTableViewVC.swift */,
-				8DA9D22326E8C9C6009CBAFC /* ItemsViewVC.swift */,
+				8DA9D22326E8C9C6009CBAFC /* BaseCollectionViewVC.swift */,
 				8DDD2A8B27AAE5760079947C /* PopupMenuVC.swift */,
 				8DA9D21926E854A7009CBAFC /* TagsViewVC.swift */,
 				8DA9D21D26E858C3009CBAFC /* TextViewVC.swift */,
@@ -435,9 +432,8 @@
 				8D600C6527AE7C7D007E227A /* AlamofireArrayParameters.swift in Sources */,
 				8DA9D17326E766DA009CBAFC /* AppDelegate.swift in Sources */,
 				8D600C7127AE7C99007E227A /* SGTagsView.swift in Sources */,
-				8D600C7B27AE7CA3007E227A /* SGBaseItemsView.swift in Sources */,
+				8D600C7B27AE7CA3007E227A /* SGBaseCollectionView.swift in Sources */,
 				8DEDBDAA27B0058B007A5BD2 /* SGActionSheet.swift in Sources */,
-				8D600C7E27AE7CA3007E227A /* SGItemsView.swift in Sources */,
 				8D600C7027AE7C99007E227A /* SGPopupMenu.swift in Sources */,
 				8DDD2A8C27AAE5760079947C /* PopupMenuVC.swift in Sources */,
 				8DA9D17526E766DA009CBAFC /* SceneDelegate.swift in Sources */,
@@ -448,7 +444,7 @@
 				8D600C6927AE7C7D007E227A /* AppTools.swift in Sources */,
 				8D600C6F27AE7C99007E227A /* SGTextView.swift in Sources */,
 				8D600C6627AE7C7D007E227A /* FileTool.swift in Sources */,
-				8DA9D22426E8C9C6009CBAFC /* ItemsViewVC.swift in Sources */,
+				8DA9D22426E8C9C6009CBAFC /* BaseCollectionViewVC.swift in Sources */,
 				8D307ACB279B2EC6009F22E1 /* ExpandTableViewVC.swift in Sources */,
 				8DA9D21826E85488009CBAFC /* EdgeLabelVC.swift in Sources */,
 				8D600C6B27AE7C7D007E227A /* DateTool.swift in Sources */,

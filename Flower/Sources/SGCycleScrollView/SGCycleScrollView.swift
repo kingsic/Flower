@@ -12,6 +12,9 @@ import UIKit
 @objc public protocol SGCycleScrollViewDelegate: NSObjectProtocol {
     /// Item 的点击事件
     @objc optional func cycleScrollView(_ cycleScrollView: SGCycleScrollView, didSelectItemAt index: Int)
+    
+    /// Item 的滚动事件
+    @objc optional func cycleScrollView(_ cycleScrollView: SGCycleScrollView, didEndScrollingToItemAt index: Int)
 }
 
 @objc public protocol SGCycleScrollViewDataSource: NSObjectProtocol {
@@ -126,7 +129,6 @@ import UIKit
     }()
     
     lazy var collectionView: UICollectionView = {
-        
         let cv = UICollectionView(frame: bounds, collectionViewLayout: flowLayout)
         cv.delegate = self
         cv.dataSource = self
@@ -196,8 +198,8 @@ extension SGCycleScrollView: UICollectionViewDelegate {
             return
         }
         
-        if ((delegate?.responds(to: #selector(delegate?.cycleScrollView(_:didSelectItemAt:)))) != nil) {
-            delegate?.cycleScrollView?(self, didSelectItemAt: indexPath.item)
+        if (delegate!.responds(to: #selector(delegate!.cycleScrollView(_:didSelectItemAt:)))) {
+            delegate!.cycleScrollView!(self, didSelectItemAt: indexPath.item)
         }
     }
     
@@ -210,6 +212,21 @@ extension SGCycleScrollView: UICollectionViewDelegate {
     public func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         if autoScroll && timeInterval > 0 {
             addTimer()
+        }
+        
+        scrollViewDidEndScrollingAnimation(collectionView)
+    }
+    
+    public func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        guard delegate != nil else {
+            return
+        }
+        
+        let p = self.convert(collectionView.center, to: collectionView)
+        let indexPath = collectionView.indexPathForItem(at: p)
+        
+        if delegate!.responds(to: #selector(delegate!.cycleScrollView(_:didEndScrollingToItemAt:))) {
+            delegate!.cycleScrollView!(self, didEndScrollingToItemAt: indexPath!.item)
         }
     }
 }

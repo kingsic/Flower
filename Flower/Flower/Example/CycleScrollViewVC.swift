@@ -24,7 +24,7 @@ class CycleScrollViewVC: UIViewController {
 
         // Do any additional setup after loading the view.
         
-        cycleScrollView()
+//        cycleScrollView()
         
         configXibCycleScrollView()
     }
@@ -56,6 +56,10 @@ extension CycleScrollViewVC: SGCycleScrollViewDelegate, SGCycleScrollViewDataSou
     func cycleScrollView(_ cycleScrollView: SGCycleScrollView, didSelectItemAt index: Int) {
         print("index - - \(index)")
     }
+    
+//    func cycleScrollView(_ cycleScrollView: SGCycleScrollView, didEndScrollingToItemAt index: Int) {
+//        print("didEndScrollingToItemAt - \(index)")
+//    }
 
     func numberOfItems(_ cycleScrollView: SGCycleScrollView) -> Int {
         return cycleScrollView == XibCycleScrollView ? xibDataSource.count : dataSource.count

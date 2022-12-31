@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         ["SGCycleScrollView": CycleScrollViewVC.self],
         ["SGEdgeLabel": EdgeLabelVC.self],
         ["ExpandTableView": ExpandTableViewVC.self],        
-        ["SGItemsView": ItemsViewVC.self],
+        ["SGBaseCollectionView": BaseCollectionViewVC.self],
         ["SGPopupMenu": PopupMenuVC.self],
         ["SGTagsView": TagsViewVC.self],
         ["SGTextView": TextViewVC.self],
